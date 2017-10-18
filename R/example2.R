@@ -1,0 +1,71 @@
+#' @name example2
+#' @title  EXAMPLE 2
+#' @docType package
+#'
+#' @description
+#' LACK-OF-FIT AND MARGINALITY FOR A SINGLE QUANTITATIVE TREATMENT FACTOR
+#'
+#' @details
+#' Petersen (1994, p. 125) describes an experiment conducted to assess the effects
+#' of five different quantities of N-fertiliser (0, 35, 70, 105 and 140 kg N/ha) on root dry
+#' matter yield of sugar beets (t/ha) with three complete replications laid out in three
+#' randomized complete blocks. One objective of this experiment is to determine the amount
+#' of fertilizer maximizing yield.
+#'
+#' @references
+#' Petersen, R.G. (1994). Agricultural field experiments. Design and analysis. New York: Marcel Dekker.
+#'
+#' @examples
+#' ## Loads beet data and builds a data frame with N rate orthogonal polynomials
+#' data(beet)
+#' N=poly(beet$nrate, degree=4, raw=FALSE)
+#' colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
+#' polbeet=cbind(beet,N)
+#'
+#' ## Full polynomial analysis of variance based on orthogonal polynomials
+#' anova(lm(yield ~ Replicate +  Linear_N + Quadratic_N + Cubic_N + Quartic_N , data=polbeet))
+#'
+#' ## Fits a sequence of orthogonal polynomial regression models of increasing degree
+#' fitreps=lm(yield ~ Replicate, data=polbeet)
+#' linear=update(fitreps,. ~ . +  Linear_N)
+#' quadratic=update(linear,. ~ . +  Quadratic_N)
+#' cubic=update(quadratic,. ~ . +  Cubic_N)
+#' quartic=update(cubic,. ~ . +  Quartic_N)
+#'
+#' ## Sequential anova tests for each added polynomial model term in example 2
+#' anova(fitreps,linear,quadratic,cubic,quartic)
+#'
+#' ## Sequential AIC tests for each added polynomial model term in example 2
+#' AIC(fitreps,linear,quadratic,cubic,quartic)
+#'
+#' ## Builds a new data frame with actual N rate raw polynomials
+#' N=poly(beet$nrate, degree=4, raw=TRUE)
+#' colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
+#' polbeet=cbind(beet,N)
+#'
+#' ##  Table 6 showing quadratic model coefficients with standard errors and confidence intervals
+#' quadratic = lm(yield ~ Replicate +  Linear_N + Quadratic_N, data=polbeet)
+#' summary(quadratic)
+#' confint(quadratic,  level=0.95)
+#'
+#' ## model diagnostic plots
+#' par(mfrow=c(2,2),oma=c(0,0,2,0))
+#' quadratic=lm(yield ~ Replicate + Linear_N + Quadratic_N, data=polbeet)
+#' plot(quadratic,sub.caption=NA)
+#' title(main="Diagnostic plots for quadratic nitrogen effects model", outer=TRUE)
+#'
+#' ## To run the following code install the package: ggplot2
+#' \dontrun{
+#'  require(ggplot2)
+#' ## Quadratic N rate plot using the ggplot2 package
+#' par(mfrow=c(2,2),oma=c(0,0,2,0))
+#' quadratic=lm(yield ~ Replicate + Linear_N + Quadratic_N, data=polbeet)
+#' plot(quadratic,sub.caption=NA)
+#' title(main="Diagnostic plots for quadratic nitrogen effects model", outer=TRUE)
+#' ggplot(polbeet, aes(x=nrate, y=yield)) +
+#' ggtitle("Fig 3 Yield versus N fertilizer for sugar beet trial with 95% confidence band")+
+#' geom_point(shape=1)+stat_summary(fun.y = mean, geom="point")+
+#' geom_smooth(method=lm, formula=y ~ poly(x, 2))+theme_bw()
+#' }
+NULL
+

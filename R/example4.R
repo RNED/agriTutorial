@@ -1,0 +1,93 @@
+#' @name example4
+#' @title  EXAMPLE 4
+#' @description
+#' One qualitative treatment factor and repeated measures in time.
+#'
+#' @details
+#' Milliken & Johnson (1992, p. 429) describe an experiment with four sorghum varieties, in which the leaf area
+#' index was assessed in five consecutive weeks starting two weeks after emergence. The experiment was laid out
+#'  in five randomized complete blocks. The observed data are plotted against week in Figure 5.
+#'
+#' @references
+#' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
+#'
+#' @examples
+#' ## Loads sorghum data and includes polynomials for week and block contrasts
+#' data(sorghum)
+#' PolWeek=poly(sorghum$varweek, degree=4, raw=FALSE)
+#' colnames(PolWeek)=c("linWeek","quadWeek","cubWeek","quartWeek")
+#' sorghum=cbind(sorghum,PolWeek)
+#' PolBlocks=poly(sorghum$varblock, degree=4, raw=FALSE)
+#' colnames(PolBlocks)=c("linBlock","quadBlock","cubBlock","quartBlock")
+#' sorghum=cbind(sorghum,PolBlocks)
+#'
+#' \dontrun{
+#' require(nlme)
+#'
+#' AIC=NULL
+#' logLik=NULL
+#' Model=c("ID","CS","AR(1)","AR(1)+nugget","UN")
+#'
+#' ## independent uncorrelated random plots
+#' full_indy = gls(y ~ factweek * (Replicate+variety),sorghum)
+#' anova(full_indy)
+#' AIC=c(AIC, AIC(full_indy))
+#' logLik=c(logLik,logLik(full_indy))
+#'
+#' ## corCompSymm compound symmetry
+#' full_corCompSymm = gls(y ~ factweek  * (Replicate+variety), corr = corCompSymm(form = ~ varweek |factplot), sorghum)
+#' anova(full_corCompSymm)
+#' AIC=c(AIC, AIC(full_corCompSymm))
+#' logLik=c(logLik,logLik(full_corCompSymm))
+#'
+#' ## corExp without nugget
+#' full_corExp = gls(y ~ factweek  * (Replicate+variety), corr = corExp(form = ~ varweek |factplot),  sorghum)
+#' anova(full_corExp)
+#' AIC=c(AIC, AIC(full_corExp))
+#' logLik=c(logLik,logLik(full_corExp))
+#'
+#' ##  corExp with nugget
+#' corExp_nugget = gls(y ~ factweek  * (Replicate+variety), corr = corExp(form = ~ varweek |factplot, nugget=TRUE), sorghum)
+#' anova(corExp_nugget)
+#' AIC=c(AIC, AIC(corExp_nugget))
+#' logLik=c(logLik,logLik(corExp_nugget))
+#'
+#' ##  corSymm unstructured
+#' full_corSymm = gls(y ~ factweek  * (Replicate+variety), corr = corSymm(form = ~1 |factplot), weights = varIdent(form = ~ 1 | varweek), sorghum)
+#' anova(full_corSymm)
+#' AIC=c(AIC, AIC(full_corSymm))
+#' logLik=c(logLik,logLik(full_corSymm))
+#'
+#' ##  Comparison of log Likelihood and AIC statistics for different correlation structures
+#' dAIC=AIC-AIC[4]
+#' logLik=-logLik*2
+#' dlogLik=logLik-logLik[4]
+#' AICtable=data.frame(Model,round(logLik,2),round(dlogLik,2),round(AIC,2),round(dAIC,2) )
+#' colnames(AICtable)=c("Covar_Model","-2logLr","-diff2logLr","AIC","diffAIC")
+#' AICtable
+#'
+#' ## Sequential Wald test for full model sorghum data
+#' full_Wald = gls(y  ~  (Replicate +variety) *factweek , corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' anova(full_Wald)
+#' full_Wald
+#'
+#' ## Sequential Wald test for individual polynomial contrasts
+#' quad_Wald = gls(y  ~  (linBlock+quadBlock+cubBlock+quartBlock+variety) *(linWeek+quadWeek+cubWeek+quartWeek) , corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' anova(quad_Wald)
+#' quad_Wald
+#'
+#' ## Raw polynomials for actual weeks to estimate raw regression coefficients
+#' rawPolWeek=poly(sorghum$varweek, degree=4, raw=TRUE)
+#' colnames(rawPolWeek)=c("rawlinWeek","rawquadWeek","rawcubWeek","rawquartWeek")
+#' sorghum=cbind(sorghum,rawPolWeek)
+#'
+#' ## Coefficients assuming a quadratic regression model with an AR(1) correlation structure with nugget (fitted using corExp function)
+#' quad_fitted = gls(y  ~ (rawlinWeek+rawquadWeek) * (variety + linBlock + quadBlock), corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' anova(quad_fitted)
+#' summary(quad_fitted)$tTable
+#'
+#' ## graphical  residuals from best fitting gls model
+#' quad_fitted = gls(y  ~ (rawlinWeek+rawquadWeek) * (variety + linBlock + quadBlock), corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' plot(quad_fitted,sub.caption=NA,main="residuals from best fitting gls model")
+#' }
+NULL
