@@ -14,41 +14,49 @@ involved variety and management as qualitative treatment factors and nitrogen
 fertilizer as a quantitative treatment factor. Overall, there were 45 treatment
 }
 \examples{
-## Copy and paste the folowing code into a R console or GUI to run examples
+## Copy and paste the following code into a R console or GUI to run examples
+## Packages lmerTest, lsmeans and pbkrtest MUST be installed
 
-## Loads rice data frame from agriTutorial
+\dontrun{
+if (suppressWarnings(require(lmerTest))) message('lmerTest loaded correctly') else
+message("please install package 'lmerTest' from the tools menu or by using install.packages('lmerTest')" )
+if (suppressWarnings(require(lsmeans))) message('lsmeans loaded correctly') else
+message("please install package 'lsmeans' from the tools menu or by using install.packages('lsmeans')" )
+if (suppressWarnings(require(pbkrtest))) message('pbkrtest loaded correctly') else
+message("please install package 'pbkrtest' from the tools menu or by using install.packages('pbkrtest')" )
+
+## loads rice data and adds Nitrogen polynomials
 data(rice)
-## includes Nitrogen polynomials
 N=poly(rice$nrate,4,raw=FALSE)
 colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
 rice=cbind(rice,N)
 
-##  Analysis of variance of rice data fitting a full analysis with a qualitative nitrogen factor
-rice.aov1 = aov(yield ~ Replicate + management*variety*nitrogen + Error(Replicate/Main/Sub),rice)
+##  Full analysis of variance of rice data with a qualitative nitrogen factor
+rice.aov1 = aov(yield ~ Replicate + management*variety*nitrogen +
+Error(Replicate/Main/Sub),rice)
 summary(rice.aov1, ddf="Kenward-Roger",type = 1)
 
-## Graphs of nitrogen response per variety per plot showing anomalous behaviour of Variety 1
-Rice=aggregate(rice$yield, by=list(rice$Replicate, rice$nitrogen,rice$variety),FUN=mean, na.rm=TRUE)
+## Nitrogen response per variety per plot showing anomalous behaviour of Variety 1
+Rice=aggregate(rice$yield, by=list(rice$Replicate, rice$nitrogen,rice$variety),
+FUN=mean, na.rm=TRUE)
 colnames(Rice)=c("Reps","Nlev","Vars","Yield")
-wideRice <- reshape(Rice, timevar = "Nlev",idvar = c("Vars", "Reps"),direction = "wide")
+wideRice <- reshape(Rice, timevar="Nlev",idvar=c("Vars","Reps"),direction="wide")
 wideRice=wideRice[,-c(1,2)]
 N=c(0,50,80,110,140)
 par(mfrow=c(3,3),oma=c(0,0,2,0))
 for (i in 1:3)
 for (j in 1:3)
-	plot(N,wideRice[(i-1)*3+j,],type = "l",ylab="yield",main=paste("Variety", i, "Block", j))
-title(main="Fig S1. Variety response to nitrogen in individual replicate blocks", outer=TRUE)
+	plot(N,wideRice[(i-1)*3+j,],type = "l",ylab="yield",main=paste("Variety",i,"Block",j),
+	ylim=c(min(wideRice), max(wideRice)))
+title(main="Fig S1. Variety response to nitrogen in individual replicate blocks",
+outer=TRUE)
 
-## To run the following code install the packages: lmerTest, lsmeans and pbkrtest
-\dontrun{
-require(lmerTest)
-require(lsmeans)
-require(pbkrtest)
-
-## lsmeans and se's assuming additive management effects and a qualitative nitrogen factor
-rice.aov3 = aov(yield ~ Replicate + management + variety*nitrogen + Error(Replicate/Main/Sub),rice)
+## lsmeans and se's assuming additive management and qualitative nitrogen effects
+rice.aov3 = aov(yield ~ Replicate + management + variety*nitrogen +
+Error(Replicate/Main/Sub),rice)
 model.tables(rice.aov3, "means", se = FALSE)
-rice.lmer= lmer(yield ~ Replicate + management+ nitrogen*variety + (1|Replicate:Main)+ (1|Replicate:Main:Sub), data=rice)
+rice.lmer= lmer(yield ~ Replicate + management+ nitrogen*variety +
+(1|Replicate:Main)+ (1|Replicate:Main:Sub), data=rice)
 lsmeans::lsmeans(rice.lmer,~nitrogen)
 lsmeans::lsmeans(rice.lmer,~variety)
 lsmeans::lsmeans(rice.lmer,~nitrogen*variety)
@@ -60,23 +68,31 @@ v.n= lsmeans::lsmeans(rice.lmer,~variety|nitrogen)
 contrast(v.n, alpha=0.05, method="pairwise")
 
 ## Table 3 Mixed model effects for rice data with significance tests
-rice.lmer= lmer(yield ~ Replicate + nitrogen*management*variety + (1|Replicate:Main) + (1|Replicate:Main:Sub), data=rice)
+rice.lmer= lmer(yield ~ Replicate + nitrogen*management*variety + (1|Replicate:Main) +
+(1|Replicate:Main:Sub), data=rice)
 anova(rice.lmer, ddf="Kenward-Roger",type = 1)
 
-## Table 7: Mixed model for rice data fitting orthogonal  polynomials for nitrogen effects
-rice.lmer2= lmer(yield ~ Replicate + management + variety*(Linear_N + Quadratic_N + Cubic_N + Quartic_N) +
+## Table 7: Mixed model fitting orthogonal  polynomials for nitrogen effects
+rice.lmer2= lmer(yield ~ Replicate + management + variety*(Linear_N + Quadratic_N +
+Cubic_N + Quartic_N) +
 (1|Replicate:Main)+ (1|Replicate:Main:Sub) , data=rice)
 anova(rice.lmer2, ddf="Kenward-Roger",type = 1)
 
-## Table 8 Model coefficients for separate linear and common quadratic N rate assuming additive management effects
-rice.lmer4= lmer(yield ~ Replicate + management + variety*nrate + I(nrate**2) + (1|Replicate:Main) + (1|Replicate:Main:Sub), data=rice)
+## Table 8 Coefficients for separate linear and common quadratic N with additive management
+rice.lmer4= lmer(yield ~ Replicate + management + variety*nrate + I(nrate**2) +
+(1|Replicate:Main) + (1|Replicate:Main:Sub), data=rice)
 summary(rice.lmer4, ddf="Kenward-Roger")
 
 ## Residual plot assuming additive management and nitrogen x variety interaction effects
-rice.lmer= lmer(yield ~ Replicate + management+ nitrogen*variety + (1|Replicate:Main) + (1|Replicate:Main:Sub) , data=rice)
-plot(rice.lmer,sub.caption=NA,ylab="Residuals",xlab="Fitted",main="Full rice analysis with qualitative nitrogen factor")
+rice.lmer= lmer(yield ~ Replicate + management+ nitrogen*variety + (1|Replicate:Main) +
+(1|Replicate:Main:Sub) , data=rice)
+plot(rice.lmer,sub.caption=NA,ylab="Residuals",xlab="Fitted",
+main="Full rice analysis with qualitative nitrogen factor")
+
 }
+
 }
 \references{
-Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
+Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural
+research, 2nd edn. New York: Wiley.
 }

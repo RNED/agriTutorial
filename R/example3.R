@@ -16,6 +16,17 @@
 #' Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
 #'
 #' @examples
+#' ## Copy and paste the following code into a R console or GUI to run examples
+#' ## Packages lmerTest, lattice and pbkrtest MUST be installed
+#'
+#' \dontrun{
+#' if (suppressWarnings(require(lmerTest))) message('lmerTest loaded correctly') else
+#' message("please install package 'lmerTest' from the tools menu or by using install.packages('lmerTest')" )
+#' if (suppressWarnings(require(lattice))) message('lattice loaded correctly') else
+#' message("please install package 'lattice' from the tools menu or by using install.packages('lattice')" )
+#' if (suppressWarnings(require(pbkrtest))) message('pbkrtest loaded correctly') else
+#' message("please install package 'pbkrtest' from the tools menu or by using install.packages('pbkrtest')" )
+#'
 # '## Loads greenhouse greenrice data and builds a data frame with N and W rate orthogonal polynomials
 #' data(greenrice)
 #' greenrice$loguptake=log(greenrice$uptake)
@@ -33,10 +44,6 @@
 #' greenrice.loguptake = aov(loguptake ~ Replicate + linW*linN + quadN + quadW + Error(Replicate/Main),greenrice)
 #' summary(greenrice.loguptake, ddf="Kenward-Roger",type = 1)
 #'
-#' \dontrun{
-#' require(lmerTest)
-#' require(pbkrtest)
-#' require(lattice)
 #' greenrice.uptake = lmer(uptake ~ Replicate + N*W  + (1|Replicate:Main) , data=greenrice)
 #' greenrice.loguptake= lmer(loguptake ~ Replicate + N*W  + (1|Replicate:Main), data=greenrice)
 #'
@@ -64,7 +71,6 @@
 #'	 strip = strip.custom(strip.names = TRUE, strip.levels = TRUE),
 #'	panel = panel.plot)
 #'
-#'
 #' ## shows residuals from untransformed versus log transformed uptake data
 #' par(mfrow=c(1,2),oma=c(0,0,2,0))
 #' a=plot(greenrice.uptake,main="Example 3: untransformed", ylab="Residuals N uptake ")
@@ -77,6 +83,8 @@
 #' anova(greenrice.lmer0, ddf="Kenward-Roger",type = 1)
 #' summary(greenrice.lmer0, ddf="Kenward-Roger",type = 1)
 #'
+#'
 #' }
+#'
 NULL
 

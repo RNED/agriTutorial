@@ -18,6 +18,7 @@ analysis because this stabilized the variance (Mead, 1988; also see Figure 12).
 }
 \examples{
 
+\dontrun{
 ## Loads turnip data
 data(turnip)
 
@@ -58,6 +59,9 @@ fit.log.quad.mod = lm(log_yield ~ Replicate + linlogDensity*linlogSpacing + quad
 quadlogSpacing, turnip)
 plot(fit.log.quad.mod,sub.caption=NA)
 title(main="Fig 12b Quadratic response for transformed log density by log row spacing", outer=TRUE)
+
+}
+
 }
 \references{
 Mead, R. (1988). The design of experiments. Statistical principles for practical application.

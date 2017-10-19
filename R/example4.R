@@ -12,6 +12,13 @@
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
 #'
 #' @examples
+#' ## Copy and paste the following code into a R console or GUI to run examples
+#' ## Package nlme MUST be installed
+#'
+#' \dontrun{
+#' if (suppressWarnings(require(nlme))) message('nlme loaded correctly') else
+#' message("please install package 'nlme' from the tools menu or by using install.packages('nlme')" )
+#'
 #' ## Loads sorghum data and includes polynomials for week and block contrasts
 #' data(sorghum)
 #' PolWeek=poly(sorghum$varweek, degree=4, raw=FALSE)
@@ -20,9 +27,6 @@
 #' PolBlocks=poly(sorghum$varblock, degree=4, raw=FALSE)
 #' colnames(PolBlocks)=c("linBlock","quadBlock","cubBlock","quartBlock")
 #' sorghum=cbind(sorghum,PolBlocks)
-#'
-#' \dontrun{
-#' require(nlme)
 #'
 #' AIC=NULL
 #' logLik=NULL
@@ -89,5 +93,8 @@
 #' ## graphical  residuals from best fitting gls model
 #' quad_fitted = gls(y  ~ (rawlinWeek+rawquadWeek) * (variety + linBlock + quadBlock), corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
 #' plot(quad_fitted,sub.caption=NA,main="residuals from best fitting gls model")
+#'
+#'
 #' }
+#'
 NULL

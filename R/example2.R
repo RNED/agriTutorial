@@ -16,6 +16,13 @@
 #' Petersen, R.G. (1994). Agricultural field experiments. Design and analysis. New York: Marcel Dekker.
 #'
 #' @examples
+#' ## Copy and paste the following code into a R console or GUI to run examples
+#' ## Package ggplot2 MUST be installed
+#'
+#' \dontrun{
+#' if (suppressWarnings(require(ggplot2))) message('ggplot2 loaded correctly') else
+#' message("please install package 'ggplot2' from the tools menu or by using install.packages('ggplot2')")
+#'
 #' ## Loads beet data and builds a data frame with N rate orthogonal polynomials
 #' data(beet)
 #' N=poly(beet$nrate, degree=4, raw=FALSE)
@@ -54,9 +61,6 @@
 #' plot(quadratic,sub.caption=NA)
 #' title(main="Diagnostic plots for quadratic nitrogen effects model", outer=TRUE)
 #'
-#' ## To run the following code install the package: ggplot2
-#' \dontrun{
-#'  require(ggplot2)
 #' ## Quadratic N rate plot using the ggplot2 package
 #' par(mfrow=c(2,2),oma=c(0,0,2,0))
 #' quadratic=lm(yield ~ Replicate + Linear_N + Quadratic_N, data=polbeet)
@@ -66,6 +70,9 @@
 #' ggtitle("Fig 3 Yield versus N fertilizer for sugar beet trial with 95% confidence band")+
 #' geom_point(shape=1)+stat_summary(fun.y = mean, geom="point")+
 #' geom_smooth(method=lm, formula=y ~ poly(x, 2))+theme_bw()
+#'
+#'
 #' }
+#'
 NULL
 
