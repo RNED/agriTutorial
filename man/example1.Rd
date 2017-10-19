@@ -47,7 +47,7 @@ par(mfrow=c(3,3),oma=c(0,0,2,0))
 for (i in 1:3)
 for (j in 1:3)
 	plot(N,wideRice[(i-1)*3+j,],type = "l",ylab="yield",main=paste("Variety",i,"Block",j),
-	ylim=c(min(wideRice), max(wideRice)))
+	ylim=c(0, max(wideRice)))
 title(main="Fig S1. Variety response to nitrogen in individual replicate blocks",
 outer=TRUE)
 
