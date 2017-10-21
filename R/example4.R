@@ -39,28 +39,30 @@
 #' logLik=c(logLik,logLik(full_indy))
 #'
 #' ## corCompSymm compound symmetry
-#' full_corCompSymm = gls(y ~ factweek  * (Replicate+variety), corr = corCompSymm(form = ~ varweek |factplot), sorghum)
-#' anova(full_corCompSymm)
-#' AIC=c(AIC, AIC(full_corCompSymm))
-#' logLik=c(logLik,logLik(full_corCompSymm))
+#' corCompSymm = gls(y~factweek*(Replicate+variety),corr=corCompSymm(form=~varweek|factplot),sorghum)
+#' anova(corCompSymm)
+#' AIC=c(AIC, AIC(corCompSymm))
+#' logLik=c(logLik,logLik(corCompSymm))
 #'
 #' ## corExp without nugget
-#' full_corExp = gls(y ~ factweek  * (Replicate+variety), corr = corExp(form = ~ varweek |factplot),  sorghum)
-#' anova(full_corExp)
-#' AIC=c(AIC, AIC(full_corExp))
-#' logLik=c(logLik,logLik(full_corExp))
+#' corExp=gls(y~factweek*(Replicate+variety),corr=corExp(form =~ varweek|factplot),sorghum)
+#' anova(corExp)
+#' AIC=c(AIC, AIC(corExp))
+#' logLik=c(logLik,logLik(corExp))
 #'
 #' ##  corExp with nugget
-#' corExp_nugget = gls(y ~ factweek  * (Replicate+variety), corr = corExp(form = ~ varweek |factplot, nugget=TRUE), sorghum)
+#' corExp_nugget=gls(y~factweek*(Replicate+variety),corr=corExp(form=~varweek|factplot,nugget=TRUE),
+#' sorghum)
 #' anova(corExp_nugget)
 #' AIC=c(AIC, AIC(corExp_nugget))
 #' logLik=c(logLik,logLik(corExp_nugget))
 #'
 #' ##  corSymm unstructured
-#' full_corSymm = gls(y ~ factweek  * (Replicate+variety), corr = corSymm(form = ~1 |factplot), weights = varIdent(form = ~ 1 | varweek), sorghum)
-#' anova(full_corSymm)
-#' AIC=c(AIC, AIC(full_corSymm))
-#' logLik=c(logLik,logLik(full_corSymm))
+#' corSymm = gls(y~factweek*(Replicate+variety),corr=corSymm(form = ~1|factplot),
+#' weights=varIdent(form = ~ 1|varweek), sorghum)
+#' anova(corSymm)
+#' AIC=c(AIC, AIC(corSymm))
+#' logLik=c(logLik,logLik(corSymm))
 #'
 #' ##  Comparison of log Likelihood and AIC statistics for different correlation structures
 #' dAIC=AIC-AIC[4]
@@ -71,12 +73,15 @@
 #' AICtable
 #'
 #' ## Sequential Wald test for full model sorghum data
-#' full_Wald = gls(y  ~  (Replicate +variety) *factweek , corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' full_Wald=gls(y~(Replicate+variety)*factweek,corr=corExp(form =~varweek|factplot,nugget=TRUE),
+#' sorghum)
 #' anova(full_Wald)
 #' full_Wald
 #'
 #' ## Sequential Wald test for individual polynomial contrasts
-#' quad_Wald = gls(y  ~  (linBlock+quadBlock+cubBlock+quartBlock+variety) *(linWeek+quadWeek+cubWeek+quartWeek) , corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' quad_Wald =gls(y~(linBlock+quadBlock+cubBlock+quartBlock+variety)*
+#' (linWeek+quadWeek+cubWeek+quartWeek),
+#' corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
 #' anova(quad_Wald)
 #' quad_Wald
 #'
@@ -85,13 +90,15 @@
 #' colnames(rawPolWeek)=c("rawlinWeek","rawquadWeek","rawcubWeek","rawquartWeek")
 #' sorghum=cbind(sorghum,rawPolWeek)
 #'
-#' ## Coefficients assuming a quadratic regression model with an AR(1) correlation structure with nugget (fitted using corExp function)
-#' quad_fitted = gls(y  ~ (rawlinWeek+rawquadWeek) * (variety + linBlock + quadBlock), corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' ## Coefficients of quadratic model with AR(1) structure with nugget assuming corExp function.
+#' quad_fitted = gls(y~(rawlinWeek+rawquadWeek)*(variety+linBlock+quadBlock),
+#' corr=corExp(form= ~ varweek|factplot,nugget=TRUE), sorghum)
 #' anova(quad_fitted)
 #' summary(quad_fitted)$tTable
 #'
 #' ## graphical  residuals from best fitting gls model
-#' quad_fitted = gls(y  ~ (rawlinWeek+rawquadWeek) * (variety + linBlock + quadBlock), corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' quad_fitted = gls(y~(rawlinWeek+rawquadWeek) *(variety+linBlock+quadBlock),
+#' corr=corExp(form = ~ varweek|factplot, nugget=TRUE), sorghum)
 #' plot(quad_fitted,sub.caption=NA,main="residuals from best fitting gls model")
 #'
 #'

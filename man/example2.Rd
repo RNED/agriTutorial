@@ -21,7 +21,7 @@ of fertilizer maximizing yield.
 
 \dontrun{
 if (suppressWarnings(require(ggplot2))) message('ggplot2 loaded correctly') else
-message("please install package 'ggplot2' from the tools menu or by using install.packages('ggplot2')")
+message("please install 'ggplot2' from tools menu or by using install.packages('ggplot2')")
 
 ## Loads beet data and builds a data frame with N rate orthogonal polynomials
 data(beet)

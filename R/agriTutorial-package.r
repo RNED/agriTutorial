@@ -6,7 +6,9 @@
 #' @description The \code{agri.tutorial} package is intended as a teaching aid and
 #' supports a tutorial approach to the analysis of experimental data for research workers.
 #' The package examines a number of real data sets from practical experiments and explores
-#' the analysis of these data sets using modern statistical methodolgy.
+#' the analysis of these data sets using modern statistical methodolgy. The \code{agri.tutorial}
+#' package provides R software supporting the example analyses discussed in the paper by
+#' Piepho and Edmondson (2017).
 #'
 #' @details
 #'

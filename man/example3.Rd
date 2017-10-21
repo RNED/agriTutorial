@@ -21,11 +21,11 @@ randomized in four complete blocks.
 
 \dontrun{
 if (suppressWarnings(require(lmerTest))) message('lmerTest loaded correctly') else
-message("please install package 'lmerTest' from the tools menu or by using install.packages('lmerTest')" )
+message("please install 'lmerTest' from tools menu or by using install.packages('lmerTest')")
 if (suppressWarnings(require(lattice))) message('lattice loaded correctly') else
-message("please install package 'lattice' from the tools menu or by using install.packages('lattice')" )
+message("please install 'lattice' from tools menu or by using install.packages('lattice')")
 if (suppressWarnings(require(pbkrtest))) message('pbkrtest loaded correctly') else
-message("please install package 'pbkrtest' from the tools menu or by using install.packages('pbkrtest')" )
+message("please install 'pbkrtest' from tools menu or by using install.packages('pbkrtest')")
 
 data(greenrice)
 greenrice$loguptake=log(greenrice$uptake)
@@ -36,11 +36,11 @@ colnames(PolN)=c("linN","quadN")
 greenrice=cbind(greenrice,PolW,PolN)
 
 ## untransformed uptake data stratified anova
-greenrice.uptake = aov(uptake ~ Replicate + linW*linN + quadN + quadW + Error(Replicate/Main),greenrice)
+greenrice.uptake=aov(uptake~Replicate+linW*linN+quadN+quadW+Error(Replicate/Main),greenrice)
 summary(greenrice.uptake, ddf="Kenward-Roger",type = 1)
 
 ## log transformed uptake data stratified anova
-greenrice.loguptake = aov(loguptake ~ Replicate + linW*linN + quadN + quadW + Error(Replicate/Main),greenrice)
+greenrice.loguptake=aov(loguptake~Replicate+linW*linN+quadN+quadW+Error(Replicate/Main),greenrice)
 summary(greenrice.loguptake, ddf="Kenward-Roger",type = 1)
 
 greenrice.uptake = lmer(uptake ~ Replicate + N*W  + (1|Replicate:Main) , data=greenrice)
@@ -50,7 +50,8 @@ greenrice.loguptake= lmer(loguptake ~ Replicate + N*W  + (1|Replicate:Main), dat
 panel.plot <- function(x, y) {
 panel.xyplot(x, y) # show points
 linW=c(0,10,20,40)[panel.number()]
-panel.curve(-1.16+0.0176*linW-0.00116*linW*linW +0.0068*x-0.00000938*x*x-0.0000907*linW*x, from=0,to=270, type="l", lwd=2)
+panel.curve(-1.16+0.0176*linW-0.00116*linW*linW +0.0068*x-0.00000938*x*x-0.0000907*linW*x,
+from=0,to=270, type="l", lwd=2)
 }
 xyplot(loguptake ~ linN|factor(linW),data=greenrice,
  main="Fig 4: Marginal model for nitrogen rate",
@@ -62,7 +63,8 @@ panel = panel.plot)
 panel.plot <- function(x, y) {
 panel.xyplot(x, y) # show points
 linN=c(0,90,180,270)[panel.number()]
-panel.curve(-1.16+0.0176*x-0.00116*x*x +0.0068*linN-0.00000938*linN*linN-0.0000907*x*linN, from=0,to=40, type="l", lwd=2)
+panel.curve(-1.16+0.0176*x-0.00116*x*x +0.0068*linN-0.00000938*linN*linN-0.0000907*x*linN,
+from=0,to=40, type="l", lwd=2)
 }
 xyplot(loguptake ~ linW|factor(linN),data=greenrice,
  main="Fig 4: Marginal model for water stress",
@@ -78,10 +80,10 @@ print(a, position = c(0, 0, 0.5, 1), more = TRUE)
 print(b, position = c(0.5, 0, 1, 1))
 
 ## lme4 analysis of log uptake assuming a quadratic response surface model for water and nitrogen
-greenrice.lmer0= lmer(loguptake ~  linN*linW  + quadN + quadW + (1|Replicate) + (1|Replicate:Main), data=greenrice)
+greenrice.lmer0=lmer(loguptake~linN*linW+quadN+quadW+(1|Replicate)+
+(1|Replicate:Main),data=greenrice)
 anova(greenrice.lmer0, ddf="Kenward-Roger",type = 1)
 summary(greenrice.lmer0, ddf="Kenward-Roger",type = 1)
-
 
 }
 

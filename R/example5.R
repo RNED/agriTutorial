@@ -51,7 +51,7 @@
 #'
 #' ## graphical plots of untransformed data
 #' par(mfrow=c(2,2),oma=c(0,0,2,0))
-#' fit.quad.mod = lm(log_yield ~ Replicate + linDensity * linSpacing + quadDensity + quadSpacing, turnip)
+#' fit.quad.mod=lm(log_yield~Replicate+linDensity*linSpacing+quadDensity+quadSpacing,turnip)
 #' plot(fit.quad.mod,sub.caption=NA)
 #' title(main="Fig 12a Quadratic response for untransformed density by row spacing", outer=TRUE)
 #'
