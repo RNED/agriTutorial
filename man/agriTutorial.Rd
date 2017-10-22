@@ -31,6 +31,6 @@ v) \code{\link[agriTutorial]{example5}} : The \code{example5} page provides a tu
 quantitative treatment levels.
 }
 \references{
-H.P. Piepho1, R.N. Edmondson. (2017). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
+H.P. Piepho, R.N. Edmondson. (2017). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
 treatment factor levels.Journal of Agronomy and Crop Science. Submitted
 }

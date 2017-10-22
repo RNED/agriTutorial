@@ -13,6 +13,8 @@
 #' Turnip yields (in lb per plot) were logarithmically transformed for
 #' analysis because this stabilized the variance (Mead, 1988; also see Figure 12).
 #'
+#' More to do!!
+#'
 #' @references
 #' Mead, R. (1988). The design of experiments. Statistical principles for practical application.
 #' Cambridge: Cambridge University Press.

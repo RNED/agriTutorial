@@ -14,6 +14,8 @@ of five different quantities of N-fertiliser (0, 35, 70, 105 and 140 kg N/ha) on
 matter yield of sugar beets (t/ha) with three complete replications laid out in three
 randomized complete blocks. One objective of this experiment is to determine the amount
 of fertilizer maximizing yield.
+
+More to do!!
 }
 \examples{
 ## Copy and paste the following code into a R console or GUI to run examples

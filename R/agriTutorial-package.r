@@ -29,7 +29,7 @@
 #'
 #' @references
 #'
-#' H.P. Piepho1, R.N. Edmondson. (2017). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
+#' H.P. Piepho, R.N. Edmondson. (2017). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
 #' treatment factor levels.Journal of Agronomy and Crop Science. Submitted
 #'
 NULL

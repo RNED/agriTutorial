@@ -8,6 +8,8 @@
 #' index was assessed in five consecutive weeks starting two weeks after emergence. The experiment was laid out
 #'  in five randomized complete blocks. The observed data are plotted against week in Figure 5.
 #'
+#' More to do!!
+#'
 #' @references
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
 #'

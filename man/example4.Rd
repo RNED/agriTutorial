@@ -10,6 +10,8 @@ One qualitative treatment factor and repeated measures in time.
 Milliken & Johnson (1992, p. 429) describe an experiment with four sorghum varieties, in which the leaf area
 index was assessed in five consecutive weeks starting two weeks after emergence. The experiment was laid out
  in five randomized complete blocks. The observed data are plotted against week in Figure 5.
+
+More to do!!
 }
 \examples{
 ## Copy and paste the following code into a R console or GUI to run examples

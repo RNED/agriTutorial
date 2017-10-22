@@ -15,6 +15,8 @@ which was laid out in three complete blocks. Five different seed rates
 (4, 8, 16, 32 inches), giving rise to a total of 20 treatments.
 Turnip yields (in lb per plot) were logarithmically transformed for
 analysis because this stabilized the variance (Mead, 1988; also see Figure 12).
+
+More to do!!
 }
 \examples{
 

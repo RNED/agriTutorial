@@ -12,6 +12,8 @@
 #' four nitrogen rates (0, 90, 180 and 270 kg/ha) as sub-plot treatments. The main plots were
 #' randomized in four complete blocks.
 #'
+#' More to do!!
+#'
 #' @references
 #' Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
 #'

@@ -12,6 +12,8 @@
 #' randomized complete blocks. One objective of this experiment is to determine the amount
 #' of fertilizer maximizing yield.
 #'
+#' More to do!!
+#'
 #' @references
 #' Petersen, R.G. (1994). Agricultural field experiments. Design and analysis. New York: Marcel Dekker.
 #'

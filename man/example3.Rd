@@ -14,6 +14,8 @@ greenhouse experiment involving duration of water stress (W) and level of nitrog
 The experiment had four water-stress levels (0, 10, 20 and 40 days) as main-plot treatments and
 four nitrogen rates (0, 90, 180 and 270 kg/ha) as sub-plot treatments. The main plots were
 randomized in four complete blocks.
+
+More to do!!
 }
 \examples{
 ## Copy and paste the following code into a R console or GUI to run examples
