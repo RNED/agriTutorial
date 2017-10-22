@@ -37,11 +37,22 @@ The ## Not run: and ## End(Not run) comments are irrelevant and can be ignored.
 
 Analysis
 
-A full discussion of the example is given in Piepho and Edmondson (2017) and only a brief outline
-of the example analyses will be given here.
+The first step in the analysis is the calculation of polynomial powers of N using the poly() function, as discussed
+in Example 1 and again with the N rates re-scaled by division by 100.
 
+The next step fits a full polynomial analysis of variance based on single polynomial
+effects fitted in sequence from the lowest to the highest. This is equivalent to the analysis shown in Tables 4 and 5
+of Piepho & Edmondson (2017) except that a complete partition into single degree of freedom polynomial contrasts is
+shown rather than the 'lack of fit' terms shown in Tables 4 and 5.
 
-Table 1 shows a full analysis of variance and displays the sources of variation corresponding to the
+Next a quadratic regression model with linear and quadratic terms only is fitted which provides the model coefficients
+and standard errors and confidence intervals shown in Table 6 of Piepho & Edmondson (2017).
+
+Next, a fitted quadratic graph of the yield versus the N rate is plotted (using the original unscaled
+N axis) to show the method of plotting Fig 3 in Piepho & Edmondson (2017).
+
+Finally, a set of diagnostic plots are shown for the quadratic nitrogen effects model. These plots can be
+produced automatically as shown for ordinary linear models but are not available for general mixed models.
 }
 \examples{
 ## Copy and paste the following code into a R console or GUI to run examples
@@ -50,38 +61,40 @@ Table 1 shows a full analysis of variance and displays the sources of variation 
 \dontrun{
 require(ggplot2)
 
-## Loads beet data and builds a data frame with N rate orthogonal polynomials
+## Loads beet data and builds a data frame with N rate raw polynomials
 data(beet)
-N=poly(beet$nrate, degree=4, raw=TRUE)
+N=poly((beet$nrate/100), degree=4, raw=TRUE)
 colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
-polbeet=cbind(beet,N)
+beet=cbind(beet,N)
 
 # sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample2.txt") #sink file for outputs
-## Tables 4 & 5: Full polynomial analysis of variance based on orthogonal polynomials
-anova(lm(yield ~ Replicate +  Linear_N + Quadratic_N + Cubic_N + Quartic_N , data=polbeet))
+## Tables 4 & 5: Full polynomial analysis of variance based on raw polynomials
+anova(lm(yield ~ Replicate +  Linear_N + Quadratic_N + Cubic_N + Quartic_N , data=beet))
 
 ##  Table 6: calculates quadratic model coefficients with standard errors and confidence intervals
-quadratic = lm(yield ~ Replicate +  Linear_N + Quadratic_N, data=polbeet)
+quadratic = lm(yield ~ Replicate +  Linear_N + Quadratic_N, data=beet)
 summary(quadratic)
-confint(quadratic,  level=0.95)
+confint(quadratic, level=0.95)
 # sink() #closes sink file
 
 # pdf("F:\\\\tutorial2\\\\OutputsR\\\\outExample1_Fig_S2.pdf") #opens a graphical pdf output file
 ## Diagnostic plots
-par(mfrow=c(2,2),oma=c(0,0,2,0))
-quadratic=lm(yield ~ Replicate + Linear_N + Quadratic_N, data=polbeet)
-plot(quadratic,sub.caption=NA)
-title(main="Diagnostic plots for quadratic nitrogen effects model", outer=TRUE)
 
-## Quadratic N rate plot using the ggplot2 package
+## Fig 3: quadratic N rate plot using the ggplot2 package
 par(mfrow=c(2,2),oma=c(0,0,2,0))
-quadratic=lm(yield ~ Replicate + Linear_N + Quadratic_N, data=polbeet)
+quadratic=lm(yield ~ Replicate + Linear_N + Quadratic_N, data=beet)
 plot(quadratic,sub.caption=NA)
 title(main="Diagnostic plots for quadratic nitrogen effects model", outer=TRUE)
-ggplot(polbeet, aes(x=nrate, y=yield)) +
+ggplot(beet, aes(x=nrate, y=yield)) +
 ggtitle("Fig 3 Yield versus N fertilizer for sugar beet trial with 95\% confidence band")+
 geom_point(shape=1)+stat_summary(fun.y = mean, geom="point")+
 geom_smooth(method=lm, formula=y ~ poly(x, 2))+theme_bw()
+
+par(mfrow=c(2,2),oma=c(0,0,2,0))
+quadratic=lm(yield ~ Replicate + Linear_N + Quadratic_N, data=beet)
+plot(quadratic,sub.caption=NA)
+title(main="Diagnostic plots for quadratic nitrogen effects model", outer=TRUE)
+
 #dev.off()
 
 }
@@ -89,4 +102,7 @@ geom_smooth(method=lm, formula=y ~ poly(x, 2))+theme_bw()
 }
 \references{
 Petersen, R.G. (1994). Agricultural field experiments. Design and analysis. New York: Marcel Dekker.
+
+Piepho, H. P. & Edmondson R. N. (2017). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
+treatment factor levels.Journal of Agronomy and Crop Science. Submitted
 }

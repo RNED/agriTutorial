@@ -40,19 +40,18 @@ Analysis
 
 The first step in the analysis is the calculation of polynomial powers of N using the poly() function.
 As there are 5 levels of N, the maximum possible number of polynomials is four and these have been called
-linear, quadratic, cubic and quartic polynomials corresponding to the 1st, 2nd, 3rd and 4th powers of N
-respectively. The origin of the N treatment has been shifted to the mid-value by the subtraction of 80
-from each N rate treatment. Shifting the origin has no effect on the polynomial coefficients or the
-estimated sums of squares of the polynomial terms but improves the numerical stability of the polynomials.
-In some situations re-scaling might also be necessary, in which case the model coefficients and sums of
-squares will also be re-scaled.
+linear, quadratic, cubic and quartic polynomials corresponding to the 1st, 2nd, 3rd and 4th powers of N.
+The powers of the high N in the original scale of measurement are large and the N rates have
+been divided by 100 to provide improved numerical stability. Significance tests are unaffected by re-scaling
+but the coefficients and standare errors of the polynomial coefficients will be multiplied by 100 raised to
+the degree of the corresponding polynomial.
 
-The polynomials used here are 'raw' polynomials which means that they are the actual powers of the
-actual N rate values. Raw polynomials are simple to use for model fitting but it is important
-to remember that raw polynomials are not mutually orthogonal and therefore the order of fitting of terms
-in a model is important. With polynomial models there is a natural order of fitting
-with polynomial effects always fitted sequentially from the lowest to the highest degree therefore there
-can never be any ambiguity in the order of fitting of polynomial terms.
+The polynomials used in this analysis are 'raw' polynomials which means that they are the actual powers of the
+actual N rate values. Raw polynomials are simple to use but it is important
+to remember that raw polynomials are not mutually orthogonal and that the order of fitting of the model terms
+is important. For polynomial models there is a natural order of fitting
+of polynomial effects from the lowest to the highest degree so there can never any ambiguity
+in the order of fitting of the polynomial terms.
 
 Table 1 shows a full analysis of variance and displays the sources of variation corresponding to the
 different types of experimental units to which the treatment factor levels were applied
@@ -108,7 +107,7 @@ data(rice)
 
 ## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample1.txt") #sink file for outputs
 ## adds raw N polynomials to data frame with the origin of the N rate shifted to the mid-point
-N=poly((rice$nrate-80),4,raw=TRUE)
+N=poly((rice$nrate/100),4,raw=TRUE)
 colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
 rice=cbind(rice,N)
 
