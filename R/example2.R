@@ -3,16 +3,42 @@
 #' @docType package
 #'
 #' @description
-#' LACK-OF-FIT AND MARGINALITY FOR A SINGLE QUANTITATIVE TREATMENT FACTOR
-#'
-#' @details
 #' Petersen (1994, p. 125) describes an experiment conducted to assess the effects
 #' of five different quantities of N-fertiliser (0, 35, 70, 105 and 140 kg N/ha) on root dry
 #' matter yield of sugar beets (t/ha) with three complete replications laid out in three
 #' randomized complete blocks. One objective of this experiment is to determine the amount
 #' of fertilizer maximizing yield.
 #'
-#' More to do!!
+#' @details
+#' Code
+#'
+#' The example code shown below can be copied and pasted into a console terminal window
+#' and will provide a basic analysis of the beet experiment data (type beet to view the actual beet data).
+#'
+#' The example code depends on the package ggplot2 which
+#' must be installed on the user machine before the code can be executed.
+#' ggplot2 can be installed either by using the command install.packages('ggplot2')
+#' or by using a tools option in a suitable gui such as RStudio. Sometimes a package depends on other
+#' packages for proper installation and if there are warnings about not finding certain named
+#' packages then these will need to be installed also.
+#'
+#' Graphical output should appear in the gui graphics window but, if required, it can be diverted to
+#' a suitable pdf file by using a pdf file command. Opening pdf() and closing dev.off()
+#' commands are shown hashed-out in the example code but can be copied and pasted without the hashes, if required.
+#'
+#' Similarly, textual output should appear in the gui terminal window but, if required, it can be diverted to
+#' a suitable text file by using a sink file command. Opening and closing sink()
+#' commands are shown hashed-out in the example code but can be copied and pasted without the hashes, if required.
+#'
+#' The ## Not run: and ## End(Not run) comments are irrelevant and can be ignored.
+#'
+#' Analysis
+#'
+#' A full discussion of the example is given in Piepho and Edmondson (2017) and only a brief outline
+#' of the example analyses will be given here.
+#'
+#'
+#' Table 1 shows a full analysis of variance and displays the sources of variation corresponding to the
 #'
 #' @references
 #' Petersen, R.G. (1994). Agricultural field experiments. Design and analysis. New York: Marcel Dekker.
@@ -22,42 +48,26 @@
 #' ## Package ggplot2 MUST be installed
 #'
 #' \dontrun{
-#' if (suppressWarnings(require(ggplot2))) message('ggplot2 loaded correctly') else
-#' message("please install 'ggplot2' from tools menu or by using install.packages('ggplot2')")
+#' require(ggplot2)
 #'
 #' ## Loads beet data and builds a data frame with N rate orthogonal polynomials
 #' data(beet)
-#' N=poly(beet$nrate, degree=4, raw=FALSE)
-#' colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
-#' polbeet=cbind(beet,N)
-#'
-#' ## Full polynomial analysis of variance based on orthogonal polynomials
-#' anova(lm(yield ~ Replicate +  Linear_N + Quadratic_N + Cubic_N + Quartic_N , data=polbeet))
-#'
-#' ## Fits a sequence of orthogonal polynomial regression models of increasing degree
-#' fitreps=lm(yield ~ Replicate, data=polbeet)
-#' linear=update(fitreps,. ~ . +  Linear_N)
-#' quadratic=update(linear,. ~ . +  Quadratic_N)
-#' cubic=update(quadratic,. ~ . +  Cubic_N)
-#' quartic=update(cubic,. ~ . +  Quartic_N)
-#'
-#' ## Sequential anova tests for each added polynomial model term in example 2
-#' anova(fitreps,linear,quadratic,cubic,quartic)
-#'
-#' ## Sequential AIC tests for each added polynomial model term in example 2
-#' AIC(fitreps,linear,quadratic,cubic,quartic)
-#'
-#' ## Builds a new data frame with actual N rate raw polynomials
 #' N=poly(beet$nrate, degree=4, raw=TRUE)
 #' colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
 #' polbeet=cbind(beet,N)
 #'
-#' ##  Table 6 showing quadratic model coefficients with standard errors and confidence intervals
+#' # sink("F:\\tutorial2\\OutputsR\\outExample2.txt") #sink file for outputs
+#' ## Tables 4 & 5: Full polynomial analysis of variance based on orthogonal polynomials
+#' anova(lm(yield ~ Replicate +  Linear_N + Quadratic_N + Cubic_N + Quartic_N , data=polbeet))
+#'
+#' ##  Table 6: calculates quadratic model coefficients with standard errors and confidence intervals
 #' quadratic = lm(yield ~ Replicate +  Linear_N + Quadratic_N, data=polbeet)
 #' summary(quadratic)
 #' confint(quadratic,  level=0.95)
+#' # sink() #closes sink file
 #'
-#' ## model diagnostic plots
+#' # pdf("F:\\tutorial2\\OutputsR\\outExample1_Fig_S2.pdf") #opens a graphical pdf output file
+#' ## Diagnostic plots
 #' par(mfrow=c(2,2),oma=c(0,0,2,0))
 #' quadratic=lm(yield ~ Replicate + Linear_N + Quadratic_N, data=polbeet)
 #' plot(quadratic,sub.caption=NA)
@@ -72,7 +82,7 @@
 #' ggtitle("Fig 3 Yield versus N fertilizer for sugar beet trial with 95% confidence band")+
 #' geom_point(shape=1)+stat_summary(fun.y = mean, geom="point")+
 #' geom_smooth(method=lm, formula=y ~ poly(x, 2))+theme_bw()
-#'
+#' #dev.off()
 #'
 #' }
 #'

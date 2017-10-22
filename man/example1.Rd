@@ -38,8 +38,21 @@ The ## Not run: and ## End(Not run) comments are irrelevant and can be ignored.
 
 Analysis
 
-A full discussion of the example is given in Piepho and Edmondson (2017) and only a brief outline
-of the example analyses will be given here.
+The first step in the analysis is the calculation of polynomial powers of N using the poly() function.
+As there are 5 levels of N, the maximum possible number of polynomials is four and these have been called
+linear, quadratic, cubic and quartic polynomials corresponding to the 1st, 2nd, 3rd and 4th powers of N
+respectively. The origin of the N treatment has been shifted to the mid-value by the subtraction of 80
+from each N rate treatment. Shifting the origin has no effect on the polynomial coefficients or the
+estimated sums of squares of the polynomial terms but improves the numerical stability of the polynomials.
+In some situations re-scaling might also be necessary, in which case the model coefficients and sums of
+squares will also be re-scaled.
+
+The polynomials used here are 'raw' polynomials which means that they are the actual powers of the
+actual N rate values. Raw polynomials are simple to use for model fitting but it is important
+to remember that raw polynomials are not mutually orthogonal and therefore the order of fitting of terms
+in a model is important. With polynomial models there is a natural order of fitting
+with polynomial effects always fitted sequentially from the lowest to the highest degree therefore there
+can never be any ambiguity in the order of fitting of polynomial terms.
 
 Table 1 shows a full analysis of variance and displays the sources of variation corresponding to the
 different types of experimental units to which the treatment factor levels were applied
@@ -68,8 +81,7 @@ Table 8 shows the fitted model for estimating the actual coefficients of the the
 effects should include only those terms that are significant for the fitted model therefore only the linear and
 quadratic nitrogen trend terms are included in this model. The fitted model for the nitrogen effects fits the
 actual actual nitrogen levels used in the experiment as these provide the simplest interpretation of the
-nitrogen effects (Table 7 used orthogonal polynomials for significance testing but these are unnecessarily complicated
-for model fitting).
+nitrogen effects.
 
 Fig 1 shows individual plots of the nitrogen response for each variety in each block averaged over management effects.
 Unlike the single plot shown in Piepho and Edmondson (2017), these plots show the nitrogen response of the individual
@@ -91,11 +103,12 @@ will be examined in the subsequent examples.
 require(lmerTest)
 require(lsmeans)
 require(pbkrtest)
-
-# sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample1.txt") #sink file for outputs
-## loads rice data and adds Nitrogen polynomials
+## loads rice data
 data(rice)
-N=poly(rice$nrate,4,raw=FALSE)
+
+## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample1.txt") #sink file for outputs
+## adds raw N polynomials to data frame with the origin of the N rate shifted to the mid-point
+N=poly((rice$nrate-80),4,raw=TRUE)
 colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
 rice=cbind(rice,N)
 
@@ -125,13 +138,13 @@ rice.lmer= lmer(yield ~ Replicate + nitrogen*management*variety + (1|Replicate:M
 (1|Replicate:Main:Sub), data=rice)
 anova(rice.lmer, ddf="Kenward-Roger",type = 1)
 
-## Table 7: Mixed model fitting orthogonal  polynomials for nitrogen effects
+## Table 7: Mixed model fitting raw polynomials for nitrogen effects
 rice.lmer2= lmer(yield ~ Replicate + management + variety*(Linear_N + Quadratic_N +
 Cubic_N + Quartic_N) + (1|Replicate:Main)+ (1|Replicate:Main:Sub) , data=rice)
 anova(rice.lmer2, ddf="Kenward-Roger",type = 1)
 
 ## Table 8 Coefficients for separate linear and common quadratic N with additive management
-rice.lmer4= lmer(yield ~ Replicate + management + variety*nrate + I(nrate**2) +
+rice.lmer4= lmer(yield ~ Replicate + management + variety*Linear_N + Quadratic_N +
 (1|Replicate:Main) + (1|Replicate:Main:Sub), data=rice)
 summary(rice.lmer4, ddf="Kenward-Roger")
 # sink() #closes sink file
