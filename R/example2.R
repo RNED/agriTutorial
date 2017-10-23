@@ -1,5 +1,7 @@
 #' @name example2
+#'
 #' @title  EXAMPLE 2 Lack-of-fit and marginality for a single quantitative treatment factor
+#'
 #' @docType package
 #'
 #' @description

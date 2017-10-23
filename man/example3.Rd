@@ -9,20 +9,21 @@
 (Gomez & Gomez, 1984, p. 401): Nitrogen uptake (g/pot) of rice was studied in a two-factor
 greenhouse experiment involving duration of water stress (W) and level of nitrogen application (N).
 The experiment had four water-stress levels (0, 10, 20 and 40 days) as main-plot treatments and
-four nitrogen rates (0, 90, 180 and 270 kg/ha) as sub-plot treatments. The main plots were
-randomized in four complete blocks. Treatment factors in combination often interact and polynomial
-models for two or more quantitative treatment factors will usually require the inclusion of polynomial
-interaction effects. Polynomial models are built by adding individual treatment
-effects in a strict order of importance where the lower-degree effects of a
-factorial combination must be added first before the higher-degree effects
- of that factorial combination.
+four nitrogen rates (0, 90, 180 and 270 kg/ha) as sub-plot treatments with main plots
+randomized within four complete blocks. In this analysis Ppolynomial models are built by adding individual
+treatment effects in a strict order of importance where the lower-degree effects of a
+factorial combination must be added first before the higher-degree effects for that factorial combination.
 }
 \details{
-Examples
-More to do!!
+The first stage of the analysis is the calculation of polynomial powers of N and W using the poly() function, as discussed
+in Example 1. The N rates are re-scaled by division by 100 while the W rates are re-scaled by division by 10.
+
+The second stage compares (Pearson) residual plots for the untransformed N uptake data versus the log transformed N uptake
+data. The untransformed N uptake residuals increase as the fitted values increase whereas the log transformed N uptake
+residuals are approximately constant over the full range of fitted values. Therefore the log transformed N uptake is
+the most appropriate variable for analysis.
 }
 \examples{
-
 \dontrun{
 require(lmerTest)
 require(lattice)
@@ -30,61 +31,59 @@ require(pbkrtest)
 
 data(greenrice)
 greenrice$loguptake=log(greenrice$uptake)
-PolW=poly(greenrice$W, degree=2, raw=TRUE)
-colnames(PolW)=c("linW","quadW")
-PolN=poly(greenrice$N, degree=2, raw=TRUE)
-colnames(PolN)=c("linN","quadN")
+PolW=poly((greenrice$W/10), degree=2, raw=TRUE)
+colnames(PolW)=c("Linear_W","Quadratic_W")
+PolN=poly((greenrice$N/100), degree=2, raw=TRUE)
+colnames(PolN)=c("Linear_N","Quadratic_N")
 greenrice=cbind(greenrice,PolW,PolN)
 
-## untransformed uptake data stratified anova
-greenrice.uptake=aov(uptake~Replicate+linW*linN+quadN+quadW+Error(Replicate/Main),greenrice)
-summary(greenrice.uptake, ddf="Kenward-Roger",type = 1)
+## shows residuals from untransformed versus log transformed uptake data assuming full model
+greenrice.uptake = lmer(uptake ~ Replicate + factor(N) * factor(W)
+  + (1|Replicate:Main), data=greenrice)
+plot(greenrice.uptake,main="Example 3: untransformed", ylab="Residuals N uptake ")
+greenrice.loguptake= lmer(loguptake ~ Replicate + factor(N) * factor(W)
+ + (1|Replicate:Main), data=greenrice)
+plot(greenrice.loguptake,main="Example 3: transformed ", ylab="Residuals log N uptake")
 
 ## log transformed uptake data stratified anova
-greenrice.loguptake=aov(loguptake~Replicate+linW*linN+quadN+quadW+Error(Replicate/Main),greenrice)
+greenrice.loguptake = aov(loguptake ~ Replicate +Linear_W * Linear_N +
+Quadratic_N + Quadratic_W + Error(Replicate/Main),greenrice)
 summary(greenrice.loguptake, ddf="Kenward-Roger",type = 1)
 
-greenrice.uptake = lmer(uptake ~ Replicate + N*W  + (1|Replicate:Main) , data=greenrice)
-greenrice.loguptake= lmer(loguptake ~ Replicate + N*W  + (1|Replicate:Main), data=greenrice)
+## lme4 analysis of log uptake assuming a quadratic response surface model for water and nitrogen
+greenrice.lmer0 = lmer(loguptake  ~Linear_N * Linear_W + Quadratic_N + Quadratic_W +
+(1|Replicate) + (1|Replicate:Main),data=greenrice)
+anova(greenrice.lmer0, ddf="Kenward-Roger",type = 1)
+summary(greenrice.lmer0, ddf="Kenward-Roger",type = 1)
 
 ## fitted quadratic loguptake curve versus nitrogen rate treatments
 panel.plot <- function(x, y) {
 panel.xyplot(x, y) # show points
-linW=c(0,10,20,40)[panel.number()]
-panel.curve(-1.16+0.0176*linW-0.00116*linW*linW +0.0068*x-0.00000938*x*x-0.0000907*linW*x,
-from=0,to=270, type="l", lwd=2)
+Linear_W=c(0,1.0,2.0,4.0)[panel.number()]
+panel.curve(-1.16+0.17603 * Linear_W - 0.11599 * Linear_W * Linear_W +
+0.68 * x - 0.0938 * x * x - 0.09072 * Linear_W * x,
+from = 0, to = 2.70, type="l", lwd=2)
 }
-xyplot(loguptake ~ linN|factor(linW),data=greenrice,
+xyplot(loguptake ~ Linear_N|factor(Linear_W),data=greenrice,
  main="Fig 4: Marginal model for nitrogen rate",
- xlab = " Nitrogen (kg/ha)", ylab = "Log nitrogen uptake (g/pot)",
+ xlab = " Nitrogen (1 unit = 100kg/ha)", ylab = "Log nitrogen uptake (g/pot)",
  strip = strip.custom(strip.names = TRUE, strip.levels = TRUE),
 panel = panel.plot)
 
 ## fitted quadratic loguptake curve versus water stress treatments
 panel.plot <- function(x, y) {
 panel.xyplot(x, y) # show points
-linN=c(0,90,180,270)[panel.number()]
-panel.curve(-1.16+0.0176*x-0.00116*x*x +0.0068*linN-0.00000938*linN*linN-0.0000907*x*linN,
-from=0,to=40, type="l", lwd=2)
+Linear_N=c(0,.90,1.80,2.70)[panel.number()]
+panel.curve(-1.16 + 0.17603 * x - 0.11599 * x * x + 0.68 * Linear_N -
+0.0938 * Linear_N * Linear_N - 0.09072 * x * Linear_N,
+from = 0, to = 4.0, type="l", lwd=2)
 }
-xyplot(loguptake ~ linW|factor(linN),data=greenrice,
+xyplot(loguptake ~ Linear_W|factor(Linear_N),data=greenrice,
  main="Fig 4: Marginal model for water stress",
- xlab = " Water stress (days)", ylab = "Log nitrogen uptake (g/pot)",
+ xlab = " Water stress (1 unit = 10 days)", ylab = "Log nitrogen uptake (g/pot)",
  strip = strip.custom(strip.names = TRUE, strip.levels = TRUE),
 panel = panel.plot)
 
-## shows residuals from untransformed versus log transformed uptake data
-par(mfrow=c(1,2),oma=c(0,0,2,0))
-a=plot(greenrice.uptake,main="Example 3: untransformed", ylab="Residuals N uptake ")
-b=plot(greenrice.loguptake,main="Example 3: transformed ", ylab="Residuals log N uptake")
-print(a, position = c(0, 0, 0.5, 1), more = TRUE)
-print(b, position = c(0.5, 0, 1, 1))
-
-## lme4 analysis of log uptake assuming a quadratic response surface model for water and nitrogen
-greenrice.lmer0=lmer(loguptake~linN*linW+quadN+quadW+(1|Replicate)+
-(1|Replicate:Main),data=greenrice)
-anova(greenrice.lmer0, ddf="Kenward-Roger",type = 1)
-summary(greenrice.lmer0, ddf="Kenward-Roger",type = 1)
 
 }
 
