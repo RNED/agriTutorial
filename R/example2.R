@@ -1,5 +1,5 @@
 #' @name example2
-#' @title  EXAMPLE 2
+#' @title  EXAMPLE 2 Lack-of-fit and marginality for a single quantitative treatment factor
 #' @docType package
 #'
 #' @description
@@ -12,15 +12,8 @@
 #' @details
 #' Code
 #'
-#' The example code shown below can be copied and pasted into a console terminal window
+#' The example code shown below can be copied and pasted into any R console terminal window
 #' and will provide a basic analysis of the beet experiment data (type beet to view the actual beet data).
-#'
-#' The example code depends on the package ggplot2 which
-#' must be installed on the user machine before the code can be executed.
-#' ggplot2 can be installed either by using the command install.packages('ggplot2')
-#' or by using a tools option in a suitable gui such as RStudio. Sometimes a package depends on other
-#' packages for proper installation and if there are warnings about not finding certain named
-#' packages then these will need to be installed also.
 #'
 #' Graphical output should appear in the gui graphics window but, if required, it can be diverted to
 #' a suitable pdf file by using a pdf file command. Opening pdf() and closing dev.off()
@@ -28,21 +21,20 @@
 #'
 #' Similarly, textual output should appear in the gui terminal window but, if required, it can be diverted to
 #' a suitable text file by using a sink file command. Opening and closing sink()
-#' commands are shown hashed-out in the example code but can be copied and pasted without the hashes, if required.
-#'
-#' The ## Not run: and ## End(Not run) comments are irrelevant and can be ignored.
+#' commands are shown hashed-out in the example code but can be copied and pasted without the hashes, if required
+#' (hashed lines are ignored by R).
 #'
 #' Analysis
 #'
-#' The first step in the analysis is the calculation of polynomial powers of N using the poly() function, as discussed
+#' The first stage of the analysis is the calculation of polynomial powers of N using the poly() function, as discussed
 #' in Example 1 and again with the N rates re-scaled by division by 100.
 #'
-#' The next step fits a full polynomial analysis of variance based on single polynomial
+#' The next stage fits a full polynomial analysis of variance based on single polynomial
 #' effects fitted in sequence from the lowest to the highest. This is equivalent to the analysis shown in Tables 4 and 5
 #' of Piepho & Edmondson (2017) except that a complete partition into single degree of freedom polynomial contrasts is
 #' shown rather than the 'lack of fit' terms shown in Tables 4 and 5.
 #'
-#' Next a quadratic regression model with linear and quadratic terms only is fitted which provides the model coefficients
+#' Next, a quadratic regression model with linear and quadratic terms only is fitted which provides the model coefficients
 #' and standard errors and confidence intervals shown in Table 6 of Piepho & Edmondson (2017).
 #'
 #' Next, a fitted quadratic graph of the yield versus the N rate is plotted (using the original unscaled
@@ -60,12 +52,11 @@
 #'
 #' @examples
 #' ## Copy and paste the following code into a R console or GUI to run examples
-#' ## Package ggplot2 MUST be installed
 #'
 #' \dontrun{
 #' require(ggplot2)
 #'
-#' ## Loads beet data and builds a data frame with N rate raw polynomials
+#' ## Loads beet data and builds a data frame with re-scaled N rate raw polynomials
 #' data(beet)
 #' N=poly((beet$nrate/100), degree=4, raw=TRUE)
 #' colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")

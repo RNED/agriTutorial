@@ -4,7 +4,7 @@
 \alias{example1}
 \title{EXAMPLE 1: SPLIT-PLOT DESIGN WITH ONE QUALITATIVE AND ONE QUANTITATIVE LEVEL TREATMENT FACTOR}
 \description{
-#' Gomez & Gomez (1984, p. 143) report a rice experiment with three management practices
+Gomez & Gomez (1984, p. 143) report a rice experiment with three management practices
 (minimum, optimum, intensive), five different amounts of nitrogen (N) fertilizer
 (0, 50, 80, 110, 140 kg/ha), and three varieties (V1, V2, V3). The experiment
 involved variety and management as qualitative treatment factors and nitrogen
@@ -15,16 +15,8 @@ split-plots and the varieties to split-split plots.
 \details{
 Code
 
-The example code shown below can be copied and pasted into a console terminal window
+The example code shown below can be copied and pasted into any R console terminal window
 and will provide a basic analysis of the rice experiment data (type rice to view the actual rice data).
-
-The example code depends on the three packages lmerTest, lsmeans and pbkrtest and these
-must all be installed on the user machine before the code can be executed.
-Packages can be installed either by using the commands
-install.packages('lmerTest'), install.packages('lsmeans') and install.packages('pbkrtest')
-or by using a tools option in a suitable gui such as RStudio. Sometimes a package depends on other
-packages for proper installation and if there are warnings about not finding certain named
-packages then these will need to be installed also.
 
 Graphical output should appear in the gui graphics window but, if required, it can be diverted to
 a suitable pdf file by using a pdf file command. Opening pdf() and closing dev.off()
@@ -32,26 +24,10 @@ commands are shown hashed-out in the example code but can be copied and pasted w
 
 Similarly, textual output should appear in the gui terminal window but, if required, it can be diverted to
 a suitable text file by using a sink file command. Opening and closing sink()
-commands are shown hashed-out in the example code but can be copied and pasted without the hashes, if required.
-
-The ## Not run: and ## End(Not run) comments are irrelevant and can be ignored.
+commands are shown hashed-out in the example code but can be copied and pasted without the hashes,
+if required (hashed lines are ignored by R).
 
 Analysis
-
-The first step in the analysis is the calculation of polynomial powers of N using the poly() function.
-As there are 5 levels of N, the maximum possible number of polynomials is four and these have been called
-linear, quadratic, cubic and quartic polynomials corresponding to the 1st, 2nd, 3rd and 4th powers of N.
-The powers of the high N in the original scale of measurement are large and the N rates have
-been divided by 100 to provide improved numerical stability. Significance tests are unaffected by re-scaling
-but the coefficients and standare errors of the polynomial coefficients will be multiplied by 100 raised to
-the degree of the corresponding polynomial.
-
-The polynomials used in this analysis are 'raw' polynomials which means that they are the actual powers of the
-actual N rate values. Raw polynomials are simple to use but it is important
-to remember that raw polynomials are not mutually orthogonal and that the order of fitting of the model terms
-is important. For polynomial models there is a natural order of fitting
-of polynomial effects from the lowest to the highest degree so there can never any ambiguity
-in the order of fitting of the polynomial terms.
 
 Table 1 shows a full analysis of variance and displays the sources of variation corresponding to the
 different types of experimental units to which the treatment factor levels were applied
@@ -106,7 +82,7 @@ require(pbkrtest)
 data(rice)
 
 ## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample1.txt") #sink file for outputs
-## adds raw N polynomials to data frame with the origin of the N rate shifted to the mid-point
+## adds raw N polynomials to data frame: note that the nrate is re-scaled
 N=poly((rice$nrate/100),4,raw=TRUE)
 colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
 rice=cbind(rice,N)

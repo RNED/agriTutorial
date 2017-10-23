@@ -4,17 +4,34 @@
 \name{example3}
 \alias{example3}
 \alias{example3-package}
-\title{EXAMPLE 3}
+\title{EXAMPLE 3 Polynomial regression model for an experiment with two quantitative level treatment factors}
 \description{
-RESPONSE SURFACE REGRESSION FOR AN EXPERIMENT WITH TWO QUANTITATIVE TREATMENT FACTORS
-}
-\details{
 (Gomez & Gomez, 1984, p. 401): Nitrogen uptake (g/pot) of rice was studied in a two-factor
 greenhouse experiment involving duration of water stress (W) and level of nitrogen application (N).
 The experiment had four water-stress levels (0, 10, 20 and 40 days) as main-plot treatments and
 four nitrogen rates (0, 90, 180 and 270 kg/ha) as sub-plot treatments. The main plots were
-randomized in four complete blocks.
+randomized in four complete blocks. Treatment factors in combination often interact and polynomial
+models for two or more quantitative treatment factors will usually require the inclusion of polynomial
+interaction effects. Polynomial models are built by adding individual treatment
+effects in a strict order of importance where the lower-degree effects of a
+factorial combination must be added first before the higher-degree effects
+ of that factorial combination.
+}
+\details{
+Code
 
+The example code shown below can be copied and pasted into any R console terminal window and
+will provide a basic analysis of the greenhouse rice experiment data (type greenrice to view the data).
+
+Graphical output should appear in the gui graphics window but, if required, it can be diverted to
+a suitable pdf file by using a pdf file command. Opening pdf() and closing dev.off() commands are
+shown hashed-out in the example code but can be copied and pasted without the hashes, if required.
+
+Similarly, textual output should appear in the gui terminal window but, if required, it can be diverted to
+a suitable text file by using a sink file command. Opening and closing sink() commands are
+shown hashed-out in the example code but can be copied and pasted without the hashes, if required.
+
+ Analysis
 More to do!!
 }
 \examples{
@@ -22,12 +39,9 @@ More to do!!
 ## Packages lmerTest, lattice and pbkrtest MUST be installed
 
 \dontrun{
-if (suppressWarnings(require(lmerTest))) message('lmerTest loaded correctly') else
-message("please install 'lmerTest' from tools menu or by using install.packages('lmerTest')")
-if (suppressWarnings(require(lattice))) message('lattice loaded correctly') else
-message("please install 'lattice' from tools menu or by using install.packages('lattice')")
-if (suppressWarnings(require(pbkrtest))) message('pbkrtest loaded correctly') else
-message("please install 'pbkrtest' from tools menu or by using install.packages('pbkrtest')")
+require(lmerTest)
+require(lattice)
+require(pbkrtest)
 
 data(greenrice)
 greenrice$loguptake=log(greenrice$uptake)
