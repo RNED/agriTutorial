@@ -13,20 +13,21 @@
 #' @details
 #'
 #' \strong{Code}
-#' The code shown in the examples can be copied and pasted into any R console terminal window.
+#' The code shown in the examples listed below can be copied and pasted into any R console terminal window.
 #' Graphical output should appear in the gui graphics window but, if required, it can be diverted to
 #' a suitable pdf file by using a pdf file command. Similarly, textual output should appear in the gui
 #'  terminal window but, if required, it can be diverted to a suitable text file by using a sink file command.
-#'  Code for opening and closing .pdf files or opening and closing .txt files are shown hashed-out in
-#'  the example code but can be copied, edited and pasted without the hashes, if required.
+#'  Code for opening and closing .pdf files or .txt files are shown commented-out by hashes in
+#'  the examples but can be copied, edited and pasted without the hashes, if required.
 #'
 #' \strong{Polynomials}
-#' The polynomials used in this tutorial are 'raw' polynomials which means they are actual powers of
-#' numeric factors. Raw polynomials are simple to use but it is important
-#' to remember that they are not mutually orthogonal which means that the order of fitting of the polynomial terms in
-#' a model is important. Functional marginality requires that all polynomial model effects must be ordered from
-#' lowest to highest degree and this means that all polynomial terms in a model equation should be included
-#' sequentially from the lowest to the highest degree.
+#' The polynomials used in this tutorial are 'raw' polynomials which means that they are powers of the actual
+#' numeric factors. Raw polynomials are simple to use but they are not mutually orthogonal which means that the
+#' order of fitting of raw polynomials is important. Functional marginality requires that polynomial
+#' effects be fitted in degree order with effects of lower degree preceding effects of higher
+#' degree and also that polynomial terms of a given degree can only be included in a model if all
+#' polynomial terms of lower degree are already included in the model. In this tutorial, all polynomial
+#' models obey functional marginality.
 #'
 #' \strong{Packages}
 #' The example code depends on a number of R packages and these must be

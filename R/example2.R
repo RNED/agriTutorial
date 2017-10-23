@@ -3,6 +3,7 @@
 #' @docType package
 #'
 #' @description
+#'
 #' Petersen (1994, p. 125) describes an experiment conducted to assess the effects
 #' of five different quantities of N-fertiliser (0, 35, 70, 105 and 140 kg N/ha) on root dry
 #' matter yield of sugar beets (t/ha) with three complete replications laid out in three
@@ -11,7 +12,7 @@
 #'
 #' @details
 #'
-#' The first stage of the analysis is the calculation of polynomial powers of N using the poly() function, as discussed
+#' The first stage of this analysis is the calculation of polynomial powers of N using the poly() function, as discussed
 #' in Example 1 and again with the N rates re-scaled by division by 100.
 #'
 #' The next stage fits a full polynomial analysis of variance based on single polynomial

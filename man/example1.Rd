@@ -13,28 +13,27 @@ The fertilizer treatments were applied to main plots, the management practices t
 split-plots and the varieties to split-split plots.
 }
 \details{
-Table 1 shows a full analysis of variance and displays the sources of variation corresponding to the
-different types of experimental units to which the treatment factor levels were applied
-i.e. main plots (for nitrogen), split-plots (for management) and split-split plots (for variety).
-Each different type of experimental unit (or "stratum") requires a separate error term in the model.
+The first stage of the analysis calculates a full set of four raw polynomials for the 5-levels of N using
+the poly() function. The N rates are re-scaled by division by 100 to improve numerical stability.
 
-Table 2 shows a summary of the treatment means for various marginal classifications of the treatment factors
-averaged over all the other treatment factors, together with estimated se's for pairwise comparisons of
-treatment means. The 'lsmeans' package was used for calculating the marginal tables of means and the standard errors.
+The second stage calculates a full analysis of variance (Table 1) for main plots (nitrogen), split-plots
+(management) and split-split plots (variety). Each type of experimental unit (or "stratum") requires
+ a separate error term in the fitted analysis.
 
-Table 3 shows a mixed model analysis of the full factorial model fitted by REML using the lmer function
-of the lme4 package (lmerTest provides the same functionality but with the addition of
-significance tests). Generally with mixed models, determination of the denominator degrees of freedom for
+The next stage (Table 2) uses REML mixed model analysis to find treatment means and SE's for each marginal
+treatment classification averaged over all the other treatment factors, together with estimates of
+pairwise contrasts of treatment means and the SE' of each pairwise treatment comaparison.
+
+The third stage (Table 3) shows a mixed model analysis of the full factorial model fitted by REML using the lmer function
+of the lme4 package. Generally with mixed models, determination of the denominator degrees of freedom for
 Wald-type F- and t-statistics becomes an issue, and here we use the method proposed by Kenward & Roger (1997).
 
-Table 7 shows a mixed model analysis similar to Table 3 but with the nitrogen treatment effects
-decomposed into polynomial effects to provide precise information about the nitrogen treatment
-comparisons. Normally, quantitative factor effects can be explained by low-degree polynomials
-and in this analysis most of the nitrogen treatment effects are explained by linear and quadratic trend effects.
-However, it is important to note that the Variety x Cubic N interaction effect is non-negligible and has a
-significant Wald F-test. This indicates that not all the varieties responded in a similar way to
-the N treatments and that some further analysis of the data may be required (see also the N plots for individual
-varieties and replicates in Fig 1). Note that the management effects are assumed additive throughout this analysis.
+Table 7 shows a mixed model polynomial analysis of nitrogen effects assuming additive management effects.
+In this analysis, most of the nitrogen treatment effect can be explained by linear and quadratic trend effects.
+but it is important to note that there is a non-negligible Variety x Cubic N interaction effect. This suggests
+that not all the varieties responded in a similar way to
+the N treatments and that some further analysis of the data may be required (see the N plots for individual
+varieties and replicates in Fig 1).
 
 Table 8 shows the fitted model for estimating the actual coefficients of the the nitrogen model. Models for estimating
 effects should include only those terms that are significant for the fitted model therefore only the linear and
@@ -76,20 +75,16 @@ rice.aov1 = aov(yield ~ Replicate + management*variety*nitrogen +
 Error(Replicate/Main/Sub),rice)
 summary(rice.aov1, ddf="Kenward-Roger",type = 1)
 
-## Table 2 lsmeans and se's assuming additive management and qualitative nitrogen effects
-rice.aov3 = aov(yield ~ Replicate + management + variety*nitrogen +
-Error(Replicate/Main/Sub),rice)
-model.tables(rice.aov3, "means", se = FALSE)
-rice.lmer= lmer(yield ~ Replicate + management+ nitrogen*variety +
+## Table 2 REML means and se's for additive management and qualitative nitrogen effects
+rice.means= lmer(yield ~ Replicate + management+ nitrogen*variety +
 (1|Replicate:Main)+ (1|Replicate:Main:Sub), data=rice)
-lsmeans::lsmeans(rice.lmer,~nitrogen)
-lsmeans::lsmeans(rice.lmer,~variety)
-lsmeans::lsmeans(rice.lmer,~nitrogen*variety)
-
-## Table 2 lsmeans and se's for pairwise comparisons of treatment means
-n.v= lsmeans::lsmeans(rice.lmer,~nitrogen|variety)
+lsmeans::lsmeans(rice.means,~nitrogen)
+lsmeans::lsmeans(rice.means,~variety)
+lsmeans::lsmeans(rice.means,~nitrogen*variety)
+## REML contrasts and sed's for additive management and qualitative nitrogen effects
+n.v= lsmeans::lsmeans(rice.means,~nitrogen|variety)
 contrast(n.v, alpha=0.05, method="pairwise")
-v.n= lsmeans::lsmeans(rice.lmer,~variety|nitrogen)
+v.n= lsmeans::lsmeans(rice.means,~variety|nitrogen)
 contrast(v.n, alpha=0.05, method="pairwise")
 
 ## Table 3 Mixed model effects for rice data with significance tests
