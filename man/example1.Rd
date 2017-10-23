@@ -42,16 +42,13 @@ actual actual nitrogen levels used in the experiment as these provide the simple
 nitrogen effects.
 
 Fig 1 shows individual plots of the nitrogen response for each variety in each block averaged over management effects.
-Unlike the single plot shown in Piepho and Edmondson (2017), these plots show the nitrogen response of the individual
-variety effects in each replicate block separately. These plots show some evidence of anomalous behaviour by variety 1
-in blocks 1 and 2 compared with block 3 and, in practice, this anomaly would need to be investigated by further
-discussions with research workers. Without such further discussions, there is little more that can be done to explain
-this anomaly.
+These plots show the nitrogen response of each variety in each replicate block separately and there is some evidence
+of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice, this anomaly would be
+ investigated by further discussion with the research workers.
 
-The final graphical figure show a scatter plot of the residuals from the full fitted model. Checking model assumptions and
-model fit is always vitally important for a reliable analysis and a scatter plot of fitted residuals should always be the
-first test of any fitted model. Many more options for model testing are available and further methods for diagnostic testing
-will be examined in the subsequent examples.
+The final figure show a scatter plot of the residuals from the full N model. Residual plots are an important
+check on model assumptions but many more options for model testing are available and further methods for diagnostic testing
+will be examined in subsequent examples.
 }
 \examples{
 ## Copy and paste the following code into a R console or GUI to run examples
@@ -93,14 +90,14 @@ rice.lmer= lmer(yield ~ Replicate + nitrogen*management*variety + (1|Replicate:M
 anova(rice.lmer, ddf="Kenward-Roger",type = 1)
 
 ## Table 7: Mixed model fitting raw polynomials for nitrogen effects
-rice.lmer2= lmer(yield ~ Replicate + management + variety*(Linear_N + Quadratic_N +
+rice.fullN= lmer(yield ~ Replicate + management + variety*(Linear_N + Quadratic_N +
 Cubic_N + Quartic_N) + (1|Replicate:Main)+ (1|Replicate:Main:Sub) , data=rice)
-anova(rice.lmer2, ddf="Kenward-Roger",type = 1)
+anova(rice.fullN, ddf="Kenward-Roger",type = 1)
 
 ## Table 8 Coefficients for separate linear and common quadratic N with additive management
-rice.lmer4= lmer(yield ~ Replicate + management + variety*Linear_N + Quadratic_N +
+rice.quadN= lmer(yield ~ Replicate + management + variety*Linear_N + Quadratic_N +
 (1|Replicate:Main) + (1|Replicate:Main:Sub), data=rice)
-summary(rice.lmer4, ddf="Kenward-Roger")
+summary(rice.quadN, ddf="Kenward-Roger")
 # sink() #closes sink file
 
 # pdf("F:\\\\tutorial2\\\\OutputsR\\\\outExample1_Fig_S1.pdf") #opens a graphical pdf output file
@@ -119,11 +116,9 @@ for (j in 1:3)
 title(main="Fig S1. Variety response to nitrogen in individual replicate blocks",
 outer=TRUE)
 
-## Residual plot assuming additive management and nitrogen x variety interaction effects
-rice.lmer= lmer(yield ~ Replicate + management+ nitrogen*variety + (1|Replicate:Main) +
-(1|Replicate:Main:Sub) , data=rice)
-plot(rice.lmer,sub.caption=NA,ylab="Residuals",xlab="Fitted",
-main="Full rice analysis with qualitative nitrogen factor")
+## Residual plot assuming additive management and full N x variety interaction effects
+plot(rice.fullN,sub.caption=NA,ylab="Residuals",xlab="Fitted",
+main="Full analysis with full nitrogen effects")
 #dev.off()
 
 }

@@ -13,8 +13,8 @@ randomized complete blocks. One objective of this experiment is to determine the
 of fertilizer maximizing yield.
 }
 \details{
-The first stage of this analysis is the calculation of polynomial powers of N using the poly() function, as discussed
-in Example 1 and again with the N rates re-scaled by division by 100.
+The first stage of the analysis is the calculation of polynomial powers of N using the poly() function, as discussed
+in Example 1. Again the N rates are re-scaled by division by 100 to improve numerical stability.
 
 The next stage fits a full polynomial analysis of variance based on single polynomial
 effects fitted in sequence from the lowest to the highest. This is equivalent to the analysis shown in Tables 4 and 5
