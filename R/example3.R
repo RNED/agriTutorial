@@ -15,28 +15,13 @@
 #'  of that factorial combination.
 #'
 #' @details
-#' Code
-#'
-#' The example code shown below can be copied and pasted into any R console terminal window and
-#' will provide a basic analysis of the greenhouse rice experiment data (type greenrice to view the data).
-#'
-#' Graphical output should appear in the gui graphics window but, if required, it can be diverted to
-#' a suitable pdf file by using a pdf file command. Opening pdf() and closing dev.off() commands are
-#' shown hashed-out in the example code but can be copied and pasted without the hashes, if required.
-#'
-#' Similarly, textual output should appear in the gui terminal window but, if required, it can be diverted to
-#' a suitable text file by using a sink file command. Opening and closing sink() commands are
-#' shown hashed-out in the example code but can be copied and pasted without the hashes, if required.
-#'
-#'  Analysis
+#' Examples
 #' More to do!!
 #'
 #' @references
 #' Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
 #'
 #' @examples
-#' ## Copy and paste the following code into a R console or GUI to run examples
-#' ## Packages lmerTest, lattice and pbkrtest MUST be installed
 #'
 #' \dontrun{
 #' require(lmerTest)

@@ -12,6 +12,22 @@
 #'
 #' @details
 #'
+#' \strong{Code}
+#' The code shown in the examples can be copied and pasted into any R console terminal window.
+#' Graphical output should appear in the gui graphics window but, if required, it can be diverted to
+#' a suitable pdf file by using a pdf file command. Similarly, textual output should appear in the gui
+#'  terminal window but, if required, it can be diverted to a suitable text file by using a sink file command.
+#'  Code for opening and closing .pdf files or opening and closing .txt files are shown hashed-out in
+#'  the example code but can be copied, edited and pasted without the hashes, if required.
+#'
+#' \strong{Polynomials}
+#' The polynomials used in this tutorial are 'raw' polynomials which means they are actual powers of
+#' numeric factors. Raw polynomials are simple to use but it is important
+#' to remember that they are not mutually orthogonal which means that the order of fitting of the polynomial terms in
+#' a model is important. Functional marginality requires that all polynomial model effects must be ordered from
+#' lowest to highest degree and this means that all polynomial terms in a model equation should be included
+#' sequentially from the lowest to the highest degree.
+#'
 #' \strong{Packages}
 #' The example code depends on a number of R packages and these must be
 #' installed on the user machine before the code can be properly executed.
@@ -28,13 +44,6 @@
 #' Further information can be obtained from a
 #' web search e.g.: \href{https://www.r-bloggers.com/installing-r-packages/}{R-bloggers}
 #'
-#' \strong{Polynomials}
-#' The polynomials used in this tutorial are 'raw' polynomials which means they are the actual powers of
-#' numeric factors. Raw polynomials are simple to use but it is important
-#' to remember that they are not mutually orthogonal which means that the order of fitting of the polynomial terms in
-#' a model is important. Functional marginality requires that all polynomial model effects must be ordered from
-#' lowest to highest degree and this means that all polynomial terms in a model equation should be included
-#' sequentially from the lowest to the highest degree.
 #'
 #' \strong{Examples}
 #' \enumerate{

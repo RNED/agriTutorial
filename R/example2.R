@@ -10,21 +10,6 @@
 #' of fertilizer maximizing yield.
 #'
 #' @details
-#' Code
-#'
-#' The example code shown below can be copied and pasted into any R console terminal window
-#' and will provide a basic analysis of the beet experiment data (type beet to view the actual beet data).
-#'
-#' Graphical output should appear in the gui graphics window but, if required, it can be diverted to
-#' a suitable pdf file by using a pdf file command. Opening pdf() and closing dev.off()
-#' commands are shown hashed-out in the example code but can be copied and pasted without the hashes, if required.
-#'
-#' Similarly, textual output should appear in the gui terminal window but, if required, it can be diverted to
-#' a suitable text file by using a sink file command. Opening and closing sink()
-#' commands are shown hashed-out in the example code but can be copied and pasted without the hashes, if required
-#' (hashed lines are ignored by R).
-#'
-#' Analysis
 #'
 #' The first stage of the analysis is the calculation of polynomial powers of N using the poly() function, as discussed
 #' in Example 1 and again with the N rates re-scaled by division by 100.

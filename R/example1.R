@@ -10,21 +10,6 @@
 #' split-plots and the varieties to split-split plots.
 #'
 #' @details
-#' Code
-#'
-#' The example code shown below can be copied and pasted into any R console terminal window
-#' and will provide a basic analysis of the rice experiment data (type rice to view the actual rice data).
-#'
-#' Graphical output should appear in the gui graphics window but, if required, it can be diverted to
-#' a suitable pdf file by using a pdf file command. Opening pdf() and closing dev.off()
-#' commands are shown hashed-out in the example code but can be copied and pasted without the hashes, if required.
-#'
-#' Similarly, textual output should appear in the gui terminal window but, if required, it can be diverted to
-#' a suitable text file by using a sink file command. Opening and closing sink()
-#' commands are shown hashed-out in the example code but can be copied and pasted without the hashes,
-#' if required (hashed lines are ignored by R).
-#'
-#' Analysis
 #'
 #' Table 1 shows a full analysis of variance and displays the sources of variation corresponding to the
 #' different types of experimental units to which the treatment factor levels were applied
