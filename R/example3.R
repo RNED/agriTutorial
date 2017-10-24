@@ -67,8 +67,8 @@
 #' anova(greenrice.lmer1, ddf="Kenward-Roger",type = 1)
 #'
 #' ## Tables 10 second-order model of log uptake showing Wald F-tests and lack of fit
-#' greenrice.lmer2 = lmer(loguptake  ~Linear_N * Linear_W + Quadratic_N + Quadratic_W + Nitrogen*Water +
-#' (1|Replicate) + (1|Replicate:Main),data=greenrice)
+#' greenrice.lmer2 = lmer(loguptake  ~Linear_N * Linear_W + Quadratic_N + Quadratic_W +
+#' Nitrogen*Water + (1|Replicate) + (1|Replicate:Main),data=greenrice)
 #' anova(greenrice.lmer2, ddf="Kenward-Roger",type = 1)
 #'
 #' ## Regression coefficients for quadratic response surface model for water and nitrogen

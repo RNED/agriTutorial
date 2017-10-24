@@ -1,29 +1,54 @@
 #' @name example4
-#' @title  EXAMPLE 4
-#' @description
-#' One qualitative treatment factor and repeated measures in time.
 #'
-#' @details
+#' @title  EXAMPLE 4: One qualitative treatment factor with repeated measurements over time.
+#'
+#' @description
 #' Milliken & Johnson (1992, p. 429) describe an experiment with four sorghum varieties, in which the leaf area
 #' index was assessed in five consecutive weeks starting two weeks after emergence. The experiment was laid out
-#'  in five randomized complete blocks. The observed data are plotted against week in Figure 5.
+#' in five randomized complete blocks and had one qualitative factor (variety) and one quantitative factor (week).
+#' The week factor was a repeated measurement taken on each plot on five consecutive occasions over time,
+#' which means that successive measurements on the same plot are likely to be serially correlated. For a valid
+#' analysis, the serial correlations between the repeated measures must be modelled by assuming a
+#' suitable correlation structure for repeat observations on the same units.
 #'
-#' More to do!!
+#' @details
+#' The first stage of the analysis is the calculation of raw polynomials for weeks and orthogonal
+#' polynomials for blocks using the poly() function. We use orthogonal block polynomials as these give
+#' contrasts which are orthogonal to the overall block mean.
+#'
+#' The second stage fits and compares five different correlation structures for the repeated measures
+#' using the gls() function of the nlme package. The goodness of fit of the models is compared by AIC statistics
+#' where the smaller the AIC the better the fit. Here the AR(1)+nugget model fitted by the corExp() function gave
+#' the best fitting model.
+#'
+#' The third stage fits a full regression model over weeks (Table A1) to test for possible interactions between
+#' variety and and week effects. The full regression model is then decomposed into individual polynomial contrasts over
+#' weeks (Table A2) to find the most parsimonious model adequate for the data. The analysis into single degree
+#' of freedom polynomial contrasts shows that the variety-by-weeks interaction is mainly due to the linear and
+#' quadratic interaction effects although there is some evidence of higher-degree polynomial intraction effects.
+#'
+#' The fourth stage of the analysis estimates the fitted model coefficients assuming a quadratic regression model
+#' for variety-by-week interaction effects (Table 15).This model uses orthogonal polynomial contrasts to estimate
+#' fixed block effects and fixed block-by-weeks interaction effects.
+#'
+#' Finally, studentized residuals from the quadratic regression model are plotted to test the model assumptions.
+#' The residual plot shows some evidence that the smallest fitted values have the largest
+#' positive residuals and this may be evidence that a quadratic model is not fully adequate for the data.
+#' As the greatest lack of fit occurs with the smallest leaf area index, it is possible that a higher-degree
+#' regression model would better explain the data and some further investigation of the adequacy of the fitted model
+#' could be valuable.
 #'
 #' @references
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
 #'
 #' @examples
-#' ## Copy and paste the following code into a R console or GUI to run examples
-#' ## Package nlme MUST be installed
-#'
 #' \dontrun{
-#' if (suppressWarnings(require(nlme))) message('nlme loaded correctly') else
-#' message("please install package 'nlme' from the tools menu or by using install.packages('nlme')" )
+#' require(nlme)
 #'
 #' ## Loads sorghum data and includes polynomials for week and block contrasts
 #' data(sorghum)
-#' PolWeek=poly(sorghum$varweek, degree=4, raw=FALSE)
+#' sorghum$factblock=factor(sorghum$varblock)
+#' PolWeek=poly(sorghum$varweek, degree=4, raw=TRUE)
 #' colnames(PolWeek)=c("linWeek","quadWeek","cubWeek","quartWeek")
 #' sorghum=cbind(sorghum,PolWeek)
 #' PolBlocks=poly(sorghum$varblock, degree=4, raw=FALSE)
@@ -66,7 +91,7 @@
 #' AIC=c(AIC, AIC(corSymm))
 #' logLik=c(logLik,logLik(corSymm))
 #'
-#' ##  Comparison of log Likelihood and AIC statistics for different correlation structures
+#' ##  Table 11 Comparison of log Likelihood and AIC statistics for different correlation structures
 #' dAIC=AIC-AIC[4]
 #' logLik=-logLik*2
 #' dlogLik=logLik-logLik[4]
@@ -74,35 +99,23 @@
 #' colnames(AICtable)=c("Covar_Model","-2logLr","-diff2logLr","AIC","diffAIC")
 #' AICtable
 #'
-#' ## Sequential Wald test for full model sorghum data
-#' full_Wald=gls(y~(Replicate+variety)*factweek,corr=corExp(form =~varweek|factplot,nugget=TRUE),
-#' sorghum)
+#' ## Table A1 Sequential Wald tests for full model sorghum data
+#' full_Wald = gls(y  ~   (factblock + variety) * factweek ,
+#' corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
 #' anova(full_Wald)
-#' full_Wald
 #'
-#' ## Sequential Wald test for individual polynomial contrasts
-#' quad_Wald =gls(y~(linBlock+quadBlock+cubBlock+quartBlock+variety)*
-#' (linWeek+quadWeek+cubWeek+quartWeek),
+#' ## Table A2 (cf Table 14) Sequential Wald tests for full model sorghum data
+#' quad_Wald = gls(y  ~  (factblock + variety) *(linWeek + quadWeek + cubWeek + quartWeek),
 #' corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
 #' anova(quad_Wald)
-#' quad_Wald
 #'
-#' ## Raw polynomials for actual weeks to estimate raw regression coefficients
-#' rawPolWeek=poly(sorghum$varweek, degree=4, raw=TRUE)
-#' colnames(rawPolWeek)=c("rawlinWeek","rawquadWeek","rawcubWeek","rawquartWeek")
-#' sorghum=cbind(sorghum,rawPolWeek)
-#'
-#' ## Coefficients of quadratic model with AR(1) structure with nugget assuming corExp function.
-#' quad_fitted = gls(y~(rawlinWeek+rawquadWeek)*(variety+linBlock+quadBlock),
-#' corr=corExp(form= ~ varweek|factplot,nugget=TRUE), sorghum)
-#' anova(quad_fitted)
-#' summary(quad_fitted)$tTable
-#'
-#' ## graphical  residuals from best fitting gls model
-#' quad_fitted = gls(y~(rawlinWeek+rawquadWeek) *(variety+linBlock+quadBlock),
-#' corr=corExp(form = ~ varweek|factplot, nugget=TRUE), sorghum)
-#' plot(quad_fitted,sub.caption=NA,main="residuals from best fitting gls model")
-#'
+#' ## Table 15 model coefficients
+#' quad_Wald = gls(y ~variety * (linWeek+quadWeek) + PolBlocks +
+#' PolBlocks:(linWeek + quadWeek + cubWeek + quartWeek),
+#' corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' anova(quad_Wald)
+#' summary(quad_Wald)$tTable
+#' plot(quad_Wald,sub.caption=NA,main="Residuals from quadratic model")
 #'
 #' }
 #'
