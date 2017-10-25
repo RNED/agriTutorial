@@ -1,13 +1,10 @@
 #' @name example5
 #' @title  EXAMPLE 5: Transformation of treatment levels to improve model fit
-#' @docType package
-#'
 #' @description
 #' Mead (1988, p. 323) describes an experiment on spacing effects with turnips,
 #' which was laid out in three complete blocks. Five different seed rates
 #' (0.5, 2, 8, 20, 32 lb/acre) were tested in combination with four different row widths
 #' (4, 8, 16, 32 inches), giving rise to a total of 20 treatments.
-#'
 #' @details
 #' Transformation of the dependent variable will often stabilize the variance of the observations
 #' whereas transformation of the regressor variables will often simplify the fitted model. In this
@@ -29,7 +26,6 @@
 #'
 #' The superiority of the model with log transformed regressor variables is confirmed by an examination of
 #' the diagnostic plots for the two models.
-#'
 #'
 #' @references
 #' Mead, R. (1988). The design of experiments. Statistical principles for practical application.

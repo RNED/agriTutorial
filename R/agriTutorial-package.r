@@ -1,8 +1,7 @@
 #' @name agriTutorial
 #' @title Tutorial analysis of designed agricultural experiments
-#' @aliases tutorial
+#' @aliases agritutorial
 #' @docType package
-#'
 #' @description
 #' The \code{agri.tutorial} package
 #' provides software support for the example analyses discussed in
@@ -42,9 +41,7 @@
 #' install.packages('nlme')\cr
 #' install.packages('ggplot2')\cr
 #'
-#' Further information can be obtained from a
-#' web search e.g.: \href{https://www.r-bloggers.com/installing-r-packages/}{R-bloggers}
-#'
+#' Further information and documentation is available from the \href{https://cran.r-project.org/}{CRAN} website.
 #'
 #' \strong{Examples}
 #' \enumerate{

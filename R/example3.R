@@ -1,7 +1,5 @@
 #' @name example3
-#' @title  EXAMPLE 3 Polynomial regression model for an experiment with two quantitative level treatment factors
-#' @docType package
-#'
+#' @title  EXAMPLE 3: Polynomial regression model with two quantitative level treatment factors
 #' @description
 #' (Gomez & Gomez, 1984, p. 401): Nitrogen uptake (g/pot) of rice was studied in a two-factor
 #' greenhouse experiment involving duration of water stress (W) and level of nitrogen application (N).
@@ -10,9 +8,7 @@
 #' randomized within four complete blocks. In this analysis Ppolynomial models are built by adding individual
 #' treatment effects in a strict order of importance where the lower-degree effects of a
 #' factorial combination must be added first before the higher-degree effects for that factorial combination.
-#'
 #' @details
-#'
 #' The first stage of the analysis is the calculation of polynomial powers of N and W using the poly() function, as discussed
 #' in Example 1. The N rates are re-scaled by division by 100 while the W rates are re-scaled by division by 10.
 #'
@@ -31,7 +27,6 @@
 #' (rescaled) water and (rescaled) nitrogen treatments and these coefficients are then used to
 #' plot the fitted quadratic loguptake curves versus the nitrogen rate treatments and the
 #' water stress treatments shown in Fig 4.
-#'
 #'
 #' @references
 #' Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.

@@ -1,7 +1,5 @@
 #' @name example1
-#'
-#' @title  EXAMPLE 1: SPLIT-PLOT DESIGN WITH ONE QUALITATIVE AND ONE QUANTITATIVE LEVEL TREATMENT FACTOR
-#'
+#' @title  EXAMPLE 1: Split-plot design with one qualitative and one quantitative level factor
 #' @description
 #' Gomez & Gomez (1984, p. 143) report a rice experiment with three management practices
 #' (minimum, optimum, intensive), five different amounts of nitrogen (N) fertilizer

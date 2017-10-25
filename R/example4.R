@@ -1,7 +1,5 @@
 #' @name example4
-#'
 #' @title  EXAMPLE 4: One qualitative treatment factor with repeated measurements over time.
-#'
 #' @description
 #' Milliken & Johnson (1992, p. 429) describe an experiment with four sorghum varieties, in which the leaf area
 #' index was assessed in five consecutive weeks starting two weeks after emergence. The experiment was laid out
