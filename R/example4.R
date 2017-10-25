@@ -27,24 +27,31 @@
 #' of freedom polynomial contrasts shows that the variety-by-weeks interaction is mainly due to the linear and
 #' quadratic interaction effects although there is some evidence of higher-degree polynomial intraction effects.
 #'
-#' The fourth stage of the analysis estimates the fitted model coefficients assuming a quadratic regression model
-#' for variety-by-week interaction effects (Table 15).This model uses orthogonal polynomial contrasts to estimate
-#' fixed block effects and fixed block-by-weeks interaction effects.
+#' The fourth stage estimates the fitted model coefficients assuming a quadratic regression model
+#' for variety-by-week interaction effects (Table 15).This model uses orthogonal polynomial contrasts to fit block
+#' and block-by-weeks interaction contrasts before fitting the quadratic variety-by-week interaction effects.
 #'
 #' Finally, studentized residuals from the quadratic regression model are plotted to test the model assumptions.
 #' The residual plot shows some evidence that the smallest fitted values have the largest
-#' positive residuals and this may be evidence that a quadratic model is not fully adequate for the data.
-#' As the greatest lack of fit occurs with the smallest leaf area index, it is possible that a higher-degree
-#' regression model would better explain the data and some further investigation of the adequacy of the fitted model
-#' could be valuable.
+#' positive residuals and this suggests that some further investigation of the adequacy of the fitted model
+#' would be valuable.
+#'
+#' Unfortunately, the gls() function, must contain the same raw polynomial terms in the blocks interaction model as in
+#' the treatments regression model, which is why raw polynomials are used in the blocks model.
+#' However for a long series of repeated measures, raw polynomials are numerically unstable
+#' and will eventually fail. The final generalization shows how orthogonal polynomials can be used for the
+#' blocks model of a long series of repeated measures PROVIDED that the orthogonal terms in the blocks model are
+#' of higher-degree than those in the treatments regression model. This formulation will give a numerically
+#' stable model for any repeated measures analysis provided only that the treatment effects model is a
+#' low-degree polynomial.
 #'
 #' @references
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
 #'
 #' @examples
 #' \dontrun{
+#' options(contrasts=c('contr.treatment','contr.poly'))
 #' require(nlme)
-#'
 #' ## Loads sorghum data and includes polynomials for week and block contrasts
 #' data(sorghum)
 #' sorghum$factblock=factor(sorghum$varblock)
@@ -105,17 +112,23 @@
 #' anova(full_Wald)
 #'
 #' ## Table A2 (cf Table 14) Sequential Wald tests for full model sorghum data
-#' quad_Wald = gls(y  ~  (factblock + variety) *(linWeek + quadWeek + cubWeek + quartWeek),
+#' pol_Wald = gls(y  ~  (factblock + variety) *(linWeek + quadWeek + cubWeek + quartWeek),
 #' corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
-#' anova(quad_Wald)
+#' anova(pol_Wald)
 #'
-#' ## Table 15 model coefficients
-#' quad_Wald = gls(y ~variety * (linWeek+quadWeek) + PolBlocks +
-#' PolBlocks:(linWeek + quadWeek + cubWeek + quartWeek),
-#' corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' ## Table 15 quadratic model coefficients
+#' quad_Wald = gls(y ~ PolBlocks + PolBlocks:(linWeek + quadWeek + cubWeek + quartWeek) +
+#' variety * (linWeek + quadWeek),corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
 #' anova(quad_Wald)
 #' summary(quad_Wald)$tTable
 #' plot(quad_Wald,sub.caption=NA,main="Residuals from quadratic model")
+#'
+#' ## Generalization: orthogonal polynomials for a long series of repeated measures:
+#' orthoPolWeek=poly(sorghum$varweek, degree=4, raw=FALSE)
+#' quad_orthog_Wald = gls(y ~ PolBlocks + PolBlocks:(linWeek + quadWeek + orthoPolWeek[,3:4]) +
+#' variety * (linWeek + quadWeek),corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
+#' anova(quad_orthog_Wald)
+#' summary(quad_orthog_Wald)$tTable
 #'
 #' }
 #'
