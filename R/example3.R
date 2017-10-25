@@ -41,7 +41,7 @@
 #' require(lmerTest)
 #' require(lattice)
 #' require(pbkrtest)
-#'
+#' options(contrasts=c('contr.treatment','contr.poly'))
 # '## Loads greenhouse greenrice data and builds a data frame with N and W rate orthogonal polynomials
 #' data(greenrice)
 #' greenrice$loguptake=log(greenrice$uptake)

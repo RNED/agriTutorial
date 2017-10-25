@@ -74,8 +74,8 @@ save(sorghum, file = "data/sorghum.RData")
 2.67,2.71,3.14,1.01,2.40,2.98,3.21,2.89,1.75,2.63,2.56,2.83,2.80,0.92,
 2.22,2.46,2.53,2.56))
 turnip$Replicate = gl(3,20,length=60)
-turnip$lack_of_fitDensity = gl(5,1,length=60)
-turnip$lack_of_fitSpacing= gl(4,5,length=60)
+turnip$Density = gl(5,1,length=60)
+turnip$Spacing= gl(4,5,length=60)
 turnip$rowspacing = rep(rep(c(4,8,16,32),each=5),3)
 turnip$density = rep(c(0.5,2.0,8.0,20.0,32.0),12)
 turnip

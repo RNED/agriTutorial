@@ -35,7 +35,7 @@ produced automatically as shown for ordinary linear models but are not available
 
 \dontrun{
 require(ggplot2)
-
+options(contrasts=c('contr.treatment','contr.poly'))
 ## Loads beet data and builds a data frame with re-scaled N rate raw polynomials
 data(beet)
 N=poly((beet$nrate/100), degree=4, raw=TRUE)

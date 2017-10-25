@@ -64,6 +64,7 @@
 #' ## Packages lmerTest, lsmeans and pbkrtest MUST be installed
 #'
 #' \dontrun{
+#' options(contrasts=c('contr.treatment','contr.poly'))
 #' require(lmerTest)
 #' require(lsmeans)
 #' require(pbkrtest)

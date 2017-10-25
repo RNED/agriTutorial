@@ -36,12 +36,12 @@
 #' positive residuals and this suggests that some further investigation of the adequacy of the fitted model
 #' would be valuable.
 #'
-#' Unfortunately, the gls() function, must contain the same raw polynomial terms in the blocks interaction model as in
-#' the treatments regression model, which is why raw polynomials are used in the blocks model.
-#' However for a long series of repeated measures, raw polynomials are numerically unstable
+#' Unfortunately, the gls() function, must contain the same polynomial terms in the blocks interaction model as in
+#' the treatments regression model, which is why raw polynomials are used for the blocks model.
+#' However for a long series of repeated measures, raw polynomials can become numerically unstable
 #' and will eventually fail. The final generalization shows how orthogonal polynomials can be used for the
-#' blocks model of a long series of repeated measures PROVIDED that the orthogonal terms in the blocks model are
-#' of higher-degree than those in the treatments regression model. This formulation will give a numerically
+#' blocks model PROVIDED that the orthogonal terms in the blocks model are
+#' of higher-degree than those in the treatments model. This formulation gives a numerically
 #' stable model for any repeated measures analysis provided only that the treatment effects model is a
 #' low-degree polynomial.
 #'

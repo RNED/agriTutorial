@@ -39,7 +39,7 @@ water stress treatments shown in Fig 4.
 require(lmerTest)
 require(lattice)
 require(pbkrtest)
-
+options(contrasts=c('contr.treatment','contr.poly'))
 data(greenrice)
 greenrice$loguptake=log(greenrice$uptake)
 greenrice$Nitrogen=factor(greenrice$N)
