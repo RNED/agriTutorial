@@ -4,35 +4,42 @@
 #' @docType package
 #' @description
 #' The \code{agri.tutorial} package
-#' provides software support for the example analyses discussed in
+#' provides software support for some example analyses discussed by
 #' Piepho and Edmondson (2017).
-#' The package examines five real data sets from practical experiments and explores
+#' The package includes five real data sets from practical experiments and explores
 #' the analysis of these data sets using modern statistical methodolgy.
 #'
 #' @details
 #'
 #' \strong{Code}
-#' The code shown in the examples listed below can be copied and pasted into any R console terminal window.
-#' Graphical output should appear in the gui graphics window but, if required, it can be diverted to
-#' a suitable pdf file by using a pdf file command. Similarly, textual output should appear in the gui
-#'  terminal window but, if required, it can be diverted to a suitable text file by using a sink file command.
-#'  Code for opening and closing .pdf files or .txt files are shown commented-out by hashes in
-#'  the examples but can be copied, edited and pasted without the hashes, if required.
+#' The code shown in the examples can be copied and pasted into any R console terminal window.
+#' Graphical output should appear in the gui graphics window but can be diverted to
+#' a suitable pdf file by using a pdf file command, if required. Similarly, textual output should appear in the gui
+#'  terminal window but can be diverted to a suitable text file by using a sink file command, if required.
+#'  Code for opening and closing .pdf files or .txt files is shown commented-out by hashes in
+#'  the examples but can be copied, edited and pasted without the hashes, if required. Any line of code preceded by a hash
+#'  is ignored by R when pasted into a console terminal window.
 #'
 #' \strong{Polynomials}
-#' The polynomials used in this tutorial are 'raw' polynomials which means that they are powers of the actual
-#' numeric factors. Raw polynomials are simple to use but they are not mutually orthogonal which means that the
-#' order of fitting of raw polynomials is important. Functional marginality requires that polynomial
-#' effects be fitted in degree order with effects of lower degree preceding effects of higher
-#' degree and also that polynomial terms of a given degree can only be included in a model if all
-#' polynomial terms of lower degree are already included in the model. In this tutorial, all polynomial
-#' models obey functional marginality.
+#' The polynomials in this tutorial are either raw polynomials, which are the actual powers of a
+#' numeric vector, or orthogonal polynomials, which are ordered sets of mutually orthogonal functions
+#' where each function accounts for the effects of a polynomial of corresponding degree independentally of the effects
+#' of all polynomials of lower degree. Raw polynomials are simpler to interpret
+#' than orthogonal polynomials but are not mutually orthogonal and therefore must be fitted to a
+#' model in ascending degree-order and analysed by a method that estimates the 'extra' variance explained by
+#' each added model term so that the effects of each
+#' higher-degree polynomial can be assessed clear of the effects of all lower-degree polynomials.
+#'
+#' \strong{Functional marginality}
+#' Functional marginality requires that if a polynomial term of given degree is included in a model, then
+#' all polynomial terms of lower degree must also be included in the model. Functional marginality applies to
+#' any response surface design including designs with polynomial interaction effects (Nelder, 2000) and in
+#' this tutorial all polynomial models and response surface designs will obey the rules of functional marginality.
 #'
 #' \strong{Packages}
-#' The example code depends on a number of R packages and these must be
-#' installed on the user machine before the code can be properly executed.
-#' The required packages can be installed by copying the following commands into a
-#' suitable R console or R shell window:
+#' The example code depends on a number of R packages and these must be installed on the user machine before
+#' the code can be properly executed. The required packages can be installed by copying the following commands
+#' into a suitable R console or R shell window:
 #'
 #' install.packages('lmerTest')\cr
 #' install.packages('lsmeans')\cr
@@ -61,6 +68,8 @@
 #' @references
 #'
 #' H.P. Piepho, R.N. Edmondson. (2017). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
-#' treatment factor levels.Journal of Agronomy and Crop Science. Submitted
+#' treatment factor levels.Journal of Agronomy and Crop Science. Submitted.
+#'
+#' Nelder, J. A. (2000). Functional marginality and response-surface fitting. Journal of Applied Statistics, 26, 109-122.
 #'
 NULL
