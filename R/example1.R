@@ -37,7 +37,7 @@
 #' In this analysis, most of the nitrogen treatment effect can be explained by linear and quadratic trend effects.
 #' but it is important to note that there is a non-negligible Variety x Cubic N interaction effect. This suggests
 #' that not all the varieties responded in a similar way to
-#' the N treatments and that some further analysis of the data may be required (see the N plots for individual
+#' the N treatments and that some further analysis of the data may be required (see the N plots of individual
 #' varieties and replicates in Fig 1).
 #'
 #' The second analysis (Table 8) shows the fitted model for estimating actual model coefficients for the nitrogen model.
@@ -47,13 +47,13 @@
 #' actual actual nitrogen levels used in the experiment as these provide the simplest interpretation of the
 #' nitrogen effects.
 #'
-#' Next individual plots of the nitrogen response for each variety in each block averaged over management effects are
+#' Next, individual plots of the nitrogen response for each variety in each block averaged over management effects are
 #' produced (Fig 1).
 #' These plots show the nitrogen response of each variety in each replicate block separately and there is some evidence
 #' of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice, this anomaly would be
 #' investigated by further discussion with the research workers.
 #'
-#' Finally, a scatter plot of the residuals from the full N model is produced. Residual plots are an important
+#' Finally, a scatter plot of the residuals from the full N model is shown. Residual plots are an important
 #' check on model assumptions but many more options for model testing are available and further methods for diagnostic testing
 #' will be examined in subsequent examples.
 #'
@@ -71,14 +71,12 @@
 #' ## Packages lmerTest, lsmeans and pbkrtest MUST be installed
 #'
 #' \dontrun{
+#' ## sink("F:\\tutorial2\\OutputsR\\outExample1.txt") #sink file for outputs
 #' options(contrasts=c('contr.treatment','contr.poly'))
 #' require(lmerTest)
 #' require(lsmeans)
 #' require(pbkrtest)
-#' ## loads rice data
 #' data(rice)
-#' ## sink("F:\\tutorial2\\OutputsR\\outExample1.txt") #sink file for outputs
-#'
 #'
 #' ## **********Section 1: Qualitative analysis of factorial treatment effects***************.
 #'
@@ -121,9 +119,9 @@
 #' rice.quadN= lmer(yield ~ Replicate + management + variety*Linear_N + Quadratic_N +
 #' (1|Replicate:Main) + (1|Replicate:Main:Sub), data=rice)
 #' summary(rice.quadN, ddf="Kenward-Roger")
-#' # sink() #closes sink file
+
 #'
-#' # pdf("F:\\tutorial2\\OutputsR\\outExample1_Fig_S1.pdf") #opens a graphical pdf output file
+#' ## pdf("F:\\tutorial2\\OutputsR\\outExample1_Fig_S1.pdf") #opens a graphical pdf output file
 #' ## Fig 1 Nitrogen response per variety per plot showing anomalous behaviour of Variety 1
 #' Rice=aggregate(rice$yield, by=list(rice$Replicate, rice$nitrogen,rice$variety),
 #' FUN=mean, na.rm=TRUE)
@@ -142,8 +140,9 @@
 #' ## Residual plot assuming additive management and full N x variety interaction effects
 #' plot(rice.fullN,sub.caption=NA,ylab="Residuals",xlab="Fitted",
 #' main="Full analysis with full nitrogen effects")
-#' #dev.off()
+#' ## dev.off()# closes graphical device
 #'
+#' ## sink() #closes sink file
 #' }
 #'
 NULL
