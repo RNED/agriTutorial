@@ -70,7 +70,6 @@
 #' ## Copy and paste the following code into a R console or GUI to run examples
 #' ## Packages lmerTest, lsmeans and pbkrtest MUST be installed
 #'
-#' ##\dontrun{
 #' ## sink("F:\\tutorial2\\OutputsR\\outExample1.txt") #sink file for outputs
 #' options(contrasts=c('contr.treatment','contr.poly'))
 #' require(lmerTest)
@@ -84,7 +83,7 @@
 #' rice.aov1 = aov(yield ~ Replicate + management*variety*nitrogen +
 #' Error(Replicate/Main/Sub),rice)
 #' summary(rice.aov1, ddf="Kenward-Roger",type = 1)
-#'
+#' \dontrun{
 #' ## Table 2 REML means and se's for additive management and qualitative nitrogen effects
 #' rice.means= lmer(yield ~ Replicate + management+ nitrogen*variety +
 #' (1|Replicate:Main)+ (1|Replicate:Main:Sub), data=rice)
@@ -139,8 +138,8 @@
 #' plot(rice.fullN,sub.caption=NA,ylab="Residuals",xlab="Fitted",
 #' main="Full analysis with full nitrogen effects")
 #' ## dev.off()# closes graphical device
-#'
+#' }
 #' ## sink() #closes sink file
-#' ##}
+#'
 #'
 NULL

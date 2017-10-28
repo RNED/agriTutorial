@@ -31,7 +31,6 @@ The plot corresponds to plot Fig 3 in Piepho & Edmondson (2017).
 \examples{
 ## Copy and paste the following code into a R console or GUI: ggplot2 MUST be installed
 
-##\dontrun{
 ## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample2.txt") #sink file for outputs
 require(ggplot2)
 options(contrasts=c('contr.treatment','contr.poly'))
@@ -43,6 +42,7 @@ beet=cbind(beet,N)
 ## Tables 4 & 5: Full polynomial analysis of variance based on raw polynomials
 anova(lm(yield ~ Replicate +  Linear_N + Quadratic_N + Cubic_N + Quartic_N , data=beet))
 
+\dontrun{
 ##  Table 6: showing quadratic model coefficients with standard errors and confidence intervals
 quadratic = lm(yield ~ Replicate +  Linear_N + Quadratic_N, data=beet)
 summary(quadratic)
@@ -61,9 +61,9 @@ geom_smooth(method=lm, formula=y ~ poly(x, 2))+
 theme_bw()
 
 ## dev.off()
-
+}
 ## sink() #closes sink file
-##}
+
 
 }
 \references{

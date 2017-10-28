@@ -35,7 +35,7 @@ plot the fitted quadratic loguptake curves versus the nitrogen rate treatments a
 water stress treatments shown in Fig 4.
 }
 \examples{
-##\dontrun{
+
 require(lmerTest)
 require(lattice)
 require(pbkrtest)
@@ -54,6 +54,8 @@ greenrice=cbind(greenrice,PolW,PolN)
 greenrice.uptake = lmer(uptake ~ Replicate + factor(N) * factor(W)
   + (1|Replicate:Main), data=greenrice)
 plot(greenrice.uptake,main="Example 3: untransformed", ylab="Residuals N uptake ")
+
+ \dontrun{
 greenrice.loguptake= lmer(loguptake ~ Replicate + factor(N) * factor(W)
  + (1|Replicate:Main), data=greenrice)
 plot(greenrice.loguptake,main="Example 3: transformed ", ylab="Residuals log N uptake")
@@ -101,7 +103,7 @@ xyplot(loguptake ~ Linear_W|factor(Linear_N),data=greenrice,
  strip = strip.custom(strip.names = TRUE, factor.levels = c("0","90","180","270")),
 panel = panel.plot)
 
-##}
+}
 
 }
 \references{

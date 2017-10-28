@@ -63,7 +63,6 @@ will be examined in subsequent examples.
 ## Copy and paste the following code into a R console or GUI to run examples
 ## Packages lmerTest, lsmeans and pbkrtest MUST be installed
 
-##\dontrun{
 ## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample1.txt") #sink file for outputs
 options(contrasts=c('contr.treatment','contr.poly'))
 require(lmerTest)
@@ -71,14 +70,13 @@ require(lsmeans)
 require(pbkrtest)
 data(rice)
 
-
 ## **********Section 1: Qualitative analysis of factorial treatment effects***************.
 
 ## Table 1 Full analysis of rice data assuming qualitative nitrogen effects
 rice.aov1 = aov(yield ~ Replicate + management*variety*nitrogen +
 Error(Replicate/Main/Sub),rice)
 summary(rice.aov1, ddf="Kenward-Roger",type = 1)
-
+\dontrun{
 ## Table 2 REML means and se's for additive management and qualitative nitrogen effects
 rice.means= lmer(yield ~ Replicate + management+ nitrogen*variety +
 (1|Replicate:Main)+ (1|Replicate:Main:Sub), data=rice)
@@ -95,7 +93,6 @@ contrast(v.n, alpha=0.05, method="pairwise")
 rice.lmer= lmer(yield ~ Replicate + nitrogen*management*variety + (1|Replicate:Main) +
 (1|Replicate:Main:Sub), data=rice)
 anova(rice.lmer, ddf="Kenward-Roger",type = 1)
-
 
 ## **********Section 2: Quantitative analysis of factorial treatment effects***************.
 
@@ -134,9 +131,9 @@ outer=TRUE)
 plot(rice.fullN,sub.caption=NA,ylab="Residuals",xlab="Fitted",
 main="Full analysis with full nitrogen effects")
 ## dev.off()# closes graphical device
-
+}
 ## sink() #closes sink file
-##}
+
 
 }
 \references{

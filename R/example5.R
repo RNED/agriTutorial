@@ -34,7 +34,6 @@
 #' @examples
 ## Copy and paste the following code into a R console or GUI to run examples
 #'
-#' ##\dontrun{
 #' ## Loads turnip data
 #' data(turnip)
 #'
@@ -57,6 +56,7 @@
 #' Density*Spacing, turnip)
 #' anova(quad.mod)
 #'
+#' \dontrun{
 #' ## Table 17 Quadratic response surface for transformed log planting density by log row spacing
 #' log.quad.mod =
 #' lm(log_yield ~ Replicate + linlogDensity*linlogSpacing + quadlogDensity  + quadlogSpacing +
@@ -76,7 +76,7 @@
 #' plot(fit.log.quad.mod,sub.caption=NA)
 #' title(main="Fig 12b Quadratic response for transformed log density by log row spacing", outer=TRUE)
 #'
-#' ##}
+#' }
 #'
 NULL
 

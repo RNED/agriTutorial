@@ -33,7 +33,6 @@ the diagnostic plots for the two models.
 }
 \examples{
 
-##\dontrun{
 ## Loads turnip data
 data(turnip)
 
@@ -56,6 +55,7 @@ quad.mod  = lm(log_yield ~ Replicate + linDensity * linSpacing + quadDensity + q
 Density*Spacing, turnip)
 anova(quad.mod)
 
+\dontrun{
 ## Table 17 Quadratic response surface for transformed log planting density by log row spacing
 log.quad.mod =
 lm(log_yield ~ Replicate + linlogDensity*linlogSpacing + quadlogDensity  + quadlogSpacing +
@@ -75,7 +75,7 @@ quadlogSpacing, turnip)
 plot(fit.log.quad.mod,sub.caption=NA)
 title(main="Fig 12b Quadratic response for transformed log density by log row spacing", outer=TRUE)
 
-##}
+}
 
 }
 \references{

@@ -34,7 +34,7 @@
 #' Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
 #'
 #' @examples
-#' ##\dontrun{
+#'
 #' require(lmerTest)
 #' require(lattice)
 #' require(pbkrtest)
@@ -54,6 +54,8 @@
 #' greenrice.uptake = lmer(uptake ~ Replicate + factor(N) * factor(W)
 #'   + (1|Replicate:Main), data=greenrice)
 #' plot(greenrice.uptake,main="Example 3: untransformed", ylab="Residuals N uptake ")
+#'
+#'  \dontrun{
 #' greenrice.loguptake= lmer(loguptake ~ Replicate + factor(N) * factor(W)
 #'  + (1|Replicate:Main), data=greenrice)
 #' plot(greenrice.loguptake,main="Example 3: transformed ", ylab="Residuals log N uptake")
@@ -103,7 +105,7 @@
 #'  strip = strip.custom(strip.names = TRUE, factor.levels = c("0","90","180","270")),
 #' panel = panel.plot)
 #'
-#' ##}
+#' }
 #'
 NULL
 
