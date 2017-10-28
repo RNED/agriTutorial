@@ -16,37 +16,34 @@ the analysis of these data sets using modern statistical methodolgy.
 \details{
 \strong{Code}
 The code for the examples can be copied and pasted into any R console terminal window.
-Textual output should appear in the gui terminal window but can be diverted to a suitable
-text file by using a sink file command, if required.
+Textual output should appear in the gui or terminal window but can be diverted to a suitable
+text file by using a sink file command, if required. Graphical output should appear in the gui graphics
+window but can be diverted to a suitable pdf file by using a pdf file command, if required.
+The code for opening and closing .txt files and .pdf files is shown commented-out by hashes in
+the example programs but can copied and edited without the hashes, if required
+(hashed code is ignored by R).
 
-Graphical output should appear in the gui graphics window but can be diverted to
-a suitable pdf file by using a pdf file command, if required.
-
- The code for opening and closing .txt files and .pdf files is shown commented-out by hashes in
- the example programs. The code can be copied and edited without the hashes, if required
- (any line of code preceded by a hash is ignored by R).
+The "dontrun" tags in the examples stops code executing during package testing and can be ignored in practise.
 
 \strong{Polynomials}
-The polynomials in this tutorial are either raw polynomials, which are actual powers of
-numeric vectors, or orthogonal polynomials where the ith degree orthogonal polynomial accounts
-for the effects of the ith degree raw polynomial independentally of the effects of all lower-degree polynomials.
-Raw polynomials are simpler to interpret than orthogonal polynomials but must be fitted to a model in ascending
-degree-order and analysed by a method that estimates the 'extra' variance explained by each added model term separately.
-The disadvantage of raw polynomals is that they can become numerically unstable for high-powers of large vectors.
+Polynomials in this tutorial are either raw or orthogonal polynomials. Raw polynomials are the actual powers of
+a numeric vector whereas orthogonal polynomials are functions which account for the succesive powers of a numeric
+vector but which are orthogonal to lower-degree powers. Raw polynomials are simpler to interpret than
+orthogonal polynomials but can become numerically unstable for higher-degree powers of large vectors.
 
 \strong{Functional marginality}
 Functional marginality requires that a polynomial term of given degree can be included in a model only if
-all polynomial terms of lower degree are also be included in the model. Functional marginality applies to
+all polynomial terms of lower degree are also included in the model. Functional marginality applies to
 any response surface design including designs with polynomial interaction effects (Nelder, 2000) and in
 this tutorial all polynomial models and response surface designs will obey the rules of functional marginality.
 
 \strong{Packages}
 The example code depends on a number of R packages which must be installed on the user machine before
-the code can be properly executed. The required packages are lmerTest, lsmeans, pbkrtest, lattice, nlme and
-ggplot2 and if necessary can be installed either from a gui tools menu or from the install.packages() command
-(type ?install.packages at a r command prompt for further information).
+the example code can be properly executed. The required packages are lmerTest, lsmeans, pbkrtest, lattice, nlme and
+ggplot2 and these should install automatically, if necessary. Packages can also be installed either from
+a gui tools menu or from an install.packages() command.
 
-Further information and documentation is available from the \href{https://cran.r-project.org/}{CRAN} website.
+NB. It is important to keep packages updated using the update.packages() command.
 
 \strong{Examples}
 \enumerate{
