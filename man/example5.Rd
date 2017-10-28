@@ -33,7 +33,7 @@ the diagnostic plots for the two models.
 }
 \examples{
 
-\dontrun{
+##\dontrun{
 ## Loads turnip data
 data(turnip)
 
@@ -75,7 +75,7 @@ quadlogSpacing, turnip)
 plot(fit.log.quad.mod,sub.caption=NA)
 title(main="Fig 12b Quadratic response for transformed log density by log row spacing", outer=TRUE)
 
-}
+##}
 
 }
 \references{

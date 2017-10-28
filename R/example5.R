@@ -34,7 +34,7 @@
 #' @examples
 ## Copy and paste the following code into a R console or GUI to run examples
 #'
-#' \dontrun{
+#' ##\dontrun{
 #' ## Loads turnip data
 #' data(turnip)
 #'
@@ -76,7 +76,7 @@
 #' plot(fit.log.quad.mod,sub.caption=NA)
 #' title(main="Fig 12b Quadratic response for transformed log density by log row spacing", outer=TRUE)
 #'
-#'}
+#' ##}
 #'
 NULL
 

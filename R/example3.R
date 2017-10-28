@@ -34,7 +34,7 @@
 #' Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
 #'
 #' @examples
-#' \dontrun{
+#' ##\dontrun{
 #' require(lmerTest)
 #' require(lattice)
 #' require(pbkrtest)
@@ -103,7 +103,7 @@
 #'  strip = strip.custom(strip.names = TRUE, factor.levels = c("0","90","180","270")),
 #' panel = panel.plot)
 #'
-#' }
+#' ##}
 #'
 NULL
 

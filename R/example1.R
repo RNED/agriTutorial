@@ -70,7 +70,7 @@
 #' ## Copy and paste the following code into a R console or GUI to run examples
 #' ## Packages lmerTest, lsmeans and pbkrtest MUST be installed
 #'
-#' \dontrun{
+#' ##\dontrun{
 #' ## sink("F:\\tutorial2\\OutputsR\\outExample1.txt") #sink file for outputs
 #' options(contrasts=c('contr.treatment','contr.poly'))
 #' require(lmerTest)
@@ -102,7 +102,6 @@
 #' (1|Replicate:Main:Sub), data=rice)
 #' anova(rice.lmer, ddf="Kenward-Roger",type = 1)
 #'
-#'
 #' ## **********Section 2: Quantitative analysis of factorial treatment effects***************.
 #'
 #' ## adds raw N polynomials to data frame: note that the nrate is re-scaled
@@ -119,7 +118,6 @@
 #' rice.quadN= lmer(yield ~ Replicate + management + variety*Linear_N + Quadratic_N +
 #' (1|Replicate:Main) + (1|Replicate:Main:Sub), data=rice)
 #' summary(rice.quadN, ddf="Kenward-Roger")
-
 #'
 #' ## pdf("F:\\tutorial2\\OutputsR\\outExample1_Fig_S1.pdf") #opens a graphical pdf output file
 #' ## Fig 1 Nitrogen response per variety per plot showing anomalous behaviour of Variety 1
@@ -143,6 +141,6 @@
 #' ## dev.off()# closes graphical device
 #'
 #' ## sink() #closes sink file
-#' }
+#' ##}
 #'
 NULL

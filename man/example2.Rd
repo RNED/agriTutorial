@@ -31,7 +31,7 @@ The plot corresponds to plot Fig 3 in Piepho & Edmondson (2017).
 \examples{
 ## Copy and paste the following code into a R console or GUI: ggplot2 MUST be installed
 
-\dontrun{
+##\dontrun{
 ## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample2.txt") #sink file for outputs
 require(ggplot2)
 options(contrasts=c('contr.treatment','contr.poly'))
@@ -63,7 +63,7 @@ theme_bw()
 ## dev.off()
 
 ## sink() #closes sink file
-}
+##}
 
 }
 \references{

@@ -47,7 +47,7 @@
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
 #'
 #' @examples
-#' \dontrun{
+#' ##\dontrun{
 #' options(contrasts=c('contr.treatment','contr.poly'))
 #' require(nlme)
 #' ## Loads sorghum data and includes polynomials for week and block contrasts
@@ -128,6 +128,6 @@
 #' anova(quad_orthog_Wald)
 #' summary(quad_orthog_Wald)$tTable
 #'
-#' }
+#' ##}
 #'
 NULL

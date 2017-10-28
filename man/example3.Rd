@@ -13,13 +13,15 @@ treatment effects in a strict order of importance where the lower-degree effects
 factorial combination must be added first before the higher-degree effects for that factorial combination.
 }
 \details{
-The first stage of the analysis is the calculation of polynomial powers of N and W using the poly() function, as discussed
-in Example 1. The N rates are re-scaled by division by 100 while the W rates are re-scaled by division by 10.
+The first stage of the analysis is the calculation of polynomial powers of N and W using the poly() function.
+ The N rates are re-scaled by division by 100 while the W rates are re-scaled by division by 10.
 
-The second stage compares (Pearson) residual plots for the untransformed N uptake data versus the log transformed N uptake
-data. The untransformed N uptake residuals increase as the fitted values increase whereas the log transformed N uptake
-residuals are approximately constant over the full range of fitted values. Therefore the log transformed N uptake is
-the most appropriate variable for analysis.
+The second stage compares (Pearson) residual plots for the untransformed N uptake data versus the
+log transformed N uptake data. The plots show that the untransformed residuals increase as the fitted values
+increase showing that the variance of the untransformed data is non-constant. The log transformed N uptake
+residuals, however, are approximately constant over the full range of fitted values indicating that the
+variance of the transformed data is approximately constant. Therefore the log transformed data is
+the most appropriate data for a simple unweighted analysis of variance.
 
 The next stage compares the fit of a first-order linear model (Table 9) versus a second-order quadratic
 model (Table 10). The first-order model shows significant lack-of-fit and is not adequate for the
@@ -33,7 +35,7 @@ plot the fitted quadratic loguptake curves versus the nitrogen rate treatments a
 water stress treatments shown in Fig 4.
 }
 \examples{
-\dontrun{
+##\dontrun{
 require(lmerTest)
 require(lattice)
 require(pbkrtest)
@@ -99,7 +101,7 @@ xyplot(loguptake ~ Linear_W|factor(Linear_N),data=greenrice,
  strip = strip.custom(strip.names = TRUE, factor.levels = c("0","90","180","270")),
 panel = panel.plot)
 
-}
+##}
 
 }
 \references{

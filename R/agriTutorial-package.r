@@ -4,7 +4,7 @@
 #' @docType package
 #' @description
 #' The \code{agri.tutorial} package
-#' provides software support for some example analyses discussed by
+#' provides software support for the example analyses discussed in
 #' Piepho and Edmondson (2017).
 #' The package includes five real data sets from practical experiments and explores
 #' the analysis of these data sets using modern statistical methodolgy.
@@ -12,41 +12,36 @@
 #' @details
 #'
 #' \strong{Code}
-#' The code shown in the examples can be copied and pasted into any R console terminal window.
+#' The code for the examples can be copied and pasted into any R console terminal window.
+#' Textual output should appear in the gui terminal window but can be diverted to a suitable
+#' text file by using a sink file command, if required.
+#'
 #' Graphical output should appear in the gui graphics window but can be diverted to
-#' a suitable pdf file by using a pdf file command, if required. Similarly, textual output should appear in the gui
-#'  terminal window but can be diverted to a suitable text file by using a sink file command, if required.
-#'  Code for opening and closing .pdf files or .txt files is shown commented-out by hashes in
-#'  the examples but can be copied, edited and pasted without the hashes, if required. Any line of code preceded by a hash
-#'  is ignored by R when pasted into a console terminal window.
+#' a suitable pdf file by using a pdf file command, if required.
+#'
+#'  The code for opening and closing .txt files and .pdf files is shown commented-out by hashes in
+#'  the example programs. The code can be copied and edited without the hashes, if required
+#'  (any line of code preceded by a hash is ignored by R).
 #'
 #' \strong{Polynomials}
-#' The polynomials in this tutorial are either raw polynomials, which are the actual powers of a
-#' numeric vector, or orthogonal polynomials, which are ordered sets of mutually orthogonal functions
-#' where each function accounts for the effects of a polynomial of corresponding degree independentally of the effects
-#' of all polynomials of lower degree. Raw polynomials are simpler to interpret
-#' than orthogonal polynomials but are not mutually orthogonal and therefore must be fitted to a
-#' model in ascending degree-order and analysed by a method that estimates the 'extra' variance explained by
-#' each added model term so that the effects of each
-#' higher-degree polynomial can be assessed clear of the effects of all lower-degree polynomials.
+#' The polynomials in this tutorial are either raw polynomials, which are actual powers of
+#' numeric vectors, or orthogonal polynomials where the ith degree orthogonal polynomial accounts
+#' for the effects of the ith degree raw polynomial independentally of the effects of all lower-degree polynomials.
+#' Raw polynomials are simpler to interpret than orthogonal polynomials but must be fitted to a model in ascending
+#' degree-order and analysed by a method that estimates the 'extra' variance explained by each added model term separately.
+#' The disadvantage of raw polynomals is that they can become numerically unstable for high-powers of large vectors.
 #'
 #' \strong{Functional marginality}
-#' Functional marginality requires that if a polynomial term of given degree is included in a model, then
-#' all polynomial terms of lower degree must also be included in the model. Functional marginality applies to
+#' Functional marginality requires that a polynomial term of given degree can be included in a model only if
+#' all polynomial terms of lower degree are also be included in the model. Functional marginality applies to
 #' any response surface design including designs with polynomial interaction effects (Nelder, 2000) and in
 #' this tutorial all polynomial models and response surface designs will obey the rules of functional marginality.
 #'
 #' \strong{Packages}
-#' The example code depends on a number of R packages and these must be installed on the user machine before
-#' the code can be properly executed. The required packages can be installed by copying the following commands
-#' into a suitable R console or R shell window:
-#'
-#' install.packages('lmerTest')\cr
-#' install.packages('lsmeans')\cr
-#' install.packages('pbkrtest')\cr
-#' install.packages('lattice')\cr
-#' install.packages('nlme')\cr
-#' install.packages('ggplot2')\cr
+#' The example code depends on a number of R packages which must be installed on the user machine before
+#' the code can be properly executed. The required packages are lmerTest, lsmeans, pbkrtest, lattice, nlme and
+#' ggplot2 and if necessary can be installed either from a gui tools menu or from the install.packages() command
+#' (type ?install.packages at a r command prompt for further information).
 #'
 #' Further information and documentation is available from the \href{https://cran.r-project.org/}{CRAN} website.
 #'
@@ -71,5 +66,6 @@
 #' treatment factor levels.Journal of Agronomy and Crop Science. Submitted.
 #'
 #' Nelder, J. A. (2000). Functional marginality and response-surface fitting. Journal of Applied Statistics, 26, 109-122.
+#'
 #'
 NULL

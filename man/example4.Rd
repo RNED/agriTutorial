@@ -47,7 +47,7 @@ stable model for any repeated measures analysis provided only that the treatment
 low-degree polynomial.
 }
 \examples{
-\dontrun{
+##\dontrun{
 options(contrasts=c('contr.treatment','contr.poly'))
 require(nlme)
 ## Loads sorghum data and includes polynomials for week and block contrasts
@@ -128,7 +128,7 @@ variety * (linWeek + quadWeek),corr = corExp(form = ~ varweek | factplot, nugget
 anova(quad_orthog_Wald)
 summary(quad_orthog_Wald)$tTable
 
-}
+##}
 
 }
 \references{

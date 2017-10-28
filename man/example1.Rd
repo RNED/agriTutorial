@@ -63,13 +63,14 @@ will be examined in subsequent examples.
 ## Copy and paste the following code into a R console or GUI to run examples
 ## Packages lmerTest, lsmeans and pbkrtest MUST be installed
 
-\dontrun{
+##\dontrun{
 ## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample1.txt") #sink file for outputs
 options(contrasts=c('contr.treatment','contr.poly'))
 require(lmerTest)
 require(lsmeans)
 require(pbkrtest)
 data(rice)
+
 
 ## **********Section 1: Qualitative analysis of factorial treatment effects***************.
 
@@ -135,7 +136,7 @@ main="Full analysis with full nitrogen effects")
 ## dev.off()# closes graphical device
 
 ## sink() #closes sink file
-}
+##}
 
 }
 \references{
