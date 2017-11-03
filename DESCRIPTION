@@ -14,7 +14,6 @@ Description: This package is intended as a tutorial teaching aid
 	and the R analysis code is made available as a set of examples.
 	The example R code can be readily edited and extended,
 	as required.
-	
 Depends: R (>= 3.1.0)
 License:  GPL(>= 2)
 Imports:
