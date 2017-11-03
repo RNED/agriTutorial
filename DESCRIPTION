@@ -17,6 +17,13 @@ Description: This package is intended as a tutorial teaching aid
 	
 Depends: R (>= 3.1.0)
 License:  GPL(>= 2)
+Imports:
+  lmerTest,
+  lsmeans,
+  pbkrtest,
+  lattice,
+  nlme,
+  ggplot2
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1

@@ -47,7 +47,7 @@ stable model for any repeated measures analysis provided only that the treatment
 low-degree polynomial.
 }
 \examples{
-\dontrun{
+
 options(contrasts=c('contr.treatment','contr.poly'))
 require(nlme)
 ## Loads sorghum data and includes polynomials for week and block contrasts
@@ -59,6 +59,7 @@ sorghum=cbind(sorghum,PolWeek)
 PolBlocks=poly(sorghum$varblock, degree=4, raw=FALSE)
 colnames(PolBlocks)=c("linBlock","quadBlock","cubBlock","quartBlock")
 sorghum=cbind(sorghum,PolBlocks)
+\dontrun{
 
 AIC=NULL
 logLik=NULL
@@ -121,14 +122,13 @@ anova(quad_Wald)
 summary(quad_Wald)$tTable
 plot(quad_Wald,sub.caption=NA,main="Residuals from quadratic model")
 
+}
 ## Generalization: orthogonal polynomials for a long series of repeated measures:
 orthoPolWeek=poly(sorghum$varweek, degree=4, raw=FALSE)
 quad_orthog_Wald = gls(y ~ PolBlocks + PolBlocks:(linWeek + quadWeek + orthoPolWeek[,3:4]) +
 variety * (linWeek + quadWeek),corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
 anova(quad_orthog_Wald)
 summary(quad_orthog_Wald)$tTable
-
-}
 
 }
 \references{

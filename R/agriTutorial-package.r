@@ -1,50 +1,46 @@
 #' @name agriTutorial
 #' @title Tutorial analysis of designed agricultural experiments
-#' @aliases tutorial
+#' @aliases agritutorial
 #' @docType package
-#'
 #' @description
 #' The \code{agri.tutorial} package
 #' provides software support for the example analyses discussed in
 #' Piepho and Edmondson (2017).
-#' The package examines five real data sets from practical experiments and explores
+#' The package includes five real data sets from practical experiments and explores
 #' the analysis of these data sets using modern statistical methodolgy.
 #'
 #' @details
 #'
 #' \strong{Code}
-#' The code shown in the examples listed below can be copied and pasted into any R console terminal window.
-#' Graphical output should appear in the gui graphics window but, if required, it can be diverted to
-#' a suitable pdf file by using a pdf file command. Similarly, textual output should appear in the gui
-#'  terminal window but, if required, it can be diverted to a suitable text file by using a sink file command.
-#'  Code for opening and closing .pdf files or .txt files are shown commented-out by hashes in
-#'  the examples but can be copied, edited and pasted without the hashes, if required.
+#' The code for the examples can be copied and pasted into any R console terminal window.
+#' Textual output should appear in the gui or terminal window but can be diverted to a suitable
+#' text file by using a sink file command, if required. Graphical output should appear in the gui graphics
+#' window but can be diverted to a suitable pdf file by using a pdf file command, if required.
+#' The code for opening and closing .txt files and .pdf files is shown commented-out by hashes in
+#' the example programs but can copied and edited without the hashes, if required
+#' (hashed code is ignored by R).
+#'
+#' The "dontrun" tags in the examples stops code executing during package testing and can be ignored in practise.
 #'
 #' \strong{Polynomials}
-#' The polynomials used in this tutorial are 'raw' polynomials which means that they are powers of the actual
-#' numeric factors. Raw polynomials are simple to use but they are not mutually orthogonal which means that the
-#' order of fitting of raw polynomials is important. Functional marginality requires that polynomial
-#' effects be fitted in degree order with effects of lower degree preceding effects of higher
-#' degree and also that polynomial terms of a given degree can only be included in a model if all
-#' polynomial terms of lower degree are already included in the model. In this tutorial, all polynomial
-#' models obey functional marginality.
+#' Polynomials in this tutorial are either raw or orthogonal polynomials. Raw polynomials are the actual powers of
+#' a numeric vector whereas orthogonal polynomials are functions which account for the succesive powers of a numeric
+#' vector but which are orthogonal to lower-degree powers. Raw polynomials are simpler to interpret than
+#' orthogonal polynomials but can become numerically unstable for higher-degree powers of large vectors.
+#'
+#' \strong{Functional marginality}
+#' Functional marginality requires that a polynomial term of given degree can be included in a model only if
+#' all polynomial terms of lower degree are also included in the model. Functional marginality applies to
+#' any response surface design including designs with polynomial interaction effects (Nelder, 2000) and in
+#' this tutorial all polynomial models and response surface designs will obey the rules of functional marginality.
 #'
 #' \strong{Packages}
-#' The example code depends on a number of R packages and these must be
-#' installed on the user machine before the code can be properly executed.
-#' The required packages can be installed by copying the following commands into a
-#' suitable R console or R shell window:
+#' The example code depends on a number of R packages which must be installed on the user machine before
+#' the example code can be properly executed. The required packages are lmerTest, lsmeans, pbkrtest, lattice, nlme and
+#' ggplot2 and these should install automatically, if necessary. Packages can also be installed either from
+#' a gui tools menu or from an install.packages() command.
 #'
-#' install.packages('lmerTest')\cr
-#' install.packages('lsmeans')\cr
-#' install.packages('pbkrtest')\cr
-#' install.packages('lattice')\cr
-#' install.packages('nlme')\cr
-#' install.packages('ggplot2')\cr
-#'
-#' Further information can be obtained from a
-#' web search e.g.: \href{https://www.r-bloggers.com/installing-r-packages/}{R-bloggers}
-#'
+#' NB. It is important to keep packages updated using the update.packages() command.
 #'
 #' \strong{Examples}
 #' \enumerate{
@@ -64,6 +60,9 @@
 #' @references
 #'
 #' H.P. Piepho, R.N. Edmondson. (2017). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
-#' treatment factor levels.Journal of Agronomy and Crop Science. Submitted
+#' treatment factor levels.Journal of Agronomy and Crop Science. Submitted.
+#'
+#' Nelder, J. A. (2000). Functional marginality and response-surface fitting. Journal of Applied Statistics, 26, 109-122.
+#'
 #'
 NULL

@@ -1,3 +1,5 @@
+#' @title turnip data for EXAMPLE 5
+#' @description
 #' Mead (1988, p. 323) describes an experiment on spacing effects with turnips,
 #' which was laid out in three complete blocks. Five different seed rates
 #' (0.5, 2, 8, 20, 32 lb/acre) were tested in combination with four row widths
@@ -6,9 +8,7 @@
 #' analysis because this stabilized the variance (Mead, 1988; also see Figure 12).
 #' Mead, R. (1988). The design of experiments. Statistical principles for practical application.
 #' Cambridge: Cambridge University Press.
-#' @name turnip
 #' @docType data
 #' @usage data(turnip)
 #' @keywords data
-NULL
-
+"turnip"

@@ -1,7 +1,5 @@
 #' @name example4
-#'
 #' @title  EXAMPLE 4: One qualitative treatment factor with repeated measurements over time.
-#'
 #' @description
 #' Milliken & Johnson (1992, p. 429) describe an experiment with four sorghum varieties, in which the leaf area
 #' index was assessed in five consecutive weeks starting two weeks after emergence. The experiment was laid out
@@ -49,7 +47,7 @@
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
 #'
 #' @examples
-#' \dontrun{
+#'
 #' options(contrasts=c('contr.treatment','contr.poly'))
 #' require(nlme)
 #' ## Loads sorghum data and includes polynomials for week and block contrasts
@@ -61,6 +59,7 @@
 #' PolBlocks=poly(sorghum$varblock, degree=4, raw=FALSE)
 #' colnames(PolBlocks)=c("linBlock","quadBlock","cubBlock","quartBlock")
 #' sorghum=cbind(sorghum,PolBlocks)
+#' \dontrun{
 #'
 #' AIC=NULL
 #' logLik=NULL
@@ -123,13 +122,12 @@
 #' summary(quad_Wald)$tTable
 #' plot(quad_Wald,sub.caption=NA,main="Residuals from quadratic model")
 #'
+#' }
 #' ## Generalization: orthogonal polynomials for a long series of repeated measures:
 #' orthoPolWeek=poly(sorghum$varweek, degree=4, raw=FALSE)
 #' quad_orthog_Wald = gls(y ~ PolBlocks + PolBlocks:(linWeek + quadWeek + orthoPolWeek[,3:4]) +
 #' variety * (linWeek + quadWeek),corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
 #' anova(quad_orthog_Wald)
 #' summary(quad_orthog_Wald)$tTable
-#'
-#' }
 #'
 NULL

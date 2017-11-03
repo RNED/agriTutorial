@@ -2,7 +2,7 @@
 % Please edit documentation in R/example1.R
 \name{example1}
 \alias{example1}
-\title{EXAMPLE 1: SPLIT-PLOT DESIGN WITH ONE QUALITATIVE AND ONE QUANTITATIVE LEVEL TREATMENT FACTOR}
+\title{EXAMPLE 1: Split-plot design with one qualitative and one quantitative level factor}
 \description{
 Gomez & Gomez (1984, p. 143) report a rice experiment with three management practices
 (minimum, optimum, intensive), five different amounts of nitrogen (N) fertilizer
@@ -13,40 +13,49 @@ The fertilizer treatments were applied to main plots, the management practices t
 split-plots and the varieties to split-split plots.
 }
 \details{
-The first stage of the analysis calculates a full set of four raw polynomials for the 5-levels of N using
-the poly() function. The N rates are re-scaled by division by 100 to improve numerical stability.
+\strong{Section 1}
 
-The second stage calculates a full analysis of variance (Table 1) for main plots (nitrogen), split-plots
-(management) and split-split plots (variety). Each type of experimental unit (or "stratum") requires
- a separate error term in the fitted analysis.
+Section 1 examiness treatment effects by fitting qualitative factorial models and the first analysis
+calculates a full analysis of variance (Table 1) for main plots (nitrogen),
+split-plots (management) and split-split plots (variety). Each type of experimental unit (or "stratum")
+requires a separate error term in the fitted analysis.
 
-The next stage (Table 2) uses REML mixed model analysis to find treatment means and SE's for each marginal
+The second analysis (Table 2) uses REML mixed model analysis to find treatment means and SE's for each marginal
 treatment classification averaged over all the other treatment factors, together with estimates of
 pairwise contrasts of treatment means and the SE' of each pairwise treatment comaparison.
 
-The third stage (Table 3) shows a mixed model analysis of the full factorial model fitted by REML using the lmer function
-of the lme4 package. Generally with mixed models, determination of the denominator degrees of freedom for
-Wald-type F- and t-statistics becomes an issue, and here we use the method proposed by Kenward & Roger (1997).
+The third analysis (Table 3) shows a mixed model analysis of the full factorial model fitted by REML using the
+lmer function of the lme4 package. Generally with mixed models, determination of the denominator degrees of
+freedom for Wald-type F- and t-statistics becomes an issue, and here we use the method proposed by
+Kenward & Roger (1997).
 
-Table 7 shows a mixed model polynomial analysis of nitrogen effects assuming additive management effects.
+\strong{Section 2}
+
+Section 2 examines treatment effects by fitting polynomial models and provides a
+more complete examination of quantitative treatment factor effects The first step is to calculate a full set of four raw polynomials
+for the 5-levels of N using the poly() function. The N rates are re-scaled by division by 100 to improve numerical stability.
+
+The first analysis (Table 7) shows a mixed model polynomial analysis of nitrogen effects assuming additive management effects.
 In this analysis, most of the nitrogen treatment effect can be explained by linear and quadratic trend effects.
 but it is important to note that there is a non-negligible Variety x Cubic N interaction effect. This suggests
 that not all the varieties responded in a similar way to
-the N treatments and that some further analysis of the data may be required (see the N plots for individual
+the N treatments and that some further analysis of the data may be required (see the N plots of individual
 varieties and replicates in Fig 1).
 
-Table 8 shows the fitted model for estimating the actual coefficients of the the nitrogen model. Models for estimating
+The second analysis (Table 8) shows the fitted model for estimating actual model coefficients for the nitrogen model.
+Models for estimating
 effects should include only those terms that are significant for the fitted model therefore only the linear and
 quadratic nitrogen trend terms are included in this model. The fitted model for the nitrogen effects fits the
 actual actual nitrogen levels used in the experiment as these provide the simplest interpretation of the
 nitrogen effects.
 
-Fig 1 shows individual plots of the nitrogen response for each variety in each block averaged over management effects.
+Next, individual plots of the nitrogen response for each variety in each block averaged over management effects are
+produced (Fig 1).
 These plots show the nitrogen response of each variety in each replicate block separately and there is some evidence
 of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice, this anomaly would be
- investigated by further discussion with the research workers.
+investigated by further discussion with the research workers.
 
-The final figure show a scatter plot of the residuals from the full N model. Residual plots are an important
+Finally, a scatter plot of the residuals from the full N model is shown. Residual plots are an important
 check on model assumptions but many more options for model testing are available and further methods for diagnostic testing
 will be examined in subsequent examples.
 }
@@ -54,25 +63,20 @@ will be examined in subsequent examples.
 ## Copy and paste the following code into a R console or GUI to run examples
 ## Packages lmerTest, lsmeans and pbkrtest MUST be installed
 
-\dontrun{
+## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample1.txt") #sink file for outputs
 options(contrasts=c('contr.treatment','contr.poly'))
 require(lmerTest)
 require(lsmeans)
 require(pbkrtest)
-## loads rice data
 data(rice)
 
-## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample1.txt") #sink file for outputs
-## adds raw N polynomials to data frame: note that the nrate is re-scaled
-N=poly((rice$nrate/100),4,raw=TRUE)
-colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
-rice=cbind(rice,N)
+## **********Section 1: Qualitative analysis of factorial treatment effects***************.
 
 ## Table 1 Full analysis of rice data assuming qualitative nitrogen effects
 rice.aov1 = aov(yield ~ Replicate + management*variety*nitrogen +
 Error(Replicate/Main/Sub),rice)
 summary(rice.aov1, ddf="Kenward-Roger",type = 1)
-
+\dontrun{
 ## Table 2 REML means and se's for additive management and qualitative nitrogen effects
 rice.means= lmer(yield ~ Replicate + management+ nitrogen*variety +
 (1|Replicate:Main)+ (1|Replicate:Main:Sub), data=rice)
@@ -90,6 +94,13 @@ rice.lmer= lmer(yield ~ Replicate + nitrogen*management*variety + (1|Replicate:M
 (1|Replicate:Main:Sub), data=rice)
 anova(rice.lmer, ddf="Kenward-Roger",type = 1)
 
+## **********Section 2: Quantitative analysis of factorial treatment effects***************.
+
+## adds raw N polynomials to data frame: note that the nrate is re-scaled
+N=poly((rice$nrate/100),4,raw=TRUE)
+colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
+rice=cbind(rice,N)
+
 ## Table 7: Mixed model fitting raw polynomials for nitrogen effects
 rice.fullN= lmer(yield ~ Replicate + management + variety*(Linear_N + Quadratic_N +
 Cubic_N + Quartic_N) + (1|Replicate:Main)+ (1|Replicate:Main:Sub) , data=rice)
@@ -99,9 +110,8 @@ anova(rice.fullN, ddf="Kenward-Roger",type = 1)
 rice.quadN= lmer(yield ~ Replicate + management + variety*Linear_N + Quadratic_N +
 (1|Replicate:Main) + (1|Replicate:Main:Sub), data=rice)
 summary(rice.quadN, ddf="Kenward-Roger")
-# sink() #closes sink file
 
-# pdf("F:\\\\tutorial2\\\\OutputsR\\\\outExample1_Fig_S1.pdf") #opens a graphical pdf output file
+## pdf("F:\\\\tutorial2\\\\OutputsR\\\\outExample1_Fig_S1.pdf") #opens a graphical pdf output file
 ## Fig 1 Nitrogen response per variety per plot showing anomalous behaviour of Variety 1
 Rice=aggregate(rice$yield, by=list(rice$Replicate, rice$nitrogen,rice$variety),
 FUN=mean, na.rm=TRUE)
@@ -120,9 +130,10 @@ outer=TRUE)
 ## Residual plot assuming additive management and full N x variety interaction effects
 plot(rice.fullN,sub.caption=NA,ylab="Residuals",xlab="Fitted",
 main="Full analysis with full nitrogen effects")
-#dev.off()
-
+## dev.off()# closes graphical device
 }
+## sink() #closes sink file
+
 
 }
 \references{
