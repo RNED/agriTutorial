@@ -7,18 +7,17 @@
 \alias{agriTutorial-package}
 \title{Tutorial analysis of designed agricultural experiments}
 \description{
-The \code{agri.tutorial} package provides software support for the example data sets
- discussed in Piepho and Edmondson (2017).The package includes five real data sets from
- practical experiments and the example code demonstrates a range of modern statistical
- methods for the analysis of the example data sets.
+The \code{agri.tutorial} package provides software support for the analysis of
+ the five example data sets discussed in Piepho and Edmondson (2017).
+ The package provides data sets for the five examples and also provides
+ example code for the analysis of the example data sets using a range
+  of modern statistical methods.
 }
 \details{
 \strong{Analysis}
  The five examples presented in this package are discussed in detail in
- Piepho & Edmondson (2017). This package provides the data sets and the example
- code used in that paper and a range of statistical methods are
-exemplified using a range of R statistical packages (see below).
-The experimental data is made available as a separate data set for each example
+ Piepho & Edmondson (2017). The experimental data is made available as
+ a separate data set for each example
 and the R analysis code is made available as a set of example analyses for each
 example data set.
 
@@ -28,23 +27,23 @@ Textual output should appear in the gui or terminal window but can be diverted t
 text file by using a sink file command, if required. Graphical output should appear in the gui graphics
 window but can be diverted to a suitable pdf file by using a pdf file command, if required.
 The code for opening and closing .txt files and .pdf files is shown commented-out by hashes in
-the example programs but can copied and edited without the hashes, if required
-(hashed code is ignored by R). The "dontrun" tags in the example code are used during package testing
+the example programs. The "dontrun" tags in the example code are required for package testing
 at CRAN and and can be ignored here.
 
 \strong{Polynomials}
-Polynomials used in this tutorial are either raw or orthogonal polynomials. Raw polynomials are
-the actual powers of a numeric vector whereas orthogonal polynomials are functions
-which succesively account for the ascending powers of a numeric vector and are simultaneously
-orthogonal to all lower-degree
-powers of that vector. Raw polynomials are simpler to interpret than orthogonal polynomials but can
-become numerically unstable for higher-degree powers of large vectors.
+The polynomials used in this tutorial are either raw or orthogonal polynomials. Raw polynomials are
+the actual powers of numeric vectors whereas orthogonal polynomials are functions
+which succesively account for the ascending powers of a numeric vector but which remain
+orthogonal to all lower-degree powers of that vector. Raw polynomials are simpler to interpret
+than orthogonal polynomials but can become numerically unstable for high-degree powers of large vectors.
 
 \strong{Functional marginality}
-Functional marginality requires that if a polynomial term of given degree is included in a model, all
- polynomial terms of lower degree must also be included in the model. Functional marginality applies to
-any response surface design including designs with polynomial interaction effects (Nelder, 2000) and in
-this tutorial all polynomial models and response surface designs will exhibit functional marginality.
+A polynomial expansion of an unknown function requires that if a polynomial term of any given degree
+is included in an expansion, then all polynomial terms of lower degree must also be included. This
+property is functional marginality and applies to any response surface design
+including designs with polynomial interaction effects (Nelder, 2000). In this tutorial,
+all polynomial models and response surface designs will be assumed to obey the requirements of
+functional marginality.
 
 \strong{Packages}
 The example code depends on a number of R packages which must be installed on the user machine before
