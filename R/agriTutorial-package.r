@@ -28,16 +28,21 @@
 #' at CRAN and and can be ignored here.
 #'
 #' \strong{Polynomials}
-#' The polynomials used in this tutorial are either raw or orthogonal polynomials. Raw polynomials are
-#' the actual powers of numeric vectors whereas orthogonal polynomials are functions
-#' which succesively account for the ascending powers of a numeric vector but which remain
-#' orthogonal to all lower-degree powers of that vector. Raw polynomials are simpler to interpret
-#' than orthogonal polynomials but can become numerically unstable for high-degree powers of large vectors.
+#' The polynomials used in this tutorial are either raw polynomials or orthogonal polynomials.
+#' Raw polynomials are the actual powers of numeric vectors whereas orthogonal polynomials are
+#' functions which account for the succesive powers of a numeric
+#' vector but which are mutually orthogonal. Raw polynomials fit the
+#' actual coefficients of the assumed polynomial model but significance tests of the individual
+#' polynomial effects must be based on
+#' the added effect of each new effect after allowing for all lower-degree effects whereas orthogonal
+#' polynomials provide independent significance tests for each individual model term However,
+#' orthogonal polynomial terms are linear combinations of the raw polynomial coefficients
+#' and can be very difficult to interpret.
 #'
 #' \strong{Functional marginality}
 #' A polynomial expansion of an unknown function requires that if a polynomial term of any given degree
-#' is included in an expansion, then all polynomial terms of lower degree must also be included. This
-#' property is functional marginality and applies to any response surface design
+#' is included in the expansion, then all polynomial terms of lower degree must also be included. This
+#' is the property of functional marginality and applies to any response surface design
 #' including designs with polynomial interaction effects (Nelder, 2000). In this tutorial,
 #' all polynomial models and response surface designs will be assumed to obey the requirements of
 #' functional marginality.

@@ -22,7 +22,11 @@ requires a separate error term in the fitted analysis.
 
 The second analysis (Table 2) uses REML mixed model analysis to find treatment means and SE's for each marginal
 treatment classification averaged over all the other treatment factors, together with estimates of
-pairwise contrasts of treatment means and the SE' of each pairwise treatment comaparison.
+pairwise contrasts of treatment means and the SE's of the pairwise treatment comparisons. This analysis fits
+the full set of nitrogen by variety interaction effects assuming additive managment effects and the fit of the model
+is tested by a graphical plot of the model residuals.
+Residual plots provide an important check on model assumptions but many more options for model testing are
+available and further methods for diagnostic testing will be examined in subsequent examples.
 
 The third analysis (Table 3) shows a mixed model analysis of the full factorial model fitted by REML using the
 lmer function of the lme4 package. Generally with mixed models, determination of the denominator degrees of
@@ -31,39 +35,33 @@ Kenward & Roger (1997).
 
 \strong{Section 2}
 
-Section 2 examines treatment effects by fitting polynomial models and provides a
-more complete examination of quantitative treatment factor effects The first step is to calculate a full set of four raw polynomials
-for the 5-levels of N using the poly() function. The N rates are re-scaled by division by 100 to improve numerical stability.
+Section 2 examines treatment effects by fitting polynomial models and the first step calculates
+a full set of four raw polynomials for the 5-levels of N using the poly() function.
+The N rates are re-scaled by division by 100 to improve numerical stability.
 
-The first analysis (Table 7) shows a mixed model polynomial analysis of nitrogen effects assuming additive management effects.
+The second step fits a mixed model polynomial analysis of nitrogen effects assuming additive management effects (Table 7).
 In this analysis, most of the nitrogen treatment effect can be explained by linear and quadratic trend effects.
 but it is important to note that there is a non-negligible Variety x Cubic N interaction effect. This suggests
-that not all the varieties responded in a similar way to
-the N treatments and that some further analysis of the data may be required (see the N plots of individual
-varieties and replicates in Fig 1).
+that not all the varieties responded in a similar way to the N treatments and that some further analysis of the
+data may be required (see also the N plots of individual varieties and replicates in Fig 1).
 
-The second analysis (Table 8) shows the fitted model for estimating actual model coefficients for the nitrogen model.
-Models for estimating
-effects should include only those terms that are significant for the fitted model therefore only the linear and
-quadratic nitrogen trend terms are included in this model. The fitted model for the nitrogen effects fits the
-actual actual nitrogen levels used in the experiment as these provide the simplest interpretation of the
-nitrogen effects.
+The third step in this section finds the fitted model for estimating the actual fitted model coefficients (Table 8) .
+When estimating model effects, only those terms that are significant for the fitted model should be included in the model
+therefore only linear and quadratic nitrogen trend terms are included in this model. The fitted model for the nitrogen
+effects fits the actual actual nitrogen levels used in the experiment as these provide coefficients appropriate for
+the actual applied nitrogen levels.
 
-Next, individual plots of the nitrogen response for each variety in each block averaged over management effects are
-produced (Fig 1).
-These plots show the nitrogen response of each variety in each replicate block separately and there is some evidence
-of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice, this anomaly would be
-investigated by further discussion with the research workers.
-
-Finally, a scatter plot of the residuals from the full N model is shown. Residual plots are an important
-check on model assumptions but many more options for model testing are available and further methods for diagnostic testing
-will be examined in subsequent examples.
+Finally, individual plots of the nitrogen response for each variety in each block averaged over management effects are
+shown (Fig 1). These plots show the nitrogen response of each variety in each replicate block separately and
+there is some evidence of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice,
+this anomaly would need to be investigated by further discussion with the research workers.
 }
 \examples{
 ## Copy and paste the following code into a R console or GUI to run examples
 ## Packages lmerTest, lsmeans and pbkrtest MUST be installed
 
 ## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample1.txt") #sink file for outputs
+## pdf("F:\\\\tutorial2\\\\OutputsR\\\\outExample1_Fig_S1.pdf") #opens a graphical pdf output file
 options(contrasts=c('contr.treatment','contr.poly'))
 require(lmerTest)
 require(lsmeans)
@@ -76,10 +74,15 @@ data(rice)
 rice.aov1 = aov(yield ~ Replicate + management*variety*nitrogen +
 Error(Replicate/Main/Sub),rice)
 summary(rice.aov1, ddf="Kenward-Roger",type = 1)
+
 \dontrun{
 ## Table 2 REML means and se's for additive management and qualitative nitrogen effects
 rice.means= lmer(yield ~ Replicate + management+ nitrogen*variety +
 (1|Replicate:Main)+ (1|Replicate:Main:Sub), data=rice)
+anova(rice.means, ddf="Kenward-Roger",type = 1)
+plot(rice.means,sub.caption=NA,ylab="Residuals",xlab="Fitted",
+main="Full analysis with full nitrogen effects")
+## dev.off()# closes graphical device
 lsmeans::lsmeans(rice.means,~nitrogen)
 lsmeans::lsmeans(rice.means,~variety)
 lsmeans::lsmeans(rice.means,~nitrogen*variety)
@@ -111,7 +114,6 @@ rice.quadN= lmer(yield ~ Replicate + management + variety*Linear_N + Quadratic_N
 (1|Replicate:Main) + (1|Replicate:Main:Sub), data=rice)
 summary(rice.quadN, ddf="Kenward-Roger")
 
-## pdf("F:\\\\tutorial2\\\\OutputsR\\\\outExample1_Fig_S1.pdf") #opens a graphical pdf output file
 ## Fig 1 Nitrogen response per variety per plot showing anomalous behaviour of Variety 1
 Rice=aggregate(rice$yield, by=list(rice$Replicate, rice$nitrogen,rice$variety),
 FUN=mean, na.rm=TRUE)
@@ -127,9 +129,6 @@ for (j in 1:3)
 title(main="Fig S1. Variety response to nitrogen in individual replicate blocks",
 outer=TRUE)
 
-## Residual plot assuming additive management and full N x variety interaction effects
-plot(rice.fullN,sub.caption=NA,ylab="Residuals",xlab="Fitted",
-main="Full analysis with full nitrogen effects")
 ## dev.off()# closes graphical device
 }
 ## sink() #closes sink file
