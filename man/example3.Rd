@@ -8,9 +8,8 @@
 greenhouse experiment involving duration of water stress (W) and level of nitrogen application (N).
 The experiment had four water-stress levels (0, 10, 20 and 40 days) as main-plot treatments and
 four nitrogen rates (0, 90, 180 and 270 kg/ha) as sub-plot treatments with main plots
-randomized within four complete blocks. In this analysis Ppolynomial models are built by adding individual
-treatment effects in a strict order of importance where the lower-degree effects of a
-factorial combination must be added first before the higher-degree effects for that factorial combination.
+randomized within four complete blocks. In this analysis, all polynomial models are built by adding individual
+polynomial effects in acccordance with the requirements of functional marginality.
 }
 \details{
 The first stage of the analysis is the calculation of polynomial powers of N and W using the poly() function.
@@ -50,29 +49,32 @@ PolN=poly((greenrice$N/100), degree=2, raw=TRUE)
 colnames(PolN)=c("Linear_N","Quadratic_N")
 greenrice=cbind(greenrice,PolW,PolN)
 
-## residuals from untransformed versus log transformed uptake data assuming full model
+## residual plots of untransformed versus log transformed uptake data
 greenrice.uptake = lmer(uptake ~ Replicate + factor(N) * factor(W)
   + (1|Replicate:Main), data=greenrice)
-plot(greenrice.uptake,main="Example 3: untransformed", ylab="Residuals N uptake ")
+plot(greenrice.uptake,main="Example 3: untransformed",
+ ylab="Residuals N uptake")
 
  \dontrun{
-greenrice.loguptake= lmer(loguptake ~ Replicate + factor(N) * factor(W)
- + (1|Replicate:Main), data=greenrice)
-plot(greenrice.loguptake,main="Example 3: transformed ", ylab="Residuals log N uptake")
+greenrice.loguptake= lmer(loguptake ~ Replicate +
+factor(N) * factor(W) + (1|Replicate:Main), data=greenrice)
+plot(greenrice.loguptake,main="Example 3: transformed ",
+ylab="Residuals log N uptake")
 
-## Tables 9 first-order model of log uptake showing Wald F-tests and lack of fit
-greenrice.lmer1 = lmer(loguptake ~ Linear_N + Linear_W + Nitrogen*Water +
-(1|Replicate) + (1|Replicate:Main),data=greenrice)
+## Tables 9 first-order model of log uptake and Wald tests
+greenrice.lmer1 = lmer(loguptake ~ Linear_N + Linear_W +
+Nitrogen*Water + (1|Replicate) + (1|Replicate:Main),data=greenrice)
 anova(greenrice.lmer1, ddf="Kenward-Roger",type = 1)
 
-## Tables 10 second-order model of log uptake showing Wald F-tests and lack of fit
-greenrice.lmer2 = lmer(loguptake  ~Linear_N * Linear_W + Quadratic_N + Quadratic_W +
-Nitrogen*Water + (1|Replicate) + (1|Replicate:Main),data=greenrice)
+## Tables 10 second-order model of log uptake and Wald tests
+greenrice.lmer2 = lmer(loguptake  ~Linear_N * Linear_W + Quadratic_N +
+Quadratic_W +  Nitrogen*Water + (1|Replicate) + (1|Replicate:Main),
+data=greenrice)
 anova(greenrice.lmer2, ddf="Kenward-Roger",type = 1)
 
-## Regression coefficients for quadratic response surface model for water and nitrogen
-greenrice.lmer0 = lmer(loguptake  ~Linear_N * Linear_W + Quadratic_N + Quadratic_W +
-(1|Replicate) + (1|Replicate:Main),data=greenrice)
+## Regression coefficients of quadratic response model of W and N
+greenrice.lmer0 = lmer(loguptake  ~Linear_N * Linear_W + Quadratic_N +
+Quadratic_W + (1|Replicate) + (1|Replicate:Main),data=greenrice)
 summary(greenrice.lmer0, ddf="Kenward-Roger",type = 1)
 
 panel.plot <- function(x, y) {
@@ -86,7 +88,8 @@ xyplot(loguptake ~ Linear_N|factor(Linear_W),data=greenrice,
  scales=list(x=list(at=c(0,.9,1.8,2.7), labels=c(0,90,180,270))),
  main="Fig 4: Marginal model for nitrogen rate",
  xlab = " Nitrogen (kg/ha)", ylab = "Log nitrogen uptake (g/pot)",
- strip = strip.custom(strip.names = TRUE, factor.levels = c("0","10","20","40")),
+ strip = strip.custom(strip.names = TRUE,
+ factor.levels = c("0","10","20","40")),
 panel = panel.plot)
 
 panel.plot <- function(x, y) {
@@ -100,7 +103,8 @@ xyplot(loguptake ~ Linear_W|factor(Linear_N),data=greenrice,
  scales=list(x=list(at=c(0,1,2,4), labels=c(0,10,20,40))),
  main="Fig 4: Marginal model for water stress",
  xlab = " Water stress (days)", ylab = "Log nitrogen uptake (g/pot)",
- strip = strip.custom(strip.names = TRUE, factor.levels = c("0","90","180","270")),
+ strip = strip.custom(strip.names = TRUE,
+ factor.levels = c("0","90","180","270")),
 panel = panel.plot)
 
 }

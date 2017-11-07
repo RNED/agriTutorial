@@ -13,7 +13,7 @@ The fertilizer treatments were applied to main plots, the management practices t
 split-plots and the varieties to split-split plots.
 }
 \details{
-\strong{Section 1}
+Section 1
 
 Section 1 examiness treatment effects by fitting qualitative factorial models and the first analysis
 calculates a full analysis of variance (Table 1) for main plots (nitrogen),
@@ -33,7 +33,7 @@ lmer function of the lme4 package. Generally with mixed models, determination of
 freedom for Wald-type F- and t-statistics becomes an issue, and here we use the method proposed by
 Kenward & Roger (1997).
 
-\strong{Section 2}
+Section 2
 
 Section 2 examines treatment effects by fitting polynomial models and the first step calculates
 a full set of four raw polynomials for the 5-levels of N using the poly() function.
