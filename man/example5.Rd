@@ -18,14 +18,14 @@ In each case, the model lack-of-fit is examined by assessing the extra variabili
 Density and Spacing treatment factors and their interactions are added to the quadratic regression models.
 All yields are logarithmically transformed to stabilize the variance.
 
-The first analysis fitted a quadratic regression model of log yields on the untransformed seed rates and row
-widths (Table 16) while the second analysis fitted a quadratic regression model of log yields on the log
+The first analysis fits a quadratic regression model of log yields on the untransformed seed rates and row
+widths (Table 16) while the second analysis fits a quadratic regression model of log yields on the log
 transformed seed rates and log transformed row widths (Table 17). The analysis of variance of the first model
-shows that significant extra variability was explained by the Density and
-Spacing factors and this shows that a quadratic regression model was inadequate for the untransformed regressor
+shows that significant extra variability is explained by the Density and
+Spacing factors and this shows that a quadratic regression model is inadequate for the untransformed regressor
 variables. The analysis of variance of the second model, however, shows no significant extra variability
 explained by the Density and Spacing factors and this shows that the quadratic regression model with the log
-transformed regressor variables gave a good fit to the data and should be the preferred model for the
+transformed regressor variables gives a good fit to the data and should be the preferred model for the
 observed data.
 
 The superiority of the model with log transformed regressor variables is confirmed by an examination of

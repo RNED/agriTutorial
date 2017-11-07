@@ -1,13 +1,13 @@
 #' @name example4
 #' @title  EXAMPLE 4: One qualitative treatment factor with repeated measurements over time.
 #' @description
-#' Milliken & Johnson (1992, p. 429) describe an experiment with four sorghum varieties, in which the leaf area
+#' Milliken & Johnson (1992, p. 429) describe an experiment with four sorghum varieties in which the leaf area
 #' index was assessed in five consecutive weeks starting two weeks after emergence. The experiment was laid out
 #' in five randomized complete blocks and had one qualitative factor (variety) and one quantitative factor (week).
 #' The week factor was a repeated measurement taken on each plot on five consecutive occasions over time,
 #' which means that successive measurements on the same plot are likely to be serially correlated. For a valid
 #' analysis, the serial correlations between the repeated measures must be modelled by assuming a
-#' suitable correlation structure for repeat observations on the same units.
+#' suitable correlation structure for the repeated observations on the individual experimental units.
 #'
 #' @details
 #' The first stage of the analysis is the calculation of raw polynomials for weeks and orthogonal
@@ -34,14 +34,15 @@
 #' positive residuals and this suggests that some further investigation of the adequacy of the fitted model
 #' would be valuable.
 #'
-#' Unfortunately, the gls() function, must contain the same polynomial terms in the blocks interaction model as in
-#' the treatments regression model, which is why raw polynomials are used for the blocks model.
+#' A problem with the gls() function is that it must contain the same polynomial terms in the
+#' blocks interaction model as in the treatments regression model,
+#' which is why we have used raw polynomials for the blocks model.
 #' However for a long series of repeated measures, raw polynomials can become numerically unstable
-#' and will eventually fail. The final generalization shows how orthogonal polynomials can be used for the
+#' and will eventually fail. The final generalization shows how orthogonal polynomials CAN be used for the
 #' blocks model PROVIDED that the orthogonal terms in the blocks model are
 #' of higher-degree than those in the treatments model. This formulation gives a numerically
-#' stable model for any repeated measures analysis provided only that the treatment effects model is a
-#' low-degree polynomial.
+#' stable model for any repeated measures analysis irrespective of the length of the repeated measures series.
+#'
 #'
 #' @references
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.

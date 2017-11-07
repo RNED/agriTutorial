@@ -13,24 +13,30 @@ polynomial effects in acccordance with the requirements of functional marginalit
 }
 \details{
 The first stage of the analysis is the calculation of polynomial powers of N and W using the poly() function.
- The N rates are re-scaled by division by 100 while the W rates are re-scaled by division by 10.
+The N rates are re-scaled by division by 100 while the W rates are re-scaled by division by 10.
 
-The second stage compares (Pearson) residual plots for the untransformed N uptake data versus the
-log transformed N uptake data. The plots show that the untransformed residuals increase as the fitted values
-increase showing that the variance of the untransformed data is non-constant. The log transformed N uptake
-residuals, however, are approximately constant over the full range of fitted values indicating that the
-variance of the transformed data is approximately constant. Therefore the log transformed data is
-the most appropriate data for a simple unweighted analysis of variance.
+The second stage compares (Pearson) a residual plot of the untransformed N uptake data versus a residual plot of
+the log transformed N uptake data. Comparison of the two plots shows that the untransformed residuals
+increase as the fitted values increase, which shows that the variance of the untransformed data is non-constant.
+The log transformed N uptake residuals, however, are approximately constant over the full range of fitted values
+and this shows that the log transformed N uptake data can be used to fit a simple unweighted analysis of
+variance for the effects of the treatment factors.
+
+Sometimes the original scale of measurement is the proper scale of measurement for an analysis
+eg actual measured crop yields, and then it can be appropriate to fit a weighted analysis of variance in the
+original scale of measurement. However, in this example, a log transformation of the dependent variable
+simply assumes a proportional rather than an additive model for nitrogen effects and this may well be a more natural
+physiological model for the effects of N uptake on crop production than a simple additive model.
 
 The next stage compares the fit of a first-order linear model (Table 9) versus a second-order quadratic
 model (Table 10). The first-order model shows significant lack-of-fit and is not adequate for the
-data. The second-order model is not fully adequate for the data because there is a significant Nitrogen lack of
-fit term indicating a significant cubic effect in the model. However, the magnitude of the effect is quite
-small and it will be assumed here that the quadratic model is adequate for the data.
+data. The second-order model is also not fully adequate for the data as there is a significant Nitrogen lack of
+fit term indicating a significant cubic effect. However, the magnitude of the cubic effect is
+relatively small and it will be assumed here that a quadratic model is adequate for the data.
 
-The final stage calculates the regression coefficients for quadratic response surface model for the
-(rescaled) water and (rescaled) nitrogen treatments and these coefficients are then used to
-plot the fitted quadratic loguptake curves versus the nitrogen rate treatments and the
+The final stage fits regression coefficients for the quadratic response surface model on the
+rescaled water stress and rescaled nitrogen rate treatments. The fitted coefficients are then used to
+plot the fitted quadratic log uptake curves versus the nitrogen rate treatments and the
 water stress treatments shown in Fig 4.
 }
 \examples{
