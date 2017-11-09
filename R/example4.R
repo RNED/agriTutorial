@@ -35,15 +35,16 @@
 #' would be valuable.
 #'
 #' A problem with the gls() function is that it must contain the same polynomial terms in the
-#' blocks interaction model as in the treatments regression model,
+#' blocks regression model as in the treatments regression model,
 #' which is why we have used raw polynomials for the blocks model.
 #' However for a long series of repeated measures, raw polynomials can become numerically unstable
-#' and will eventually fail. The final generalization shows how orthogonal polynomials CAN be used for the
-#' blocks model PROVIDED that the orthogonal terms in the blocks model are
-#' of higher-degree than those in the treatments model. This formulation gives a numerically
-#' stable model for any repeated measures analysis irrespective of the length of the repeated measures series.
-#'
-#'
+#' and will eventually fail. The final generalization shows how higher-degree orthogonal
+#' polynomials CAN be used for the blocks regression model PROVIDED that raw polynomials are used
+#' for the blocks regression model terms that match the raw polynomials used for the treatments regression model.
+#' Then the block and the treatments model will both contain the same set of raw polynomials allowing
+#' the gls() algorithm to fit the same set of raw polynomials for both the blocks and the treatments model.
+#' This formulation allows numerically stable orthogonal polynomials to be used for higher-degree blocks model
+#' effects while still allowing raw polynomials to be used for the treatments model.
 #' @references
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
 #'
@@ -124,7 +125,7 @@
 #' plot(quad_Wald,sub.caption=NA,main="Residuals from quadratic model")
 #'
 #' }
-#' ## Generalization: orthogonal polynomials for a long series of repeated measures:
+#' ## Generalization: fitting orthogonal polynomials for a long series of repeated measures:
 #' orthoPolWeek=poly(sorghum$varweek, degree=4, raw=FALSE)
 #' quad_orthog_Wald = gls(y ~ PolBlocks + PolBlocks:(linWeek + quadWeek + orthoPolWeek[,3:4]) +
 #' variety * (linWeek + quadWeek),corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
