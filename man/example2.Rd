@@ -16,17 +16,17 @@ The N rates are re-scaled by division by 100 to improve numerical stability.
 
 The second stage fits a full polynomial analysis of variance based on polynomial contrasts
 fitted in sequence from the lowest to the highest. This is equivalent to the analysis shown in Tables 4 and 5
-of Piepho & Edmondson (2017) except that a complete partition into single degree of freedom polynomial contrasts is
+of Piepho & Edmondson except that a complete partition into single degree of freedom polynomial contrasts is
 shown rather than using a 'lack of fit' term as shown in Tables 4 and 5.
 
 The third stage fits a quadratic regression model with linear and quadratic terms only.
 This model provides the model coefficients, standard errors and the confidence intervals
-shown in Table 6 of Piepho & Edmondson (2017). A set of diagnostic plots are fitted for
+shown in Table 6 of Piepho & Edmondson. A set of diagnostic plots are fitted for
 the fitted quadratic regression model to check the validity of the model assumptions.
 
 Finally, a smoothed quadratic graph of the yield versus the N rate is plotted to show the
 goodness of fit of a quadratic model to the mean yield response to nitrogen rate.
-The plot corresponds to plot Fig 3 in Piepho & Edmondson (2017).
+The plot corresponds to plot Fig 3 in Piepho & Edmondson.
 }
 \examples{
 ## Copy and paste the following code into a R console or GUI: ggplot2 MUST be installed
@@ -69,6 +69,6 @@ theme_bw()
 \references{
 Petersen, R.G. (1994). Agricultural field experiments. Design and analysis. New York: Marcel Dekker.
 
-Piepho, H. P. & Edmondson R. N. (2017). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
+Piepho, H. P. & Edmondson R. N. (submitted). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
 treatment factor levels.Journal of Agronomy and Crop Science. Submitted
 }

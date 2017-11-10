@@ -1,10 +1,12 @@
 Package: agriTutorial
 Type: Package
-Title:  Provides some example analysis of some agricultural experiments 
+Title:  Example Analysis of Some Agricultural Experiments 
 Version: 0.1.0
+Date: 2017-11-09
 Author: R. N. Edmondson and H.P. Piepho
 Maintainer: Rodney Edmondson <rodney.edmondson@gmail.com>
-Description: This package is intended to provide a tutorial teaching 
+Depends: R (>= 3.1.0)
+Description: Example software intended to provide a tutorial teaching 
 	aid for the analysis of data from designed experiments, especially
 	agricultural crop experiments. The basics of statistical analysis
 	of designed experiments are discussed using real examples from 
@@ -13,7 +15,6 @@ Description: This package is intended to provide a tutorial teaching
 	data is made available as a separate data set for each example
 	and the R analysis code is made available as a set of examples.
 	The example R code can be readily extended, as required.
-Depends: R (>= 3.1.0)
 License:  GPL(>= 2)
 Imports:
   lmerTest,

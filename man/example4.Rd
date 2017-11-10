@@ -126,7 +126,7 @@ summary(quad_Wald)$tTable
 plot(quad_Wald,sub.caption=NA,main="Residuals from quadratic model")
 
 }
-## Generalization: orthogonal polynomials for a long series of repeated measures:
+## Generalization: fitting orthogonal polynomials for a long series of repeated measures:
 orthoPolWeek=poly(sorghum$varweek, degree=4, raw=FALSE)
 quad_orthog_Wald = gls(y ~ PolBlocks + PolBlocks:(linWeek + quadWeek + orthoPolWeek[,3:4]) +
 variety * (linWeek + quadWeek),corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
