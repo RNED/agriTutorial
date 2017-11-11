@@ -67,6 +67,8 @@ require(lmerTest)
 require(lsmeans)
 require(pbkrtest)
 data(rice)
+## write.table(rice, "c:/rice.txt", sep="\\t") # export data to a text file
+## write.xlsx(rice, "c:/rice.xlsx") # export data to a spread sheet
 
 ## **********Section 1: Qualitative analysis of factorial treatment effects***************.
 
@@ -132,7 +134,6 @@ outer=TRUE)
 ## dev.off()# closes graphical device
 }
 ## sink() #closes sink file
-
 
 }
 \references{

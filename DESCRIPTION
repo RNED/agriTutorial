@@ -1,6 +1,6 @@
 Package: agriTutorial
 Type: Package
-Title:  Example Analysis of Some Agricultural Experiments 
+Title:  Tutorial Analysis of Some Agricultural Experiments 
 Version: 0.1.0
 Date: 2017-11-09
 Author: R. N. Edmondson and H.P. Piepho

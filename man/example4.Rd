@@ -53,8 +53,10 @@ effects while still allowing raw polynomials to be used for the treatments model
 
 options(contrasts=c('contr.treatment','contr.poly'))
 require(nlme)
-## Loads sorghum data and includes polynomials for week and block contrasts
 data(sorghum)
+## write.table(sorghum, "c:/sorghum.txt", sep="\\t") # export data to a text file
+## write.xlsx(sorghum, "c:/sorghum.xlsx") # export data to a spread sheet
+## Loads sorghum data and includes polynomials for week and block contrasts
 sorghum$factblock=factor(sorghum$varblock)
 PolWeek=poly(sorghum$varweek, degree=4, raw=TRUE)
 colnames(PolWeek)=c("linWeek","quadWeek","cubWeek","quartWeek")

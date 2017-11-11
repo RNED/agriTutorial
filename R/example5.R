@@ -36,7 +36,8 @@
 #'
 #' ## Loads turnip data
 #' data(turnip)
-#'
+#' ## write.table(turnip, "c:/turnip.txt", sep="\t") # export data to a text file
+#' ## write.xlsx(turnip, "c:/turnip.xlsx") # export data to a spread sheet
 #' ## Untransformed spacing and density polynomials
 #' RowSpacing=poly(turnip$rowspacing,3,raw=TRUE)
 #' colnames(RowSpacing)=c("linSpacing","quadSpacing","cubSpacing")

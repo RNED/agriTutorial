@@ -39,6 +39,9 @@
 #' require(ggplot2)
 #' options(contrasts=c('contr.treatment','contr.poly'))
 #' data(beet)
+#' ## write.table(beet, "c:/beet.txt", sep="\t") # export data to a text file
+#' ## write.xlsx(beet, "c:/beet.xlsx") # export data to a spread sheet
+#'
 #' N=poly((beet$nrate/100), degree=4, raw=TRUE)
 #' colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
 #' beet=cbind(beet,N)
@@ -68,6 +71,7 @@
 #' }
 #' ## sink() #closes sink file
 #'
+#' @importFrom ggplot2 ggplot
 #'
 NULL
 

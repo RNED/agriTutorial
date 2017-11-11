@@ -75,6 +75,8 @@
 #' require(lsmeans)
 #' require(pbkrtest)
 #' data(rice)
+#' ## write.table(rice, "c:/rice.txt", sep="\t") # export data to a text file
+#' ## write.xlsx(rice, "c:/rice.xlsx") # export data to a spread sheet
 #'
 #' ## **********Section 1: Qualitative analysis of factorial treatment effects***************.
 #'
@@ -141,5 +143,8 @@
 #' }
 #' ## sink() #closes sink file
 #'
+#' @importFrom lmerTest lmer
+#' @importFrom pbkrtest PBmodcomp
+#' @importFrom lsmeans lsmeans
 #'
 NULL

@@ -52,8 +52,10 @@
 #'
 #' options(contrasts=c('contr.treatment','contr.poly'))
 #' require(nlme)
-#' ## Loads sorghum data and includes polynomials for week and block contrasts
 #' data(sorghum)
+#' ## write.table(sorghum, "c:/sorghum.txt", sep="\t") # export data to a text file
+#' ## write.xlsx(sorghum, "c:/sorghum.xlsx") # export data to a spread sheet
+#' ## Loads sorghum data and includes polynomials for week and block contrasts
 #' sorghum$factblock=factor(sorghum$varblock)
 #' PolWeek=poly(sorghum$varweek, degree=4, raw=TRUE)
 #' colnames(PolWeek)=c("linWeek","quadWeek","cubWeek","quartWeek")
@@ -131,5 +133,7 @@
 #' variety * (linWeek + quadWeek),corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
 #' anova(quad_orthog_Wald)
 #' summary(quad_orthog_Wald)$tTable
+#'
+#' @importFrom nlme nlme
 #'
 NULL

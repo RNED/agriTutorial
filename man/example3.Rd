@@ -46,6 +46,8 @@ require(lattice)
 require(pbkrtest)
 options(contrasts=c('contr.treatment','contr.poly'))
 data(greenrice)
+## write.table(greenrice, "c:/greenrice.txt", sep="\\t") # export data to a text file
+## write.xlsx(greenrice, "c:/greenrice.xlsx") # export data to a spread sheet
 greenrice$loguptake=log(greenrice$uptake)
 greenrice$Nitrogen=factor(greenrice$N)
 greenrice$Water=factor(greenrice$W)
