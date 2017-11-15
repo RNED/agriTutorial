@@ -61,7 +61,7 @@ Packages\cr
 The example code depends on a number of R packages which must be installed on the user machine before
 the code can be properly executed. The required packages are lmerTest, lsmeans, pbkrtest, lattice, nlme and
 ggplot2 which should install automatically. If for any reason packages need to be installed by hand,
-this can be done by using the install.packages() command from the an R interface.
+this can be done by using the install.packages() command from an R interface.
 
 NB. It is important to keep packages updated using the update.packages() command.
 
