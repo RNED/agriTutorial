@@ -6,7 +6,7 @@ Date: 2017-11-09
 Author: R. N. Edmondson and H.P. Piepho
 Maintainer: Rodney Edmondson <rodney.edmondson@gmail.com>
 Depends: R (>= 3.1.0)
-Description: Example software intended to provide a tutorial teaching 
+Description: Example software to provide a tutorial teaching 
 	aid for the analysis of data from designed experiments, especially
 	agricultural crop experiments. The basics of statistical analysis
 	of designed experiments are discussed using real examples from 
