@@ -25,14 +25,14 @@ reproduce the example analysis discussed in Piepho & Edmondson (after loading li
 Textual output appears in the gui or terminal window but can be diverted to a suitable
 text file by using a sink file command, if required. Graphical output appears in the gui graphics
 window but can be diverted to a suitable pdf file by using a pdf file command, if required.
-The example code demonstrates a basic analysis for each example but data should always be
-explored as fully as possibe and we recommend exporting the examples into a suitable file
-or environment for further study. The example code can be copied and pasted and the
-data files can be exported into a text or spread sheet file by using the \code{write.table}
-or \code{write.xlsx} functions, as required.
+The example code demonstrates a basic analysis for each example but
+the examples can be copied into a suitable file
+or environment for further study, if required. The example code can be copied and pasted directly
+in the usual way and the data files can be exported by using the \code{write.table}
+or \code{write.xlsx} functions for text or spread sheet files, as required.
 The code for opening and closing .txt files and .pdf files and for exporting data is shown
-commented-out by hashes in the example programs. The "dontrun" tags are required for package testing
-at CRAN and and can be ignored.
+commented-out by hashes in the example programs and the "dontrun" tags are required only
+for package testing at CRAN and and can be ignored here.
 
 Polynomials\cr
 The polynomials used in this tutorial are either
