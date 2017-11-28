@@ -5,7 +5,7 @@
 \alias{agriTutorial}
 \alias{agritutorial}
 \alias{agriTutorial-package}
-\title{Tutorial Analysis of Some Agricultural Experiments}
+\title{Tutorial Analysis of Agricultural Experiments}
 \description{
 The \code{agri.tutorial} package provides software support for the analysis of
  the five example data sets discussed in Piepho and Edmondson (submitted).
@@ -14,7 +14,7 @@ The \code{agri.tutorial} package provides software support for the analysis of
  analysis of real data from real experiments.
 }
 \details{
-The examples presented in this package are discussed in detail in
+The examples in this package are discussed in detail in
  Piepho & Edmondson (submitted). The experimental data is made available as
  a separate data set for each example and the R analysis code is made available
  as a set of example analyses for each data set.
@@ -22,17 +22,17 @@ The examples presented in this package are discussed in detail in
 Code\cr
 The code for the examples can be copied and pasted directly into any R console terminal window to
 reproduce the example analysis discussed in Piepho & Edmondson (after loading library("agriTutorial")).
-Textual output should appear in the gui or terminal window but can be diverted to a suitable
-text file by using a sink file command, if required. Graphical output should appear in the gui graphics
+Textual output appears in the gui or terminal window but can be diverted to a suitable
+text file by using a sink file command, if required. Graphical output appears in the gui graphics
 window but can be diverted to a suitable pdf file by using a pdf file command, if required.
-The example code demonstrates a basic analysis for each data set but a valid analysis
-should always explore data as fully as possibe and we recommend copying and pasting
-the example code into a suitable file or environment for further editing and development. The
-data sets can be exported to text or spread sheet files by using the \code{write.table}
-or \code{write.xlsx} functions, if required.
+The example code demonstrates a basic analysis for each example but data should always be
+explored as fully as possibe and we recommend exporting the examples into a suitable file
+or environment for further study. The example code can be copied and pasted and the
+data files can be exported into a text or spread sheet file by using the \code{write.table}
+or \code{write.xlsx} functions, as required.
 The code for opening and closing .txt files and .pdf files and for exporting data is shown
 commented-out by hashes in the example programs. The "dontrun" tags are required for package testing
-at CRAN and and can be ignored here.
+at CRAN and and can be ignored.
 
 Polynomials\cr
 The polynomials used in this tutorial are either
