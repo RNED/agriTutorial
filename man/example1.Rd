@@ -57,8 +57,16 @@ there is some evidence of anomalous behaviour by variety 1 in blocks 1 and 2 com
 this anomaly would need to be investigated by further discussion with the research workers.
 }
 \examples{
+
 ## Copy and paste the following code into a R console or GUI to run examples
 ## Packages lmerTest, lsmeans and pbkrtest MUST be installed
+
+\dontrun{
+
+## *************************************************************************************
+##                            Prreliminaries
+##**************************************************************************************
+
 
 ## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample1.txt") #sink file for outputs
 ## pdf("F:\\\\tutorial2\\\\OutputsR\\\\outExample1_Fig_S1.pdf") #opens a graphical pdf output file
@@ -70,14 +78,17 @@ data(rice)
 ## write.table(rice, "c:/rice.txt", sep="\\t") # export data to a text file
 ## write.xlsx(rice, "c:/rice.xlsx") # export data to a spread sheet
 
-## **********Section 1: Qualitative analysis of factorial treatment effects***************.
+
+## *************************************************************************************
+##            Section 1: Qualitative analysis of factorial treatment effects
+##**************************************************************************************
+
 
 ## Table 1 Full analysis of rice data assuming qualitative nitrogen effects
 rice.aov1 = aov(yield ~ Replicate + management*variety*nitrogen +
 Error(Replicate/Main/Sub),rice)
 summary(rice.aov1, ddf="Kenward-Roger",type = 1)
 
-\dontrun{
 ## Table 2 REML means and se's for additive management and qualitative nitrogen effects
 rice.means= lmer(yield ~ Replicate + management+ nitrogen*variety +
 (1|Replicate:Main)+ (1|Replicate:Main:Sub), data=rice)
@@ -99,7 +110,11 @@ rice.lmer= lmer(yield ~ Replicate + nitrogen*management*variety + (1|Replicate:M
 (1|Replicate:Main:Sub), data=rice)
 anova(rice.lmer, ddf="Kenward-Roger",type = 1)
 
-## **********Section 2: Quantitative analysis of factorial treatment effects***************.
+
+## *************************************************************************************
+##            Section 2: Quantitative analysis of factorial treatment effects
+##**************************************************************************************
+
 
 ## adds raw N polynomials to data frame: note that the nrate is re-scaled
 N=poly((rice$nrate/100),4,raw=TRUE)
@@ -131,9 +146,15 @@ for (j in 1:3)
 title(main="Fig S1. Variety response to nitrogen in individual replicate blocks",
 outer=TRUE)
 
+
+## *************************************************************************************
+##                                  Closure
+##**************************************************************************************
+
+
 ## dev.off()# closes graphical device
-}
 ## sink() #closes sink file
+} ## end of dontrun
 
 }
 \references{
