@@ -32,13 +32,27 @@
 #' Cambridge: Cambridge University Press.
 #'
 #' @examples
-## Copy and paste the following code into a R console or GUI to run examples
 #'
+#' \dontrun{
+#'
+#' ## *************************************************************************************
+#' ##                            Preliminaries
+#' ##**************************************************************************************
+#'
+#' ## sink("F:\\tutorial2\\OutputsR\\outExample5.txt") #sink file for outputs
+#' ## pdf("F:\\tutorial2\\OutputsR\\outExample5_Fig_S1.pdf") #opens a graphical pdf output file
 #' ## Loads turnip data
 #' data(turnip)
 #' ## write.table(turnip, "c:/turnip.txt", sep="\t") # export data to a text file
 #' ## write.xlsx(turnip, "c:/turnip.xlsx") # export data to a spread sheet
 #' ## Untransformed spacing and density polynomials
+#'
+#'
+#' ## *************************************************************************************
+#' ##   Quadratic regression models with and without transformation of regressor variables
+#' ##**************************************************************************************
+#'
+#'
 #' RowSpacing=poly(turnip$rowspacing,3,raw=TRUE)
 #' colnames(RowSpacing)=c("linSpacing","quadSpacing","cubSpacing")
 #' Density=poly(turnip$density,4,raw=TRUE)
@@ -57,7 +71,6 @@
 #' Density*Spacing, turnip)
 #' anova(quad.mod)
 #'
-#' \dontrun{
 #' ## Table 17 Quadratic response surface for transformed log planting density by log row spacing
 #' log.quad.mod =
 #' lm(log_yield ~ Replicate + linlogDensity*linlogSpacing + quadlogDensity  + quadlogSpacing +
@@ -77,6 +90,14 @@
 #' plot(fit.log.quad.mod,sub.caption=NA)
 #' title(main="Fig 12b Quadratic response for transformed log density by log row spacing", outer=TRUE)
 #'
+#'
+#' ## *************************************************************************************
+#' ##                                  Closure
+#' ##**************************************************************************************
+#'
+#'
+#' ## dev.off()# closes graphical device
+#' ## sink() #closes sink file
 #' }
 #'
 NULL
