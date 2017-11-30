@@ -33,14 +33,27 @@
 #' treatment factor levels.Journal of Agronomy and Crop Science. Submitted
 #'
 #' @examples
-#' ## Copy and paste the following code into a R console or GUI: ggplot2 MUST be installed
+#'
+#' ## Copy and paste the following code into a R console or GUI:
+#' ## ggplot2 MUST be installed
+#'
+#' \dontrun{
+#'
+#' ## *************************************************************************************
+#' ##                            Preliminaries
+#' ##**************************************************************************************
 #'
 #' ## sink("F:\\tutorial2\\OutputsR\\outExample2.txt") #sink file for outputs
-#' require(ggplot2)
+#' ## pdf("F:\\tutorial2\\OutputsR\\outExample1_Fig_S2.pdf") #opens a graphical pdf output file
 #' options(contrasts=c('contr.treatment','contr.poly'))
+#' require(ggplot2)
 #' data(beet)
 #' ## write.table(beet, "c:/beet.txt", sep="\t") # export data to a text file
 #' ## write.xlsx(beet, "c:/beet.xlsx") # export data to a spread sheet
+#'
+#' ## *************************************************************************************
+#' ##         Polynomial analysis and graphical plots of factorial treatment effects
+#' ##**************************************************************************************
 #'
 #' N=poly((beet$nrate/100), degree=4, raw=TRUE)
 #' colnames(N)=c("Linear_N","Quadratic_N","Cubic_N","Quartic_N")
@@ -49,13 +62,11 @@
 #' ## Tables 4 & 5: Full polynomial analysis of variance based on raw polynomials
 #' anova(lm(yield ~ Replicate +  Linear_N + Quadratic_N + Cubic_N + Quartic_N , data=beet))
 #'
-#' \dontrun{
 #' ##  Table 6: showing quadratic model coefficients with standard errors and confidence intervals
 #' quadratic = lm(yield ~ Replicate +  Linear_N + Quadratic_N, data=beet)
 #' summary(quadratic)
 #' confint(quadratic, level=0.95)
 #'
-#' ## pdf("F:\\tutorial2\\OutputsR\\outExample1_Fig_S2.pdf") #opens a graphical pdf output file
 #' par(mfrow=c(2,2),oma=c(0,0,2,0))
 #' plot(quadratic,sub.caption=NA)
 #' title(main="Diagnostic plots for quadratic nitrogen effects model", outer=TRUE)
@@ -67,9 +78,13 @@
 #' geom_smooth(method=lm, formula=y ~ poly(x, 2))+
 #' theme_bw()
 #'
+#' ## *************************************************************************************
+#' ##                                  Closure
+#' ##**************************************************************************************
+#'
 #' ## dev.off()
-#' }
 #' ## sink() #closes sink file
+#' }
 #'
 #' @importFrom ggplot2 ggplot
 #'

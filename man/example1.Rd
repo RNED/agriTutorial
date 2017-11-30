@@ -64,7 +64,7 @@ this anomaly would need to be investigated by further discussion with the resear
 \dontrun{
 
 ## *************************************************************************************
-##                            Prreliminaries
+##                            Preliminaries
 ##**************************************************************************************
 
 
@@ -154,7 +154,7 @@ outer=TRUE)
 
 ## dev.off()# closes graphical device
 ## sink() #closes sink file
-} ## end of dontrun
+}
 
 }
 \references{

@@ -72,7 +72,7 @@
 #' \dontrun{
 #'
 #' ## *************************************************************************************
-#' ##                            Prreliminaries
+#' ##                            Preliminaries
 #' ##**************************************************************************************
 #'
 #'
@@ -162,7 +162,7 @@
 #'
 #' ## dev.off()# closes graphical device
 #' ## sink() #closes sink file
-#' } ## end of dontrun
+#' }
 #'
 #' @importFrom lmerTest lmer
 #' @importFrom pbkrtest PBmodcomp
