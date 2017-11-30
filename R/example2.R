@@ -44,7 +44,7 @@
 #' ##**************************************************************************************
 #'
 #' ## sink("F:\\tutorial2\\OutputsR\\outExample2.txt") #sink file for outputs
-#' ## pdf("F:\\tutorial2\\OutputsR\\outExample1_Fig_S2.pdf") #opens a graphical pdf output file
+#' ## pdf("F:\\tutorial2\\OutputsR\\outExample2_Fig_S2.pdf") #opens a graphical pdf output file
 #' options(contrasts=c('contr.treatment','contr.poly'))
 #' require(ggplot2)
 #' data(beet)
