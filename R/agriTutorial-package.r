@@ -16,11 +16,11 @@
 #'  as a set of example analyses for each data set.
 #'
 #' Code\cr
-#' The code for the examples can be copied and pasted directly into any R console terminal window to
+#' The example code can be run from any R console terminal window to
 #' reproduce the example analysis discussed in Piepho & Edmondson (after loading library("agriTutorial")).
-#' Textual output appears in the gui or terminal window but can be diverted to a suitable
-#' text file by using a sink file command, if required. Graphical output appears in the gui graphics
-#' window but can be diverted to a suitable pdf file by using a pdf file command, if required.
+#' Textual output appears in the gui or terminal window but, if required, can be diverted to a suitable
+#' text file by using a sink file command. Graphical output appears in the gui graphics
+#' window but, if required, can be diverted to a suitable pdf file by using a pdf file command.
 #' The example code demonstrates a basic analysis for each example but
 #' the examples can be copied into a suitable file
 #' or environment for further study, if required. The example code can be copied and pasted directly
