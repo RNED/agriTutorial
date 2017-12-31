@@ -49,16 +49,28 @@
 #' @references
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
 #'
-#' \code{\link[agriTutorial]{agriTutorial-package}} : (Home page) \cr
-#'
 #' @examples
 #'
+#' \dontrun{
+#'
+#' ## *************************************************************************************
+#' ##                            Preliminaries
+#' ##**************************************************************************************
+#'
+#' ## sink("F:\\tutorial2\\OutputsR\\outExample4.txt") #sink file for outputs
+#' ## pdf("F:\\tutorial2\\OutputsR\\outExample4_Fig_S1.pdf") #opens a graphical pdf output file
 #' options(contrasts=c('contr.treatment','contr.poly'))
 #' require(nlme)
 #' data(sorghum)
 #' ## write.table(sorghum, "c:/sorghum.txt", sep="\t") # export data to a text file
 #' ## write.xlsx(sorghum, "c:/sorghum.xlsx") # export data to a spread sheet
-#' ## Loads sorghum data and includes polynomials for week and block contrasts
+#'
+#'
+#' ## *************************************************************************************
+#' ##            Section 1:  Polynomials for weeks and blocks contrasts
+#' ##**************************************************************************************
+#'
+#'
 #' sorghum$factblock=factor(sorghum$varblock)
 #' PolWeek=poly(sorghum$varweek, degree=4, raw=TRUE)
 #' colnames(PolWeek)=c("linWeek","quadWeek","cubWeek","quartWeek")
@@ -66,7 +78,12 @@
 #' PolBlocks=poly(sorghum$varblock, degree=4, raw=FALSE)
 #' colnames(PolBlocks)=c("linBlock","quadBlock","cubBlock","quartBlock")
 #' sorghum=cbind(sorghum,PolBlocks)
-#' \dontrun{
+#'
+#'
+#' ## *************************************************************************************
+#' ##         Section 2:  Compares correlation stuctures for repeated measures
+#' ##**************************************************************************************
+#'
 #'
 #' AIC=NULL
 #' logLik=NULL
@@ -112,6 +129,12 @@
 #' colnames(AICtable)=c("Covar_Model","-2logLr","-diff2logLr","AIC","diffAIC")
 #' AICtable
 #'
+#'
+#' ## *************************************************************************************
+#' ##         Section 3: Tests for interactions between variety and and week effects
+#' ##**************************************************************************************
+#'
+#'
 #' ## Table A1 Sequential Wald tests for full model sorghum data
 #' full_Wald = gls(y  ~   (factblock + variety) * factweek ,
 #' corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
@@ -122,6 +145,12 @@
 #' corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
 #' anova(pol_Wald)
 #'
+#'
+#' ## *************************************************************************************
+#' ##        Section 4: Fitted quadratic model for variety-by-week interaction effects
+#' ##**************************************************************************************
+#'
+#'
 #' ## Table 15 quadratic model coefficients
 #' quad_Wald = gls(y ~ PolBlocks + PolBlocks:(linWeek + quadWeek + cubWeek + quartWeek) +
 #' variety * (linWeek + quadWeek),corr = corExp(form = ~ varweek | factplot, nugget=TRUE), sorghum)
@@ -129,7 +158,12 @@
 #' summary(quad_Wald)$tTable
 #' plot(quad_Wald,sub.caption=NA,main="Residuals from quadratic model")
 #'
-#' }
+#'
+#' ## *************************************************************************************
+#' ##   Section 5: Adding orthogonal polynomials for high-degree block effects
+#' ##**************************************************************************************
+#'
+#'
 #' ## Generalization: fitting orthogonal polynomials for a long series of repeated measures:
 #' orthoPolWeek=poly(sorghum$varweek, degree=4, raw=FALSE)
 #' quad_orthog_Wald = gls(y ~ PolBlocks + PolBlocks:(linWeek + quadWeek + orthoPolWeek[,3:4]) +
@@ -137,6 +171,16 @@
 #' anova(quad_orthog_Wald)
 #' summary(quad_orthog_Wald)$tTable
 #'
+#'
+#' ## *************************************************************************************
+#' ##                                  Closure
+#' ##**************************************************************************************
+#'
+#'
+#' ## dev.off()# closes graphical device
+#' ## sink() #closes sink file
+#'
+#'}
 #' @importFrom nlme nlme
 #'
 NULL

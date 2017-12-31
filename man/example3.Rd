@@ -41,6 +41,14 @@ water stress treatments shown in Fig 4.
 }
 \examples{
 
+\dontrun{
+
+## *************************************************************************************
+##                            Preliminaries
+##**************************************************************************************
+
+## sink("F:\\\\tutorial2\\\\OutputsR\\\\outExample3.txt") #sink file for outputs
+## pdf("F:\\\\tutorial2\\\\OutputsR\\\\outExample3_Fig_S2.pdf") #opens a graphical pdf output file
 require(lmerTest)
 require(lattice)
 require(pbkrtest)
@@ -48,6 +56,11 @@ options(contrasts=c('contr.treatment','contr.poly'))
 data(greenrice)
 ## write.table(greenrice, "c:/greenrice.txt", sep="\\t") # export data to a text file
 ## write.xlsx(greenrice, "c:/greenrice.xlsx") # export data to a spread sheet
+
+## *************************************************************************************
+##            Section 1: Polynomial powers of N and W
+##**************************************************************************************
+
 greenrice$loguptake=log(greenrice$uptake)
 greenrice$Nitrogen=factor(greenrice$N)
 greenrice$Water=factor(greenrice$W)
@@ -63,7 +76,6 @@ greenrice.uptake = lmer(uptake ~ Replicate + factor(N) * factor(W)
 plot(greenrice.uptake,main="Example 3: untransformed",
  ylab="Residuals N uptake")
 
- \dontrun{
 greenrice.loguptake= lmer(loguptake ~ Replicate +
 factor(N) * factor(W) + (1|Replicate:Main), data=greenrice)
 plot(greenrice.loguptake,main="Example 3: transformed ",
@@ -79,6 +91,10 @@ greenrice.lmer2 = lmer(loguptake  ~Linear_N * Linear_W + Quadratic_N +
 Quadratic_W +  Nitrogen*Water + (1|Replicate) + (1|Replicate:Main),
 data=greenrice)
 anova(greenrice.lmer2, ddf="Kenward-Roger",type = 1)
+
+## *************************************************************************************
+##         Section 2 : Fitted regression models and quadratic log uptake curves
+##**************************************************************************************
 
 ## Regression coefficients of quadratic response model of W and N
 greenrice.lmer0 = lmer(loguptake  ~Linear_N * Linear_W + Quadratic_N +
@@ -115,11 +131,15 @@ xyplot(loguptake ~ Linear_W|factor(Linear_N),data=greenrice,
  factor.levels = c("0","90","180","270")),
 panel = panel.plot)
 
+## *************************************************************************************
+##                                  Closure
+##**************************************************************************************
+
+## dev.off()
+## sink() #closes sink file
 }
 
 }
 \references{
 Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
-
-\code{\link[agriTutorial]{agriTutorial-package}} : (Home page) \cr
 }
