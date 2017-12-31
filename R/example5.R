@@ -31,6 +31,8 @@
 #' Mead, R. (1988). The design of experiments. Statistical principles for practical application.
 #' Cambridge: Cambridge University Press.
 #'
+#' \code{\link[agriTutorial]{agriTutorial-package}} : (Home page) \cr
+#'
 #' @examples
 ## Copy and paste the following code into a R console or GUI to run examples
 #'

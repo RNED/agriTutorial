@@ -71,6 +71,8 @@ theme_bw()
 \references{
 Petersen, R.G. (1994). Agricultural field experiments. Design and analysis. New York: Marcel Dekker.
 
-Piepho, H. P. & Edmondson R. N. (submitted). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
-treatment factor levels.Journal of Agronomy and Crop Science. Submitted
+Piepho, H. P. & Edmondson R. N. (accepted). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
+treatment factor levels.Journal of Agronomy and Crop Science. Accepted
+
+\code{\link[agriTutorial]{agriTutorial-package}} : (Home page) \cr
 }

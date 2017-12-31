@@ -45,8 +45,11 @@
 #' the gls() algorithm to fit the same set of raw polynomials for both the blocks and the treatments model.
 #' This formulation allows numerically stable orthogonal polynomials to be used for higher-degree blocks model
 #' effects while still allowing raw polynomials to be used for the treatments model.
+#'
 #' @references
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
+#'
+#' \code{\link[agriTutorial]{agriTutorial-package}} : (Home page) \cr
 #'
 #' @examples
 #'

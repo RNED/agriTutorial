@@ -3,32 +3,33 @@
 #' @aliases agritutorial
 #' @docType package
 #' @description
-#' The \code{agri.tutorial} package provides software support for the analysis of
-#'  the five example data sets discussed in Piepho and Edmondson (submitted).
-#'  The package provides data sets and example code for the five examples
-#'  and demonstrates  a range of modern statistical methods for the practical
-#'  analysis of real data from real experiments.
+#' The \code{agri.tutorial} package provides software for the analysis of
+#'  the five agricultural data sets discussed in Piepho and Edmondson (accepted).
+#'  The package provides the data and a set of R programs for each example
+#'  and demonstrates the wide range of modern statistical methods now available
+#'  for the practical analysis of real data from real experiments.
 #'
 #' @details
-#'  The examples presented in this package are discussed in detail in
-#'  Piepho & Edmondson (submitted). The experimental data is made available as
-#'  a separate data set for each example and the R analysis code is made available
+#'  The example analyses presented in this package are discussed in detail in
+#'  Piepho & Edmondson (accepted). The experimental data is made available as
+#'  a separate data frame for each example and the R analysis code is made available
 #'  as a set of example analyses for each data set.
 #'
 #' Code\cr
-#' The code for the examples can be copied and pasted directly into any R console terminal window to
-#' reproduce the example analysis discussed in Piepho & Edmondson (after loading library("agriTutorial")).
-#' Textual output should appear in the gui or terminal window but can be diverted to a suitable
-#' text file by using a sink file command, if required. Graphical output should appear in the gui graphics
+#' The code for the examples can be executed from any suitable R console terminal window and
+#' should reproduce the example analysis discussed in Piepho & Edmondson.
+#' Textual output should appear in a gui or terminal window but can be diverted to a suitable
+#' text file by using a sink file command, if required. Graphical output should appear in a gui graphics
 #' window but can be diverted to a suitable pdf file by using a pdf file command, if required.
-#' The example code demonstrates a basic analysis for each data set but a valid analysis
-#' should always explore data as fully as possibe and we recommend copying and pasting
-#' the example code into a suitable file or environment for further editing and development. The
-#' data sets can be exported to text or spread sheet files by using the \code{write.table}
-#' or \code{write.xlsx} functions, if required.
-#' The code for opening and closing .txt files and .pdf files and for exporting data is shown
-#' commented-out by hashes in the example programs. The "dontrun" tags are required for package testing
-#' at CRAN and and can be ignored here.
+#' The example code demonstrates a basic analysis for each data set but a proper data analysis
+#' should always explore data as fully as possibe and we recommend copying
+#' the example code into a suitable file or coding environment and making a further analysis of
+#' the data sets.
+#' The data sets can be exported directly to a text file or spread sheet file
+#'  by using the \code{write.table} or \code{write.xlsx} functions, as required.
+#' The lines of code for opening or closing .txt files and .pdf files and for exporting data sets are preceded
+#' by a hash synbol to suppress the command but the code can be activated be deleting the hash.
+#' The "dontrun" tags are required for package testing at CRAN and and can be ignored here.
 #'
 #' Polynomials\cr
 #' The polynomials used in this tutorial are either
@@ -40,10 +41,10 @@
 #' actual coefficients of the required polynomial model whereas orthogonal
 #' polynomials fit orthogonal linear combinations of the actual coefficients. Raw polynomials
 #' have a direct interpretation as polynomial model coefficients
-#' but can be numerically unstable for high-degree polynomials whereas orthogonal polynomials are
+#' but can be numerically unstable for higher-degree polynomials whereas orthogonal polynomials are
 #' numerically stable but can be difficult to interpret.
 #'  Orthogonal polynomials can be useful, for example, when allowing for
-#'  high-degree polynomial nuisance effects in a series of repeated measures (see example 4).
+#'  higher-degree polynomial nuisance effects in a series of repeated measures (see example 4).
 #'
 #' Functional marginality\cr
 #' Any polynomial expansion of an unknown function must include all polynomial terms up to and including the degree
@@ -77,7 +78,7 @@
 #'
 #' @references
 #'
-#' Piepho, H. P, and Edmondson. R. N. (submitted). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
+#' Piepho, H. P, and Edmondson. R. N. (accepted). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
 #' treatment factor levels.Journal of Agronomy and Crop Science.
 #'
 #' Nelder, J. A. (2000). Functional marginality and response-surface fitting. Journal of Applied Statistics, 26, 109-122.

@@ -142,6 +142,8 @@ research, 2nd edn. New York: Wiley.
 
 Kenward, M.G., & Roger, J.H. (1997). Small sample inference for fixed effects from restricted maximum likelihood. Biometrics, 53, 983–997.
 
-Piepho, H. P. & Edmondson R. N. (submitted). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
-treatment factor levels.Journal of Agronomy and Crop Science. Submitted
+Piepho, H. P. & Edmondson R. N. (accepted). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
+treatment factor levels.Journal of Agronomy and Crop Science. Accepted
+
+\code{\link[agriTutorial]{agriTutorial-package}} : (Home page) \cr
 }

@@ -82,4 +82,6 @@ title(main="Fig 12b Quadratic response for transformed log density by log row sp
 \references{
 Mead, R. (1988). The design of experiments. Statistical principles for practical application.
 Cambridge: Cambridge University Press.
+
+\code{\link[agriTutorial]{agriTutorial-package}} : (Home page) \cr
 }

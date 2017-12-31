@@ -120,4 +120,6 @@ panel = panel.plot)
 }
 \references{
 Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
+
+\code{\link[agriTutorial]{agriTutorial-package}} : (Home page) \cr
 }
