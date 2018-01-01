@@ -8,10 +8,10 @@
 \title{Tutorial Analysis of Agricultural Experiments}
 \description{
 The \code{agri.tutorial} package provides software for the analysis of
- the five agricultural data sets discussed in Piepho and Edmondson (accepted).
- The package provides the data and a set of R programs for each example
- and demonstrates the wide range of modern statistical methods now available
- for the practical analysis of real data from real experiments.
+ five agricultural data sets discussed in Piepho and Edmondson (in press).
+ The package provides data sets and example R programs for each example data set
+ and demonstrates the wide range of modern statistical methods available
+ for the practical analysis of data from real experiments.
 }
 \details{
 The example analyses presented in this package are discussed in detail in
@@ -20,15 +20,14 @@ The example analyses presented in this package are discussed in detail in
  as a set of example analyses for each data set.
 
 Code\cr
-The code for the examples can be executed from any suitable R console terminal window and
+The code for the example analyses can be executed on any suitable R console terminal window and
 should reproduce the example analysis discussed in Piepho & Edmondson.
-Textual output should appear in a gui or terminal window but can be diverted to a suitable
-text file by using a sink file command, if required. Graphical output should appear in a gui graphics
+Textual output should appear in the gui or terminal window but can be diverted to a suitable
+text file by using a sink file command, if required. Graphical output should appear in the gui graphics
 window but can be diverted to a suitable pdf file by using a pdf file command, if required.
-The example code demonstrates a basic analysis for each data set but a proper data analysis
-should always explore data as fully as possibe and we recommend copying
-the example code into a suitable file or coding environment and making a further analysis of
-the data sets.
+The example code demonstrates a basic analysis for each data set but the code can be copied
+into a suitable file or coding environment and developed further for a more extended analysis of
+the data sets, if required.
 The data sets can be exported directly to a text file or spread sheet file
  by using the \code{write.table} or \code{write.xlsx} functions, as required.
 The lines of code for opening or closing .txt files and .pdf files and for exporting data sets are preceded
