@@ -57,8 +57,8 @@
 #' \code{\link[agriTutorial]{agriTutorial}} : back to home page\cr
 #'
 #' @references
-#'Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural
-#'research, 2nd edn. New York: Wiley.
+#' Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural
+#' research, 2nd edn. New York: Wiley.
 #'
 #' Kenward, M.G., & Roger, J.H. (1997). Small sample inference for fixed effects from restricted maximum likelihood. Biometrics, 53, 983–997.
 #'
