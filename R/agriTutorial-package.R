@@ -6,23 +6,22 @@
 #' @description
 #'
 #' The \code{agri.tutorial} package provides example software for the analysis of
-#'  five agricultural data sets discussed in Piepho and Edmondson (in press).
-#'  The package provides data and example R programs for each example and
+#'  the five agricultural data sets discussed in Piepho and Edmondson (in press).
+#'  The package provides data and example R programs and
 #'  demonstrates the wide range of modern statistical methods currently available
 #'  for the practical analysis of data from real experiments.
 #'
 #' @details
-#' The package contains experimental data and example R
-#'  analysis code for the five examples discussed in Piepho and Edmondson.
-#'  The example R analyses code reproduces each analysis
-#'  and shows the derivation of the numerical results reported by Piepho and Edmondson.
-#'  The experimental data for each example is made available as a data frame and the R analysis code is provided
-#'  as example code that can be copied and pasted for each example data set.
+#'
+#'  The example code reproduces the analyses of the five agricultural data sets
+#'  discussed by Piepho and Edmondson and also shows some graphical methods of data analysis.
+#'  Datasets for each analysis are provided as saved data frames and the R analysis code
+#'  is provided as a set of examples that can be copied and pasted for each example data set separately.
 #'
 #' Code\cr
-#' Each example analyses can be executed by pasting the example code into any suitable R console terminal window and,
-#' provided that all the required packages (including agriTutorial) have been loaded by suitable library(-package name-)
-#' commands, the output should reproduce the example analysis given in Piepho and Edmondson.
+#' Each example analyses can be executed by pasting the example code into any suitable R console terminal window.
+#' Provided that all the required packages (including agriTutorial) have been loaded,
+#' the output should then reproduce the example analyses given by Piepho and Edmondson.
 #' Output should appear in the gui or terminal window but can be diverted to a suitable
 #' text file by using a sink file command, if required. Graphical output should appear in the gui graphics
 #' window but can be diverted to a suitable pdf file by using a pdf file command, if required.
@@ -37,10 +36,8 @@
 #' Polynomials\cr
 #' The polynomials used in this tutorial are either raw polynomials or orthogonal polynomials.
 #' A raw polynomial is a numeric vector raised to
-#' the power of the required degree whereas an orthogonal polynomial is a linear combination
-#' of raw polynomials of degree equal to or less than the degree of the required polynomial
-#' where the linear combination is chosen
-#' to ensure orthogonality relative to all orthogonal polynomials of lesser degree. Raw polynomials fit the
+#' the power of the required polynomial whereas an orthogonal polynomial is a linear combination
+#' of raw polynomials of degree equal to or less than the degree of the required polynomial. Raw polynomials fit the
 #' actual coefficients of the required polynomial model whereas orthogonal
 #' polynomials fit orthogonal linear combinations of the required coefficients. Raw polynomial coefficients
 #' have a direct interpretation as polynomial model coefficients
