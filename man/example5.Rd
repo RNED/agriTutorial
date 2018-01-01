@@ -30,6 +30,8 @@ observed data.
 
 The superiority of the model with log transformed regressor variables is confirmed by an examination of
 the diagnostic plots for the two models.
+
+\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 }
 \examples{
 
@@ -104,6 +106,4 @@ title(main="Fig 12b Quadratic response for transformed log density by log row sp
 \references{
 Mead, R. (1988). The design of experiments. Statistical principles for practical application.
 Cambridge: Cambridge University Press.
-
-\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 }

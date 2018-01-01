@@ -36,10 +36,10 @@
 #' plot the fitted quadratic log uptake curves versus the nitrogen rate treatments and the
 #' water stress treatments shown in Fig 4.
 #'
+#' \code{\link[agriTutorial]{agriTutorial-package}} : return to home page
+#'
 #' @references
 #' Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
-#'
-#' \code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 #'
 #' @examples
 #'

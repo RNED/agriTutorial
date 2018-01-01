@@ -54,6 +54,7 @@
 #' there is some evidence of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice,
 #' this anomaly would need to be investigated by further discussion with the research workers.
 #'
+#' \code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 #'
 #' @references
 #'Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural
@@ -63,8 +64,6 @@
 #'
 #' Piepho, H. P. & Edmondson R. N. (accepted). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
 #' treatment factor levels.Journal of Agronomy and Crop Science. Accepted
-#'
-#' \code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 #'
 #' @examples
 #'

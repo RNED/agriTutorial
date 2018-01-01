@@ -27,6 +27,8 @@ the fitted quadratic regression model to check the validity of the model assumpt
 Finally, a smoothed quadratic graph of the yield versus the N rate is plotted to show the
 goodness of fit of a quadratic model to the mean yield response to nitrogen rate.
 The plot corresponds to plot Fig 3 in Piepho & Edmondson.
+
+\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 }
 \examples{
 
@@ -88,6 +90,4 @@ Petersen, R.G. (1994). Agricultural field experiments. Design and analysis. New 
 
 Piepho, H. P. & Edmondson R. N. (accepted). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
 treatment factor levels.Journal of Agronomy and Crop Science. Accepted.
-
-\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 }

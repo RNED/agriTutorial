@@ -55,6 +55,8 @@ Finally, individual plots of the nitrogen response for each variety in each bloc
 shown (Fig 1). These plots show the nitrogen response of each variety in each replicate block separately and
 there is some evidence of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice,
 this anomaly would need to be investigated by further discussion with the research workers.
+
+\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 }
 \examples{
 
@@ -165,6 +167,4 @@ Kenward, M.G., & Roger, J.H. (1997). Small sample inference for fixed effects fr
 
 Piepho, H. P. & Edmondson R. N. (accepted). A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative
 treatment factor levels.Journal of Agronomy and Crop Science. Accepted
-
-\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 }

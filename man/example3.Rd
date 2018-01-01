@@ -38,6 +38,8 @@ The final stage fits regression coefficients for the quadratic response surface 
 rescaled water stress and rescaled nitrogen rate treatments. The fitted coefficients are then used to
 plot the fitted quadratic log uptake curves versus the nitrogen rate treatments and the
 water stress treatments shown in Fig 4.
+
+\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 }
 \examples{
 
@@ -142,6 +144,4 @@ panel = panel.plot)
 }
 \references{
 Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
-
-\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
 }
