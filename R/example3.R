@@ -36,8 +36,18 @@
 #' plot the fitted quadratic log uptake curves versus the nitrogen rate treatments and the
 #' water stress treatments shown in Fig 4.
 #'
+#' Examples:
 #' \enumerate{
-#' \item \code{\link[agriTutorial]{agriTutorial-package}} : main page\cr
+#' \item \code{\link[agriTutorial]{example1}} : split-plot design
+#' with one quantitative and one qualitative treatment factor\cr
+#' \item \code{\link[agriTutorial]{example2}} : block design
+#' with one qualitative treatment factor\cr
+#' \item \code{\link[agriTutorial]{example3}} : response surface design with
+#' two quantitative treatment factors\cr
+#' \item \code{\link[agriTutorial]{example4}} : repeated measures design with one
+#' quantitative treatment factor\cr
+#' \item \code{\link[agriTutorial]{example5}} : block design with transformed
+#' quantitative treatment levels\cr
 #' }
 #'
 #' @references

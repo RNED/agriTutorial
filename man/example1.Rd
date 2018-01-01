@@ -56,18 +56,7 @@ shown (Fig 1). These plots show the nitrogen response of each variety in each re
 there is some evidence of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice,
 this anomaly would need to be investigated by further discussion with the research workers.
 
-\enumerate{
-\item \code{\link[agriTutorial]{example1}} : split-plot design
-with one quantitative and one qualitative treatment factor\cr
-\item \code{\link[agriTutorial]{example2}} : block design
-with one qualitative treatment factor\cr
-\item \code{\link[agriTutorial]{example3}} : response surface design with
-two quantitative treatment factors\cr
-\item \code{\link[agriTutorial]{example4}} : repeated measures design with one
-quantitative treatment factor\cr
-\item \code{\link[agriTutorial]{example5}} : block design with transformed
-quantitative treatment levels\cr
-}
+\code{\link[agriTutorial]{agriTutorial}} : home page\cr
 }
 \examples{
 
