@@ -28,19 +28,7 @@ Finally, a smoothed quadratic graph of the yield versus the N rate is plotted to
 goodness of fit of a quadratic model to the mean yield response to nitrogen rate.
 The plot corresponds to plot Fig 3 in Piepho & Edmondson.
 
-Examples:
-\enumerate{
-\item \code{\link[agriTutorial]{example1}} : split-plot design
-with one quantitative and one qualitative treatment factor\cr
-\item \code{\link[agriTutorial]{example2}} : block design
-with one qualitative treatment factor\cr
-\item \code{\link[agriTutorial]{example3}} : response surface design with
-two quantitative treatment factors\cr
-\item \code{\link[agriTutorial]{example4}} : repeated measures design with one
-quantitative treatment factor\cr
-\item \code{\link[agriTutorial]{example5}} : block design with transformed
-quantitative treatment levels\cr
-}
+\code{\link[agriTutorial]{agriTutorial}} : back to home page\cr
 }
 \examples{
 

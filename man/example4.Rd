@@ -49,19 +49,7 @@ the gls() algorithm to fit the same set of raw polynomials for both the blocks a
 This formulation allows numerically stable orthogonal polynomials to be used for higher-degree blocks model
 effects while still allowing raw polynomials to be used for the treatments model.
 
-Examples:
-\enumerate{
-\item \code{\link[agriTutorial]{example1}} : split-plot design
-with one quantitative and one qualitative treatment factor\cr
-\item \code{\link[agriTutorial]{example2}} : block design
-with one qualitative treatment factor\cr
-\item \code{\link[agriTutorial]{example3}} : response surface design with
-two quantitative treatment factors\cr
-\item \code{\link[agriTutorial]{example4}} : repeated measures design with one
-quantitative treatment factor\cr
-\item \code{\link[agriTutorial]{example5}} : block design with transformed
-quantitative treatment levels\cr
-}
+\code{\link[agriTutorial]{agriTutorial}} : back to home page\cr
 }
 \examples{
 

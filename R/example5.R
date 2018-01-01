@@ -27,19 +27,7 @@
 #' The superiority of the model with log transformed regressor variables is confirmed by an examination of
 #' the diagnostic plots for the two models.
 #'
-#' Examples:
-#' \enumerate{
-#' \item \code{\link[agriTutorial]{example1}} : split-plot design
-#' with one quantitative and one qualitative treatment factor\cr
-#' \item \code{\link[agriTutorial]{example2}} : block design
-#' with one qualitative treatment factor\cr
-#' \item \code{\link[agriTutorial]{example3}} : response surface design with
-#' two quantitative treatment factors\cr
-#' \item \code{\link[agriTutorial]{example4}} : repeated measures design with one
-#' quantitative treatment factor\cr
-#' \item \code{\link[agriTutorial]{example5}} : block design with transformed
-#' quantitative treatment levels\cr
-#' }
+#' \code{\link[agriTutorial]{agriTutorial}} : back to home page\cr
 #'
 #' @references
 #' Mead, R. (1988). The design of experiments. Statistical principles for practical application.
