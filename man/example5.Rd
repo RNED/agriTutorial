@@ -31,7 +31,7 @@ observed data.
 The superiority of the model with log transformed regressor variables is confirmed by an examination of
 the diagnostic plots for the two models.
 
-\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
+\code{\link[agriTutorial]{agriTutorial-package}} : return to home page\cr
 }
 \examples{
 

@@ -56,7 +56,7 @@ shown (Fig 1). These plots show the nitrogen response of each variety in each re
 there is some evidence of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice,
 this anomaly would need to be investigated by further discussion with the research workers.
 
-\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
+\code{\link[agriTutorial]{agriTutorial-package}} : return to home page\cr
 }
 \examples{
 

@@ -28,7 +28,7 @@ Finally, a smoothed quadratic graph of the yield versus the N rate is plotted to
 goodness of fit of a quadratic model to the mean yield response to nitrogen rate.
 The plot corresponds to plot Fig 3 in Piepho & Edmondson.
 
-\code{\link[agriTutorial]{agriTutorial-package}} : return to home page
+\code{\link[agriTutorial]{agriTutorial-package}} : return to home page\cr
 }
 \examples{
 
