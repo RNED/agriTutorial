@@ -49,6 +49,8 @@
 #' @references
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
 #'
+#' \code{\link[agriTutorial]{agriTutorial-package}} : return to home page
+#'
 #' @examples
 #'
 #' \dontrun{
