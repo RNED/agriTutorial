@@ -46,7 +46,9 @@
 #' This formulation allows numerically stable orthogonal polynomials to be used for higher-degree blocks model
 #' effects while still allowing raw polynomials to be used for the treatments model.
 #'
-#' \code{\link[agriTutorial]{agriTutorial-package}} : return to home page\cr
+#' \enumerate{
+#' \item \code{\link[agriTutorial]{example5}} : example 5\cr
+#' }
 #'
 #' @references
 #' Milliken, G.A., & Johnson, D.E. (1992). Analysis of messy data. Volume I: Designed experiments. Boca Raton: CRC Press.
