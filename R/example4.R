@@ -16,11 +16,11 @@
 #'
 #' The second stage fits and compares five different correlation structures for the repeated measures
 #' using the gls() function of the nlme package. The goodness of fit of the models is compared by AIC statistics
-#' where the smaller the AIC the better the fit. Here the AR(1)+nugget model fitted by the corExp() function gave
+#' where the smaller the AIC the better the fit. Here, the AR(1)+nugget model fitted by the corExp() function gave
 #' the best fitting model.
 #'
 #' The third stage fits a full regression model over weeks (Table A1) to test for possible interactions between
-#' variety and and week effects. The full regression model is then decomposed into individual polynomial contrasts over
+#' variety and week effects. The full regression model is then decomposed into individual polynomial contrasts over
 #' weeks (Table A2) to find the most parsimonious model adequate for the data. The analysis into single degree
 #' of freedom polynomial contrasts shows that the variety-by-weeks interaction is mainly due to the linear and
 #' quadratic interaction effects although there is some evidence of higher-degree polynomial intraction effects.
@@ -34,9 +34,9 @@
 #' positive residuals and this suggests that some further investigation of the adequacy of the fitted model
 #' would be valuable.
 #'
-#' A problem with the gls() function is that it must contain the same polynomial terms in the
+#' A problem with the gls() function is that it must contain the same polynomial terms for weeks in the
 #' blocks regression model as in the treatments regression model,
-#' which is why we have used raw polynomials for the blocks model.
+#' which is why we have used raw polynomials for the blocks regression model.
 #' However for a long series of repeated measures, raw polynomials can become numerically unstable
 #' and will eventually fail. The final generalization shows how higher-degree orthogonal
 #' polynomials CAN be used for the blocks regression model PROVIDED that raw polynomials are used

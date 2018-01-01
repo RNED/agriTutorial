@@ -13,12 +13,12 @@
 #'
 #' Section 1
 #'
-#' Section 1 examiness treatment effects by fitting qualitative factorial models and the first analysis
+#' Section 1 examines treatment effects by fitting qualitative factorial models and the first analysis
 #' calculates a full analysis of variance (Table 1) for main plots (nitrogen),
 #' split-plots (management) and split-split plots (variety). Each type of experimental unit (or "stratum")
 #' requires a separate error term in the fitted analysis.
 #'
-#' The second analysis (Table 2) uses REML mixed model analysis to find treatment means and SE's for each marginal
+#' The second analysis (Table 2) uses a REML mixed model analysis to find treatment means and SE's for each marginal
 #' treatment classification averaged over all the other treatment factors, together with estimates of
 #' pairwise contrasts of treatment means and the SE's of the pairwise treatment comparisons. This analysis fits
 #' the full set of nitrogen by variety interaction effects assuming additive managment effects and the fit of the model
@@ -43,15 +43,15 @@
 #' that not all the varieties responded in a similar way to the N treatments and that some further analysis of the
 #' data may be required (see also the N plots of individual varieties and replicates in Fig 1).
 #'
-#' The third step in this section finds the fitted model for estimating the actual fitted model coefficients (Table 8) .
-#' When estimating model effects, only those terms that are significant for the fitted model should be included in the model
-#' therefore only linear and quadratic nitrogen trend terms are included in this model. The fitted model for the nitrogen
-#' effects fits the actual actual nitrogen levels used in the experiment as these provide coefficients appropriate for
-#' the actual applied nitrogen levels.
+#' The third step fits the required model for the actual fitted model coefficients (Table 8).
+#' When estimating model effects, only effects that are significant for the fitted model or that are marginal to
+#' those effects (functional marginality) should be included in the model therefore only linear and quadratic nitrogen effects
+#' are included in this model. The fitted model for the nitrogen effects fits the actual actual nitrogen levels used
+#' in the experiment therefore this model provides the required coefficients for the actual applied nitrogen levels.
 #'
-#' Finally, individual plots of the nitrogen response for each variety in each block averaged over management effects are
-#' shown (Fig 1). These plots show the nitrogen response of each variety in each replicate block separately and
-#' there is some evidence of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice,
+#' Finally, individual plots of the nitrogen response for each variety in each block averaged over all management effects are
+#' shown (Fig 1). These plots show the nitrogen response of each variety in each replicate block and
+#' show some evidence of anomalous behaviour by variety 1 in blocks 1 and 2 compared with block 3. In practice,
 #' this anomaly would need to be investigated by further discussion with the research workers.
 #'
 #' \code{\link[agriTutorial]{agriTutorial}} : back to home page\cr

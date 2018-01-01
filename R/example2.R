@@ -1,11 +1,11 @@
 #' @name example2
 #' @title  EXAMPLE 2: Lack-of-fit and marginality for a single quantitative treatment factor
 #' @description
-#' Petersen (1994, p. 125) describe an experiment conducted to assess the effects
+#' Petersen (1994, p. 125) describes an experiment conducted to assess the effects
 #' of five different quantities of N-fertiliser (0, 35, 70, 105 and 140 kg N/ha) on root dry
 #' matter yield of sugar beet (t/ha) with three complete replications laid out in three
 #' randomized complete blocks. One objective of this experiment was to determine the amount
-#' of fertilizer maximizing yield.
+#' of fertilizer for maximizing yield.
 #'
 #' @details
 #'
@@ -14,17 +14,17 @@
 #'
 #' The second stage fits a full polynomial analysis of variance based on polynomial contrasts
 #' fitted in sequence from the lowest to the highest. This is equivalent to the analysis shown in Tables 4 and 5
-#' of Piepho & Edmondson except that a complete partition into single degree of freedom polynomial contrasts is
-#' shown rather than using a 'lack of fit' term as shown in Tables 4 and 5.
+#' of Piepho and Edmondson except that a complete partition into single degree of freedom polynomial contrasts is
+#' shown here compared with the pooled 'lack of fit' term shown in Tables 4 and 5.
 #'
 #' The third stage fits a quadratic regression model with linear and quadratic terms only.
 #' This model provides the model coefficients, standard errors and the confidence intervals
-#' shown in Table 6 of Piepho & Edmondson. A set of diagnostic plots are fitted for
+#' shown in Table 6 of Piepho and Edmondson. A set of diagnostic plots are fitted for
 #' the fitted quadratic regression model to check the validity of the model assumptions.
 #'
 #' Finally, a smoothed quadratic graph of the yield versus the N rate is plotted to show the
-#' goodness of fit of a quadratic model to the mean yield response to nitrogen rate.
-#' The plot corresponds to plot Fig 3 in Piepho & Edmondson.
+#' goodness of fit of the quadratic regression model. This plot corresponds to plot Fig 3 in
+#' Piepho and Edmondson.
 #'
 #' \code{\link[agriTutorial]{agriTutorial}} : back to home page\cr
 #'

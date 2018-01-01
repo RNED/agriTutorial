@@ -15,18 +15,19 @@ polynomial effects in acccordance with the requirements of functional marginalit
 The first stage of the analysis is the calculation of polynomial powers of N and W using the poly() function.
 The N rates are re-scaled by division by 100 while the W rates are re-scaled by division by 10.
 
-The second stage compares (Pearson) a residual plot of the untransformed N uptake data versus a residual plot of
+The second stage compares a (Pearson) residual plot of the untransformed N uptake data versus a residual plot of
 the log transformed N uptake data. Comparison of the two plots shows that the untransformed residuals
 increase as the fitted values increase, which shows that the variance of the untransformed data is non-constant.
 The log transformed N uptake residuals, however, are approximately constant over the full range of fitted values
-and this shows that the log transformed N uptake data can be used to fit a simple unweighted analysis of
+which shows that the log transformed N uptake data can be used to fit a simple unweighted analysis of
 variance for the effects of the treatment factors.
 
-Sometimes the original scale of measurement is the proper scale of measurement for an analysis
-eg actual measured crop yields, and then it can be appropriate to fit a weighted analysis of variance in the
-original scale of measurement. However, in this example, a log transformation of the dependent variable
-simply assumes a proportional rather than an additive model for nitrogen effects and this may well be a more natural
-physiological model for the effects of N uptake on crop production than a simple additive model.
+Sometimes the original scale of measurement is the proper scale of measurement for an analysis,
+e.g. an analysis of actual measured crop yields, and then it might be appropriate to fit a weighted
+analysis of variance in the original scale of measurement of the dependent variable (see Faraway 2002 Chapter 5).
+However, the log transformation model assumes a proportional rather than an additive model
+for treatment effects and, in this example, a proportional model for nitrogen uptake may well be a more natural
+physiological model than a simple additive model.
 
 The next stage compares the fit of a first-order linear model (Table 9) versus a second-order quadratic
 model (Table 10). The first-order model shows significant lack-of-fit and is not adequate for the
@@ -143,5 +144,7 @@ panel = panel.plot)
 
 }
 \references{
+Faraway J (2002) Practical Regression and Anova using R. https://cran.r-project.org/doc/contrib/Faraway-PRA.pdf
+
 Gomez, K.A., & Gomez, A.A. (1984). Statistical procedures for agricultural research, 2nd edn. New York: Wiley.
 }

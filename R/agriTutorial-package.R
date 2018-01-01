@@ -6,44 +6,41 @@
 #' @description
 #'
 #' The \code{agri.tutorial} package provides example software for the analysis of
-#'  the five agricultural data sets discussed in Piepho and Edmondson (in press).
-#'  The package provides data and example R programs and
-#'  demonstrates the wide range of modern statistical methods currently available
-#'  for the practical analysis of data from real experiments.
+#'  five agricultural data sets discussed in the tutorial paper by Piepho and Edmondson (in press).
 #'
 #' @details
 #'
 #'  The example code reproduces the analyses of the five agricultural data sets
-#'  discussed by Piepho and Edmondson and also shows some graphical methods of data analysis.
+#'  discussed by Piepho and Edmondson and also demonstrates some graphical methods of data analysis.
 #'  Datasets for each analysis are provided as saved data frames and the R analysis code
-#'  is provided as a set of examples that can be copied and pasted for each example data set separately.
+#'  is provided as a set of example analyses for each dataset separately.
 #'
 #' Code\cr
-#' Each example analyses can be executed by pasting the example code into any suitable R console terminal window.
+#' The example analyses can be executed by pasting the example code into any suitable R console terminal window.
 #' Provided that all the required packages (including agriTutorial) have been loaded,
 #' the output should then reproduce the example analyses given by Piepho and Edmondson.
 #' Output should appear in the gui or terminal window but can be diverted to a suitable
 #' text file by using a sink file command, if required. Graphical output should appear in the gui graphics
 #' window but can be diverted to a suitable pdf file by using a pdf file command, if required.
-#' The example code contains a basic analysis for each data set but the code can be copied
+#' The example code contains a basic analysis for each data set but can be copied
 #' and developed further for a more extended analysis, if required.
 #' Data sets can be exported directly to a text file or spread sheet file
-#' by using the \code{write.table} or \code{write.xlsx} functions, as required.
+#' by using the \code{write.table} or \code{write.xlsx} functions, respectively.
 #' The lines of code for opening or closing .txt files or .pdf files or for exporting data sets are preceded
-#' by a hash comment symbol to suppress the command but can be activated be deleting the hash symbol.
+#' by a hash comment symbol to suppress the command but can be activated by deleting the hash symbol.
 #' The "dontrun" tags are required for package testing at CRAN and and can be ignored here.
 #'
 #' Polynomials\cr
 #' The polynomials used in this tutorial are either raw polynomials or orthogonal polynomials.
 #' A raw polynomial is a numeric vector raised to
 #' the power of the required polynomial whereas an orthogonal polynomial is a linear combination
-#' of raw polynomials of degree equal to or less than the degree of the required polynomial. Raw polynomials fit the
-#' actual coefficients of the required polynomial model whereas orthogonal
-#' polynomials fit orthogonal linear combinations of the required coefficients. Raw polynomial coefficients
-#' have a direct interpretation as polynomial model coefficients
+#' of raw polynomials of degree equal to or less than the degree of the required polynomial.
+#' Raw polynomial coefficients are the actual required model coefficients whereas orthogonal
+#' polynomial coefficients are linear combinations of the required model coefficients.
+#' Raw polynomial coefficients have a direct interpretation as polynomial model coeffcients
 #' but can be numerically unstable for higher-degree polynomials whereas orthogonal polynomial coefficients are
-#' numerically stable but can be difficult to interpret. Raw polynomials will normally be the polynomials of choice
-#' but sometimes orthogonal polynomials can be useful when, for example, fitting
+#' numerically stable but can be difficult to interpret. Raw polynomials are the polynomials of choice
+#' for most analyses but sometimes orthogonal polynomials can be useful when, for example, fitting
 #' higher-degree polynomials in a long series of repeated measures (see example 4).
 #'
 #' Functional marginality\cr
