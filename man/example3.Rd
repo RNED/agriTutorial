@@ -39,7 +39,9 @@ rescaled water stress and rescaled nitrogen rate treatments. The fitted coeffici
 plot the fitted quadratic log uptake curves versus the nitrogen rate treatments and the
 water stress treatments shown in Fig 4.
 
-\code{\link[agriTutorial]{agriTutorial-package}} : return to home page\cr
+\enumerate{
+\item \code{\link[agriTutorial]{agriTutorial-package}} : main page\cr
+}
 }
 \examples{
 
