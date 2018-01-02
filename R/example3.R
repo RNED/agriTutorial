@@ -1,18 +1,17 @@
 #' @name example3
 #' @title  EXAMPLE 3: Polynomial regression model with two quantitative level treatment factors
 #' @description
-#' (Gomez & Gomez, 1984, p. 401): Nitrogen uptake (g/pot) of rice was studied in a two-factor
-#' greenhouse experiment involving duration of water stress (W) and level of nitrogen application (N).
-#' The experiment had four water-stress levels (0, 10, 20 and 40 days) as main-plot treatments and
-#' four nitrogen rates (0, 90, 180 and 270 kg/ha) as sub-plot treatments with main plots
-#' randomized within four complete blocks. In this analysis, all polynomial models are built by adding individual
-#' polynomial effects in acccordance with the requirements of functional marginality.
+#' (Gomez & Gomez, 1984, p. 401) report a two-factor nitrogen uptake greenhouse experiment on rice
+#' involving duration of water stress (W) and level of nitrogen application (N) with four complete replicates of each treatment.
+#' The experiment had four water-stress levels (0, 10, 20 and 40 days) applied as main-plot treatments and
+#' four nitrogen rates (0, 90, 180 and 270 kg/ha) applied as sub-plot treatments. The four sub-plot treatments were randomized
+#'  within main plots and the four main plot treatments were randomized within complete replicate blocks.
 #'
 #' @details
 #' The first stage of the analysis is the calculation of polynomial powers of N and W using the poly() function.
 #' The N rates are re-scaled by division by 100 while the W rates are re-scaled by division by 10.
 #'
-#' The second stage compares a (Pearson) residual plot of the untransformed N uptake data versus a residual plot of
+#' The second stage compares a Pearson residual plot of the untransformed N uptake data versus a Pearson residual plot of
 #' the log transformed N uptake data. Comparison of the two plots shows that the untransformed residuals
 #' increase as the fitted values increase, which shows that the variance of the untransformed data is non-constant.
 #' The log transformed N uptake residuals, however, are approximately constant over the full range of fitted values
@@ -28,7 +27,7 @@
 #'
 #' The next stage compares the fit of a first-order linear model (Table 9) versus a second-order quadratic
 #' model (Table 10). The first-order model shows significant lack-of-fit and is not adequate for the
-#' data. The second-order model is also not fully adequate for the data as there is a significant Nitrogen lack of
+#' data. The second-order model is also not fully adequate for the data as there is a significant N lack of
 #' fit term indicating a significant cubic effect. However, the magnitude of the cubic effect is
 #' relatively small and it will be assumed here that a quadratic model is adequate for the data.
 #'
@@ -36,6 +35,9 @@
 #' rescaled water stress and rescaled nitrogen rate treatments. The fitted coefficients are then used to
 #' plot the fitted quadratic log uptake curves versus the nitrogen rate treatments and the
 #' water stress treatments shown in Fig 4.
+#'
+#' Note that in this analysis all the polynomial models are built by adding individual polynomial effects in acccordance with the requirements of
+#' functional marginality.
 #'
 #' \code{\link[agriTutorial]{agriTutorial}} : back to home page\cr
 #'
@@ -80,12 +82,12 @@
 #' ## residual plots of untransformed versus log transformed uptake data
 #' greenrice.uptake = lmer(uptake ~ Replicate + factor(N) * factor(W)
 #'   + (1|Replicate:Main), data=greenrice)
-#' plot(greenrice.uptake,main="Example 3: untransformed",
+#' plot(greenrice.uptake,main="Pearson residual plot for untransformed N uptake",
 #'  ylab="Residuals N uptake")
 #'
 #' greenrice.loguptake= lmer(loguptake ~ Replicate +
 #' factor(N) * factor(W) + (1|Replicate:Main), data=greenrice)
-#' plot(greenrice.loguptake,main="Example 3: transformed ",
+#' plot(greenrice.loguptake,main="Pearson residual plot for log transformed N uptake",
 #' ylab="Residuals log N uptake")
 #'
 #' ## Tables 9 first-order model of log uptake and Wald tests
