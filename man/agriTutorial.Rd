@@ -11,25 +11,30 @@ The \code{agri.tutorial} package provides example software for the analysis of
  five agricultural data sets discussed in the tutorial paper by Piepho and Edmondson (in press).
 }
 \details{
-The example code reproduces the analyses of the five agricultural data sets
- discussed by Piepho and Edmondson and also demonstrates some graphical methods of data analysis.
- Datasets for each analysis are provided as saved data frames and the R analysis code
- is provided as a set of example analyses for each dataset separately.
-
 Code\cr
-The example analyses can be executed by pasting the example code into any suitable R console terminal window.
-Provided that all the required packages (including agriTutorial) have been loaded,
-the output should then reproduce the example analyses given by Piepho and Edmondson.
-Output should appear in the gui or terminal window but can be diverted to a suitable
+
+ This package provides example code for the statistical analyses of the agricultural data sets
+ discussed in Piepho and Edmondson and also provides example code that illustrates some graphical methods
+ of data analysis. The data for each analysis is provided as a data frame in an .RData fie and is loaded
+ automatically whenever the package is loaded. The example code for each analysis is provided
+ as a set of examples which can be executed by pasting the example code into
+ any suitable R console terminal window. Provided that all the required packages (including agriTutorial)
+ have been loaded,the output should then reproduce the example analyses given by Piepho and Edmondson.
+
+All printed output should appear appear in the gui or terminal window but can be diverted to a suitable
 text file by using a sink file command, if required. Graphical output should appear in the gui graphics
 window but can be diverted to a suitable pdf file by using a pdf file command, if required.
-The example code contains a basic analysis for each data set but can be copied
-and developed further for a more extended analysis, if required.
-Data sets can be exported directly to a text file or spread sheet file
-by using the \code{write.table} or \code{write.xlsx} functions, respectively.
+Data and output can be exported directly to a text file or spread sheet file
+by using the \code{write.table} or \code{write.xlsx} functions, if required.
+
 The lines of code for opening or closing .txt files or .pdf files or for exporting data sets are preceded
-by a hash comment symbol to suppress the command but can be activated by deleting the hash symbol.
+by a hash symbol to suppress the command but these lines can be activated by deleting the hash symbol.
 The "dontrun" tags are required for package testing at CRAN and and can be ignored here.
+
+The example code demonstrates some basic modern methodology for the analysis of data from designed
+experiments but there are many other packages available and it is straightforward to
+extend the example code by adding functionality from other packages. One source of package information
+is the set of package 'views' available at of https://cran.rstudio.com/web/views/.
 
 Polynomials\cr
 The polynomials used in this tutorial are either raw polynomials or orthogonal polynomials.
