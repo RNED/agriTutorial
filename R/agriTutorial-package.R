@@ -6,15 +6,17 @@
 #' @description
 #'
 #' The \code{agri.tutorial} package provides example software for the analysis of
-#'  five agricultural data sets discussed in the tutorial paper by Piepho and Edmondson (in press).
+#'  five agricultural example data sets in the paper:
+#'  'A tutorial on the statistical analysis of factorial experiments with qualitative
+#'   and quantitative treatment factor levels' by Piepho and Edmondson (in press).
 #'
 #' @details
 #'
 #' Code\cr
 #'
-#'  This package provides example code for the statistical analyses of the agricultural data sets
-#'  discussed in Piepho and Edmondson and also provides example code that illustrates some graphical methods
-#'  of data analysis. The data for each analysis is provided as a data frame in an .RData fie and is loaded
+#'  The example code reproduces the statistical analyses of the agricultural data sets
+#'  discussed in Piepho and Edmondson and also produces some graphical methods
+#'  of data analysis. The data for each analysis is provided as a data frame which is loaded
 #'  automatically whenever the package is loaded. The example code for each analysis is provided
 #'  as a set of examples which can be executed by pasting the example code into
 #'  any suitable R console terminal window. Provided that all the required packages (including agriTutorial)
