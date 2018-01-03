@@ -35,15 +35,15 @@
 #' The example code demonstrates some basic modern methodology for the analysis of data from designed
 #' experiments but there are many other packages available and it is straightforward to
 #' extend the example code by adding functionality from other packages. One source of package information
-#' is the set of package 'views' available at of https://cran.rstudio.com/web/views/.
+#' is the set of package 'views' available at: https://cran.rstudio.com/web/views/.
 #'
 #' Polynomials\cr
 #' The polynomials used in this tutorial are either raw polynomials or orthogonal polynomials.
 #' A raw polynomial is a numeric vector raised to
 #' the power of the required polynomial whereas an orthogonal polynomial is a linear combination
 #' of raw polynomials of degree equal to or less than the degree of the required polynomial.
-#' Raw polynomial coefficients are the actual required model coefficients whereas orthogonal
-#' polynomial coefficients are linear combinations of the required model coefficients.
+#' Raw polynomial coefficients are the actual required polynomial model coefficients whereas orthogonal
+#' polynomial coefficients are linear combinations of the required polynomial model coefficients.
 #' Raw polynomial coefficients have a direct interpretation as polynomial model coeffcients
 #' but can be numerically unstable for higher-degree polynomials whereas orthogonal polynomial coefficients are
 #' numerically stable but can be difficult to interpret. Raw polynomials are the polynomials of choice
