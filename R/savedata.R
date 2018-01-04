@@ -16,6 +16,7 @@ rice$Main = gl(5, 9, length=135)
 rice$Sub =  gl(3, 3, length=135)
 save(rice, file = "data/rice.RData")
 
+
 beet=data.frame(yield=c(9.9, 7.8, 10.7, 20.3, 22.6, 23.9, 27.5, 30.3, 29.2, 31.4, 27.2, 33.4, 28.1, 25.7, 31.9))
 beet$nrate=rep(c(0,35,70,105,140),each=3)
 beet$Replicate = gl(3,1,length=15)
